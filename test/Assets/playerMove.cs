@@ -35,9 +35,9 @@ public class playerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cameraMoveBaseTra = cameraMoveBase.transform;
         rotest=cameraMoveBase.GetComponent<rotest>();
 
-        cameraMoveBaseTra = cameraMoveBase.transform;
 
         cameraRb = cameraMoveBase.GetComponent<Rigidbody>();
     }

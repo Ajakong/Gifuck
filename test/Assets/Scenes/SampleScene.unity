@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50581bd334aa325448121978345890f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 2088492989}
 --- !u!1 &1411657911
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d204cdaa8adf5f4e86a17e55ef6d068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPre: {fileID: 2048271047269858779, guid: 11b545807a313644c9ad83eca54451d5, type: 3}
+  EnemyPre: {fileID: 3885535379320397859, guid: 4552bb1d24679824a845721bee950743, type: 3}
 --- !u!114 &1886504341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3045,7 +3045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f7811aa0f7e4f9ddeb0b0eefbc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMoveBase: {fileID: 0}
+  cameraMoveBase: {fileID: 273030570}
 --- !u!1 &2035503657
 GameObject:
   m_ObjectHideFlags: 0
