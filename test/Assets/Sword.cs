@@ -153,7 +153,9 @@ public class Sword : MonoBehaviour
         {
             EHp = collision.GetComponent<EnemyState>();
             EHp.HpMove -= swordAt;
-            
+            HitStop();
+
+
         }
 
         if (collision.gameObject.tag == "Player")
@@ -191,5 +193,10 @@ public class Sword : MonoBehaviour
     public int At
     {
         get { return swordAt; }
+    }
+
+    public void HitStop()
+    {
+        Time.timeScale = 0;
     }
 }
