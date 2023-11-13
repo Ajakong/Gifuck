@@ -31,6 +31,11 @@ public class cameraRb : MonoBehaviour
     void Update()
     {
 
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (cameraInfo != Vector2.zero)
         {
             var mov = new Vector3(cameraInfo.x * rotateSpeed * Time.deltaTime, 0, cameraInfo.y * rotateSpeed * Time.deltaTime);
@@ -39,7 +44,7 @@ public class cameraRb : MonoBehaviour
             if (Mathf.Abs(cameraInfo.x) > 0.001f)
             {
                 // ‰ñ“]Ž²‚Íƒ[ƒ‹ƒhÀ•W‚ÌYŽ²
-                this.transform.RotateAround(this.transform.position, Vector3.up, cameraInfo.x * 5f);
+                this.transform.RotateAround(this.transform.position, Vector3.up, cameraInfo.x * 20f);
             }
             // Y•ûŒü‚Éˆê’è—ÊˆÚ“®‚µ‚Ä‚¢‚ê‚Îc‰ñ“]
             //if (Mathf.Abs(cameraInfo.y) > 0.001f)
