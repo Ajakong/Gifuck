@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Boss1State : MonoBehaviour
 {
     Animator animator;
+    Rigidbody myRb;
 
     public int maxHp = 1;
     public int Hp = 1;
@@ -23,6 +24,13 @@ public class Boss1State : MonoBehaviour
     //ボスとプレイヤーの距離
     public float dis;
 
+
+    //ジャンプ関係
+    Vector3 forceDirection;
+    float forcePower;
+    Vector3 force;
+    public int jumpCount = 0;
+
     bool groundFlag = false;
     bool jumpFlag = false;
 
@@ -32,6 +40,12 @@ public class Boss1State : MonoBehaviour
         animator = GetComponent<Animator>();
         hpBar = GameObject.Find("BossHp");
         slider = hpBar.GetComponent<Slider>();
+
+        myRb = GetComponent<Rigidbody>();
+        forceDirection = new Vector3(0f, 4.8f, -2.0f);
+        forcePower = 4f;
+        force = forcePower * forceDirection;
+
     }
 
     // Update is called once per frame
@@ -57,6 +71,21 @@ public class Boss1State : MonoBehaviour
             jumpFlag = true;
         }
 
+        if(groundFlag)
+        {
+            jumpCount++;
+            if (jumpCount == 160)
+            {
+                myRb.AddForce(force, ForceMode.Impulse);
+
+            }
+            if (jumpCount > 2000)
+            {
+                jumpCount = 0;
+                groundFlag=false;
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -64,10 +93,10 @@ public class Boss1State : MonoBehaviour
         if (jumpFlag)
         {
             animator.SetTrigger("jumpTrigger");
-            Vector3 force = 16f * Vector3.up;
-            Rigidbody myRb = GetComponent<Rigidbody>();
-            myRb.AddForce(force, ForceMode.Impulse);
+           
+            
             jumpFlag = false;
+         
         }
     }
 
@@ -88,11 +117,6 @@ public class Boss1State : MonoBehaviour
             {
                 Hp = 0;
             }
-        }
-
-        if(other.gameObject.tag == "ground")
-        {
-            groundFlag = false;
         }
     }
 }
