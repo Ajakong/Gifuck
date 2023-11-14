@@ -151,6 +151,7 @@ public class Sword : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            Debug.Log("aiaiaiai");
             EHp = collision.GetComponent<EnemyState>();
             EHp.HpMove -= swordAt;
             HitStop();
