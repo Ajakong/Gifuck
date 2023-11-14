@@ -5,6 +5,7 @@ using UnityEngine;
 public class meteoGenerater : MonoBehaviour
 {
     public GameObject meteoPrefab;
+    GameObject go;
     float span = 1.0f;
     float delta = 0;
     // Start is called before the first frame update
@@ -16,10 +17,10 @@ public class meteoGenerater : MonoBehaviour
         if(this.delta > 5)
         {
             this.delta = 0;
-            GameObject go = Instantiate(meteoPrefab) as GameObject;
-            int px = Random.Range(-22,117 );
-            int pz = Random.Range(-100,72);
-            go.transform.position = new Vector3(px, 2.2f, pz);
+            go = Instantiate(meteoPrefab);
+            
+           
+            go.transform.position = new Vector3(Random.Range(-22, 117), 2.2f, Random.Range(-100, 72));
         }
     }
 }
