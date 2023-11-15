@@ -27,7 +27,8 @@ public class Boss1State : MonoBehaviour
 
     //ƒWƒƒƒ“ƒvŠÖŒW
     Vector3 forceDirection;
-    float forcePower;
+    float forcePowerFront;
+    float forcePowerUp;
     Vector3 force;
     public int jumpCount = 0;
 
@@ -42,9 +43,9 @@ public class Boss1State : MonoBehaviour
         slider = hpBar.GetComponent<Slider>();
 
         myRb = GetComponent<Rigidbody>();
-        forceDirection = new Vector3(0f, 4.8f, -2.0f);
-        forcePower = 4f;
-        force = forcePower * forceDirection;
+        //forceDirection = new Vector3(0f, 4.24f, -2.0f);
+        forcePowerFront = 14f;
+        forcePowerUp = 20f;
 
     }
 
@@ -76,7 +77,10 @@ public class Boss1State : MonoBehaviour
             jumpCount++;
             if (jumpCount == 160)
             {
+                force = forcePowerFront * transform.forward + forcePowerUp * transform.up;
+
                 myRb.AddForce(force, ForceMode.Impulse);
+                //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
 
             }
             if (jumpCount > 2000)
