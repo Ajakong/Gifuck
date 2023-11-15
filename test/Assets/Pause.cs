@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
 {
     public GameObject pauseIma;
     public GameObject menuIma;
+    public GameObject Info;
 
     bool pause=false;
     bool backFlag = false;
@@ -15,6 +16,7 @@ public class Pause : MonoBehaviour
     {
         pauseIma.SetActive(pause);
         menuIma.SetActive(pause);
+       
     }
 
     // Update is called once per frame
@@ -29,21 +31,24 @@ public class Pause : MonoBehaviour
             {
                 pause = true;
                 backFlag = true;
-
                 
+
                 Time.timeScale = 0;
             }
             else
             {
                 pause = false;
                 backFlag = false;
-
+                Info.SetActive(false);
 
                 Time.timeScale = 1;
             }
 
             
         }
+
+        
+        
 
         
     }
