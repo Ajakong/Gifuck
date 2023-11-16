@@ -16,8 +16,7 @@ public class playerRb : MonoBehaviour
 
     Vector2 moveInfo;
 
-    Vector3 forWard;
-
+  
     Quaternion rotation;
     // Start is called before the first frame update
     void Start()

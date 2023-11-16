@@ -54,11 +54,7 @@ public class PMove : MonoBehaviour
         // カメラの角度分だけ移動量を回転
         moveVelocity = Quaternion.Euler(0, cameraAngleY, 0) * moveVelocity;
 
-        // 現在フレームの移動量を移動速度から計算
-        var moveDelta = moveVelocity * Time.deltaTime;
-
-        // CharacterControllerに移動量を指定し、オブジェクトを動かす
-        _characterController.Move(moveDelta);
+        
 
         if (_inputMove != Vector2.zero)
         {
@@ -81,5 +77,11 @@ public class PMove : MonoBehaviour
             // オブジェクトの回転を更新
             _transform.rotation = Quaternion.Euler(0, angleY, 0);
         }
+
+        // 現在フレームの移動量を移動速度から計算
+        var moveDelta = moveVelocity * Time.deltaTime;
+
+        // CharacterControllerに移動量を指定し、オブジェクトを動かす
+        _characterController.Move(moveDelta);
     }
 }

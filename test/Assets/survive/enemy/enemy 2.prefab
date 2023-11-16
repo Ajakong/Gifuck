@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4956768522143444308}
-  - component: {fileID: 7217258946389415634}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 3885535379320397914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7217258946389415634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467431846565600621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eda9ea9d1b06be42bc89f1156e4af27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gizmoSize: 0.3
-  gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &3885535379320397859
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +47,7 @@ GameObject:
   - component: {fileID: 3885535379320397918}
   - component: {fileID: 3885535379320397857}
   - component: {fileID: 3885535379320397856}
+  - component: {fileID: 7942930023887977281}
   m_Layer: 0
   m_Name: enemy 2
   m_TagString: Untagged
@@ -190,6 +176,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d7d28d5aafa12a4582ee32ec65ac66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7942930023887977281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3885535379320397859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c650cc33b32242f43b29a4e89efbd5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3885535380141269925
