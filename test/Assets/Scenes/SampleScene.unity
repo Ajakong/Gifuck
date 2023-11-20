@@ -187,7 +187,7 @@ RectTransform:
   m_GameObject: {fileID: 162097634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 901298400}
@@ -195,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 15, y: -38}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162097636
@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &329307128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -899,7 +899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &656435855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -975,6 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 329307127}
+  Map: {fileID: 901298399}
 --- !u!1 &810301431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2169,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 22694b046e8b41d458fa545e8f75b4f6, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2619,7 +2620,7 @@ TerrainCollider:
   m_GameObject: {fileID: 1566455908}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: d824f1954067378478cf6852f2b51f1f, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 5a866e93ede281840ad70a446295643a, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &1566455910
 Terrain:
@@ -3680,7 +3681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f7811aa0f7e4f9ddeb0b0eefbc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMoveBase: {fileID: 273030570}
+  camera: {fileID: 0}
 --- !u!114 &1886504343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4381,7 +4382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f7811aa0f7e4f9ddeb0b0eefbc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMoveBase: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!1001 &4756898703385962516
 PrefabInstance:
   m_ObjectHideFlags: 0

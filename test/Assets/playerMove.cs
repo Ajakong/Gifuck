@@ -6,13 +6,11 @@ using UnityEngine.InputSystem;
 
 public class playerMove : MonoBehaviour
 {
-    Transform thisTransform;
-    //カメラの親オブジェクト
-    public GameObject cameraMoveBase;
+    
     //カメラの親オブジェクトのtransform
     Transform cameraMoveBaseTra;
 
-    Rigidbody cameraRb;
+    
 
     rotest rotest;
 
@@ -31,74 +29,35 @@ public class playerMove : MonoBehaviour
 
     Vector3 mov;
 
+    public GameObject camera;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraMoveBaseTra = cameraMoveBase.transform;
-        rotest=cameraMoveBase.GetComponent<rotest>();
-
-
-        cameraRb = cameraMoveBase.GetComponent<Rigidbody>();
+        
     }
 
     void Update()
     {
-        mov = transform.forward/10;
+        if(moveInfo == Vector2.zero)
+        {
+            // 移動方向を向く
+            transform.forward = camera.transform.forward;
+        }
+        else
+        {
+            transform.forward = moveInfo; 
+        }
 
-        rotate = new Quaternion(transform.rotation.x, Mathf.Atan(moveInfo.x / moveInfo.y)*90, transform.rotation.z, Mathf.Atan(moveInfo.x / moveInfo.y));
-
-        // 移動方向を向く
-        transform.forward = rotest.rotateMove;
     }
 
     // Update is called once per frame
     void FixedUpdate()
-
     {
-        if (moveInfo != Vector2.zero)
-        {
-            //Transform temp;
-
-            //cameraMoveBaseTra = cameraMoveBase.transform;
-            //temp = cameraMoveBaseTra;
-
-            //var mov = new Vector3(moveInfo.x * speed * Time.deltaTime, 0, moveInfo.y * speed * Time.deltaTime);
-
-
-           
-
-            
-
-
-            // 移動させる
-            transform.position = transform.position + mov;
-            
-        }
-
         if(cameraInfo != Vector2.zero)
         {
-            var mov = new Vector3(cameraInfo.x * rotateSpeed * Time.deltaTime, 0, cameraInfo.y * rotateSpeed * Time.deltaTime);
-
-            // X方向に一定量移動していれば横回転
-            if (Mathf.Abs(cameraInfo.x) > 0.001f)
-            {
-                // 回転軸はワールド座標のY軸
-                //transform.RotateAround(this.transform.position, Vector3.up, cameraInfo.x * 5f);
-
-
-            }
-            // Y方向に一定量移動していれば縦回転
-            //if (Mathf.Abs(cameraInfo.y) > 0.001f)
-            //{
-            //    // 回転軸はカメラ自身のX軸
-            //    cameraMoveBase.transform.RotateAround(cameraMoveBase.transform.position, -Vector3.right, cameraInfo.y * 1f);
-            //}
-
-            transform.rotation = rotate;
-
-            // 移動させる
-            cameraMoveBaseTra.localEulerAngles = cameraMoveBaseTra.localEulerAngles + mov;
+            
         }
     }
 
