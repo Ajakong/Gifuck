@@ -2601,8 +2601,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1566455911}
   - component: {fileID: 1566455910}
-  - component: {fileID: 1566455909}
-  - component: {fileID: 1566455913}
   - component: {fileID: 1566455912}
   m_Layer: 6
   m_Name: Terrain
@@ -2611,17 +2609,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!154 &1566455909
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566455908}
-  m_Material: {fileID: 0}
-  m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 5a866e93ede281840ad70a446295643a, type: 2}
-  m_EnableTreeColliders: 1
 --- !u!218 &1566455910
 Terrain:
   m_ObjectHideFlags: 0
@@ -2671,35 +2658,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1566455912
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566455908}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 1
---- !u!65 &1566455913
-BoxCollider:
+--- !u!154 &1566455912
+TerrainCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566455908}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1000, y: 10, z: 1000}
-  m_Center: {x: 500, y: -5, z: 500}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 15600000, guid: 5a866e93ede281840ad70a446295643a, type: 2}
+  m_EnableTreeColliders: 1
 --- !u!1 &1574719107
 GameObject:
   m_ObjectHideFlags: 0
