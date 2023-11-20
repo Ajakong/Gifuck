@@ -47,10 +47,10 @@ public class BossUI : MonoBehaviour
 
         if (canvasGroup.alpha <= 1 && appFlag)
         {
-            slider.value += 0.01f;
+            slider.value++;
             canvasGroup.alpha += 0.01f;
 
-            if(slider.value == 1)
+            if(slider.value == 100)
             {
                 appFlag = false;
             }
