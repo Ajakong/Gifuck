@@ -4,32 +4,38 @@ using UnityEngine;
 
 public class TerrainJump : MonoBehaviour
 {
-
+    int timer=0;
 
     Rigidbody myRb;
 
     Vector3 JumpUp;
+
+    
     // Start is called before the first frame update
     void Start()
     {
         myRb = GetComponent<Rigidbody>();
-        JumpUp = new Vector3(0, 2, 0);
+        JumpUp = new Vector3(0, 10, 0);
+        
     }
 
     // Update is called once per frame
+
     
-    void OnTriggerEnter(Collider collision) // “–‚½‚è”»’è‚ðŽ@’m
+
+    private void OnCollisionEnter(Collision other)
     {
-        
-        Debug.Log("aaaaa0");
-        Jumping();    
-        
-        
+        if (other.gameObject.tag == "ground")
+        {
+            Jumping();
+        }
     }
 
     void Jumping()
     {
-        myRb.velocity.Equals(JumpUp);
+        
+        Debug.Log("[ayayayay]");
+        myRb.AddForce(JumpUp,ForceMode.Impulse);
     }
     
 }
