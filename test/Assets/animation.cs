@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class animation : MonoBehaviour
 {
@@ -67,5 +68,19 @@ public class animation : MonoBehaviour
         {
             pushFlag = false;
         }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (pushFlag == false)
+        {
+            pushFlag = true;
+            animator.SetBool(parameterName, parameterValue);
+        }
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        animator.SetTrigger("jumpTrigger");
     }
 }

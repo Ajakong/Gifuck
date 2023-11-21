@@ -34,7 +34,7 @@ public class TerrainJump : MonoBehaviour
     void Jumping()
     {
         
-        Debug.Log("[ayayayay]");
+        
         myRb.AddForce(JumpUp,ForceMode.Impulse);
     }
     

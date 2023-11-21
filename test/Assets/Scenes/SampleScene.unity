@@ -2253,6 +2253,18 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1886504345}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1886504343}
         m_TargetAssemblyTypeName: PMove, Assembly-CSharp
         m_MethodName: OnMove
@@ -2296,13 +2308,25 @@ MonoBehaviour:
     m_ActionId: 9ae314d3-060f-43ff-9cdf-cb4ed46e07d6
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1886504339}
+        m_TargetAssemblyTypeName: animation, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3ed14192-dbeb-4742-9a12-76c4e7d61683
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886504342}
-        m_TargetAssemblyTypeName: playerMove, Assembly-CSharp
+      - m_Target: {fileID: 1886504339}
+        m_TargetAssemblyTypeName: animation, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -2355,6 +2379,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 489cd234-32f2-4f53-a401-97b1b0af9673
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bc65dc8c-7b43-4814-b35b-5454ae262eae
+    m_ActionName: Player/Dush[/XInputControllerWindows/leftStickPress]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3650,7 +3678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f7811aa0f7e4f9ddeb0b0eefbc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  cameraMoveBase: {fileID: 273030570}
+  cameraMoveBaseTra: {fileID: 273030572}
+  camera: {fileID: 2060334861}
 --- !u!114 &1886504343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3683,6 +3713,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1886504345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886504330}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0797bf7ebd3f725489e9a2a376f5e088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 2060334861}
 --- !u!1 &2035503657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,6 +4407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f7811aa0f7e4f9ddeb0b0eefbc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMoveBase: {fileID: 0}
+  cameraMoveBaseTra: {fileID: 0}
   camera: {fileID: 0}
 --- !u!1001 &4756898703385962516
 PrefabInstance:

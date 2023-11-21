@@ -70,7 +70,7 @@ public class Sword : MonoBehaviour
         //ƒvƒŒƒCƒ„[‚Ìtransform‚ğæ“¾
         playerTransform = player.transform;
 
-        col = this.gameObject.GetComponent<BoxCollider>();
+        col = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
