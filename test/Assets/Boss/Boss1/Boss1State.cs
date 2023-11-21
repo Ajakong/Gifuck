@@ -88,28 +88,30 @@ public class Boss1State : MonoBehaviour
 
         playerPos = player.transform.position;
 
-        dis = Vector3.Distance(playerPos, this.transform.position);
+        
+
+        dis = Vector3.Distance(playerPos, transform.position);
 
         //プレイヤーと自分(ボス)の距離を測ってジャンプと近接を判断
-        if(dis > 30 && !jumpFlag)
+        if(dis > 30f && !jumpFlag)
         {
             //groundFlag = true;
             animator.SetTrigger("jumpTrigger");
             jumpFlag = true;
         }
 
-        //if(dis > 6 && dis <= 40 && !jumpFlag)
-        //{
-        //    animator.SetBool("walkBool",true);
+        if (dis > 8f && dis <= 40f && !jumpFlag)
+        {
+            animator.SetBool("walkBool", true);
 
-        //    transform.position += transform.forward * 0.02f;
-        //    //moveFlag = true;
-        //}
-        //else
-        //{
-        //    animator.SetBool("walkBool", false);
-        //    //moveFlag = false;
-        //}
+            transform.position += transform.forward * 0.008f;
+            //moveFlag = true;
+        }
+        else
+        {
+            animator.SetBool("walkBool", false);
+            //moveFlag = false;
+        }
 
         if (jumpFlag)
         {
@@ -130,9 +132,9 @@ public class Boss1State : MonoBehaviour
         }
         else
         {
-            targetRot = Quaternion.LookRotation(playerPos);
-            //targetRot.z = 0;//横回転しかしないように固定
-            //targetRot.x = 0;//同上
+            targetRot = Quaternion.LookRotation(playerPos - transform.position);
+            targetRot.z = 0;//横回転しかしないように固定
+            targetRot.x = 0;//同上
             this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
         }
 
