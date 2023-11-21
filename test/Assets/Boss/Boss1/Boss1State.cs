@@ -56,6 +56,8 @@ public class Boss1State : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("unitychan");
+        playerPos = Vector3.zero;
         animator = GetComponent<Animator>();
         hpBar = GameObject.Find("BossHp");
         slider = hpBar.GetComponent<Slider>();
@@ -96,16 +98,18 @@ public class Boss1State : MonoBehaviour
             jumpFlag = true;
         }
 
-        if(dis > 6 && dis <= 28)
-        {
-            animator.SetBool("walkBool",true);
-            moveFlag = true;
-        }
-        else
-        {
-            animator.SetBool("walkBool", false);
-            moveFlag = false;
-        }
+        //if(dis > 6 && dis <= 40 && !jumpFlag)
+        //{
+        //    animator.SetBool("walkBool",true);
+
+        //    transform.position += transform.forward * 0.02f;
+        //    //moveFlag = true;
+        //}
+        //else
+        //{
+        //    animator.SetBool("walkBool", false);
+        //    //moveFlag = false;
+        //}
 
         if (jumpFlag)
         {
@@ -124,6 +128,13 @@ public class Boss1State : MonoBehaviour
                 jumpFlag = false;
             }
         }
+        else
+        {
+            targetRot = Quaternion.LookRotation(playerPos);
+            //targetRot.z = 0;//横回転しかしないように固定
+            //targetRot.x = 0;//同上
+            this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
+        }
 
     }
 
@@ -134,16 +145,15 @@ public class Boss1State : MonoBehaviour
             deathAnimationFrame += 0.08f;
         }
 
-        if(moveFlag)
-        {
+        //if(moveFlag)
+        //{
+        //    targetRot = Quaternion.LookRotation(playerPos);
+        //    targetRot.z = 0;//横回転しかしないように固定
+        //    targetRot.x = 0;//同上
+        //    this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
 
-            targetRot = Quaternion.LookRotation(playerPos);
-            targetRot.z = 0;//横回転しかしないように固定
-            targetRot.x = 0;//同上
-            this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
-
-            transform.position += transform.forward * 0.1f;
-        }
+        //    transform.position += transform.forward * 0.1f;
+        //}
     }
 
     //剣に当たった時にダメージを受けてHPバーが減るように
