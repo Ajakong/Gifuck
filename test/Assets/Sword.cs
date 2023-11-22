@@ -37,6 +37,7 @@ public class Sword : MonoBehaviour
     //親オブジェクトにするオブジェクト名
     public GameObject RootObject;
 
+   
     
 
     int swordAt;
@@ -45,6 +46,12 @@ public class Sword : MonoBehaviour
     BoxCollider col;
     public float count = 0.0f;
     bool colFlag = false;
+
+    int StopTime=0;
+    bool eneSto;
+
+    int collCoolTime ;
+    bool CoolTimeFlag=false;
 
 
     // Start is called before the first frame update
@@ -76,6 +83,8 @@ public class Sword : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
         //プレイヤーに当たる前の処理
         if (!isHitFlag)
         {
@@ -137,6 +146,10 @@ public class Sword : MonoBehaviour
             colFlag = false;
             count = 0;
         }
+
+        
+
+
     }
 
     private void Update()
@@ -145,16 +158,41 @@ public class Sword : MonoBehaviour
         {
             colFlag = true;
         }
+
+        if (eneSto)
+        {
+            StopTime++;
+        }
+        if (StopTime >= 20)
+        {
+            Time.timeScale = 1;
+            StopTime = 0;
+            eneSto = false;
+        }
+        
+        collCoolTime++;
+        
     }
+
+    
 
     void OnTriggerEnter(Collider collision) // 当たり判定を察知
     {
+
+        Debug.Log("aiaiaiai");
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("aiaiaiai");
             EHp = collision.GetComponent<EnemyState>();
             EHp.HpMove -= swordAt;
-            HitStop();
+            CoolTimeFlag = true;
+            if(collCoolTime>=45)
+            {
+                HitStop();
+                collCoolTime = 0;
+                CoolTimeFlag = false;
+            }
+            
 
 
         }
@@ -162,7 +200,7 @@ public class Sword : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
 
-
+            
             //プレイヤーに当たった(剣の動きを消す)
             isHitFlag = true;
             //剣をプレイヤーの子オブジェクトにする
@@ -183,12 +221,33 @@ public class Sword : MonoBehaviour
             //剣の装備後の座標を設定
             transform.localPosition = playerLocalPos;
 
-            //当たり判定削除
-            col.enabled = false;
+            ////当たり判定削除
+            //col.enabled = false;
 
         }
 
   
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("aiaiaiai");
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("aiaiaiai");
+
+            EHp = collision.gameObject.GetComponent<EnemyState>();
+            EHp.HpMove -= swordAt;
+            CoolTimeFlag = true;
+            if (collCoolTime >= 45)
+            {
+                HitStop();
+                collCoolTime = 0;
+                CoolTimeFlag = false;
+            }
+
+
+        }
     }
 
     public int At
@@ -199,5 +258,6 @@ public class Sword : MonoBehaviour
     public void HitStop()
     {
         Time.timeScale = 0;
+        eneSto = true;
     }
 }
