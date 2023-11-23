@@ -17,6 +17,8 @@ public class PMove : MonoBehaviour
     private float _verticalVelocity;
     private float _turnVelocity;
 
+    Quaternion _rotation;
+
     /// <summary>
     /// 移動Action(PlayerInput側から呼ばれる)
     /// </summary>
@@ -81,7 +83,22 @@ public class PMove : MonoBehaviour
         // 現在フレームの移動量を移動速度から計算
         var moveDelta = moveVelocity * Time.deltaTime;
 
-        // CharacterControllerに移動量を指定し、オブジェクトを動かす
-        _characterController.Move(moveDelta);
+        //_rotation.x = moveVelocity.x; _rotation.y = moveVelocity.y;
+
+        //_rotation.z = moveVelocity.z;
+
+        //_rotation.w = transform.rotation.w;
+
+        //transform.forward= moveVelocity;
+
+       
+
+        if(_inputMove!=Vector2.zero)
+        {
+            // CharacterControllerに移動量を指定し、オブジェクトを動かす
+            _characterController.Move(moveDelta);
+
+
+        }
     }
 }
