@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,7 +18,9 @@ public class PMove : MonoBehaviour
     private float _verticalVelocity;
     private float _turnVelocity;
 
-    Quaternion _rotation;
+    bool dushFlag = false;
+
+    int dushSpeed = 1;
 
     /// <summary>
     /// 移動Action(PlayerInput側から呼ばれる)
@@ -40,9 +43,14 @@ public class PMove : MonoBehaviour
 
     private void Update()
     {
-        
 
+        dushSpeed = 1;
         
+        if(dushFlag==true)
+        {
+            dushSpeed = 10;
+        }
+
 
         // カメラの向き（角度[deg]）取得
         var cameraAngleY = _targetCamera.transform.eulerAngles.y;
@@ -81,7 +89,7 @@ public class PMove : MonoBehaviour
         }
 
         // 現在フレームの移動量を移動速度から計算
-        var moveDelta = moveVelocity * Time.deltaTime;
+        var moveDelta = moveVelocity * Time.deltaTime*dushSpeed;
 
         //_rotation.x = moveVelocity.x; _rotation.y = moveVelocity.y;
 
@@ -100,5 +108,12 @@ public class PMove : MonoBehaviour
 
 
         }
+
+        dushFlag = false;
+    }
+
+    public void OnDush(InputAction.CallbackContext context)
+    {
+        dushFlag = true;
     }
 }
