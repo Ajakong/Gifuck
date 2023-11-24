@@ -163,7 +163,7 @@ public class Sword : MonoBehaviour
         {
             StopTime++;
         }
-        if (StopTime >= 20)
+        if (StopTime >= 7)
         {
             Time.timeScale = 1;
             StopTime = 0;
