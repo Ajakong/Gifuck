@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PMove : MonoBehaviour
 {
+    Rigidbody myRb;
+
     [Header("移動の速さ"), SerializeField]
     private float _speed = 3;
 
@@ -37,7 +39,7 @@ public class PMove : MonoBehaviour
     {
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
-
+        myRb = GetComponent<Rigidbody>();
         if (_targetCamera == null)
             _targetCamera = Camera.main;
     }
@@ -63,8 +65,15 @@ public class PMove : MonoBehaviour
             _inputMove.y * _speed
         );
         // カメラの角度分だけ移動量を回転
+        
+        
+        
+        
+        
+        
+        
         moveVelocity = Quaternion.Euler(0, cameraAngleY, 0) * moveVelocity;
-
+        //myRb.transform.forward= Quaternion.Euler(0, cameraAngleY, 0) *transform.forward;
 
 
         if (_inputMove != Vector2.zero)
@@ -91,7 +100,7 @@ public class PMove : MonoBehaviour
 
         // 現在フレームの移動量を移動速度から計算
         var moveDelta = moveVelocity * Time.deltaTime * dushSpeed;
-
+        
         //_rotation.x = moveVelocity.x; _rotation.y = moveVelocity.y;
 
         //_rotation.z = moveVelocity.z;
@@ -104,8 +113,9 @@ public class PMove : MonoBehaviour
 
         if (_inputMove != Vector2.zero)
         {
+            //myRb.velocity= moveDelta;
             // CharacterControllerに移動量を指定し、オブジェクトを動かす
-            _characterController.Move(moveDelta);
+            //_characterController.Move(moveDelta);
 
 
         }
