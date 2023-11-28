@@ -107,4 +107,12 @@ public class cameraRb : MonoBehaviour
         //cameraMoveBaseTra.localEulerAngles += mov;
     }
 
+    public void OnLookForward(InputAction.CallbackContext context)
+    {
+        transform.position = player.transform.forward;
+        transform.LookAt(player);
+
+    }
+
+
 }

@@ -29,8 +29,9 @@ public class PMove : MonoBehaviour
     {
         // 入力値を保持しておく
         _inputMove = context.ReadValue<Vector2>();
+        dushFlag = false;
     }
-    
+
 
     private void Awake()
     {
@@ -45,8 +46,8 @@ public class PMove : MonoBehaviour
     {
 
         dushSpeed = 1;
-        
-        if(dushFlag==true)
+
+        if (dushFlag == true)
         {
             dushSpeed = 10;
         }
@@ -64,7 +65,7 @@ public class PMove : MonoBehaviour
         // カメラの角度分だけ移動量を回転
         moveVelocity = Quaternion.Euler(0, cameraAngleY, 0) * moveVelocity;
 
-        
+
 
         if (_inputMove != Vector2.zero)
         {
@@ -89,7 +90,7 @@ public class PMove : MonoBehaviour
         }
 
         // 現在フレームの移動量を移動速度から計算
-        var moveDelta = moveVelocity * Time.deltaTime*dushSpeed;
+        var moveDelta = moveVelocity * Time.deltaTime * dushSpeed;
 
         //_rotation.x = moveVelocity.x; _rotation.y = moveVelocity.y;
 
@@ -99,9 +100,9 @@ public class PMove : MonoBehaviour
 
         //transform.forward= moveVelocity;
 
-       
 
-        if(_inputMove!=Vector2.zero)
+
+        if (_inputMove != Vector2.zero)
         {
             // CharacterControllerに移動量を指定し、オブジェクトを動かす
             _characterController.Move(moveDelta);
@@ -109,11 +110,31 @@ public class PMove : MonoBehaviour
 
         }
 
-        dushFlag = false;
+
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        //Debug.Log("hit");
+        //if (col.gameObject.tag == "Enemy")
+        //{
+        //    foreach (ContactPoint point in col.contacts)
+        //    {
+        //        Vector3 relativePoint = transform.InverseTransformPoint(point.point);
+        //        relativePoint.Normalize();
+        //        relativePoint.y = 0;
+        //        transform.position += relativePoint;
+
+        //    }
+        //}
+    }
+
 
     public void OnDush(InputAction.CallbackContext context)
     {
         dushFlag = true;
     }
+
+
+
 }
