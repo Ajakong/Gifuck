@@ -15,12 +15,14 @@ public class cameraRb : MonoBehaviour
     //スティックの入力情報(カメラ)
     Vector2 cameraInfo;
 
+   
+
     //カメラの回転速度
     float rotateSpeed = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
-        
+      
 
         //cameraMoveBaseTra = cameraMoveBase.transform;
 
@@ -50,7 +52,9 @@ public class cameraRb : MonoBehaviour
             if (Mathf.Abs(cameraInfo.y) > 0.001f)
             {
                 // 回転軸はカメラ自身のX軸
-                this.transform.RotateAround(this.transform.position, -Vector3.right, cameraInfo.y * 4f);
+                this.transform.RotateAround(this.transform.position,Vector3.right, cameraInfo.y * 4f);
+                Quaternion RotateInitZ = new Quaternion(0, 0, this.transform.rotation.z,0);
+                 
             }
 
 
