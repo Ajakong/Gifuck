@@ -50,7 +50,7 @@ public class cameraRb : MonoBehaviour
             if (Mathf.Abs(cameraInfo.y) > 0.001f)
             {
                 // ‰ñ“]²‚ÍƒJƒƒ‰©g‚ÌX²
-                this.transform.RotateAround(this.transform.position, -Vector3.right, cameraInfo.y * 4f);
+                this.transform.RotateAround(0, -Vector3.right, cameraInfo.y * 4f);
             }
 
 

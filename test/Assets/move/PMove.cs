@@ -113,9 +113,9 @@ public class PMove : MonoBehaviour
 
         if (_inputMove != Vector2.zero)
         {
-            //myRb.velocity= moveDelta;
+            myRb.velocity= moveDelta;
             // CharacterControllerに移動量を指定し、オブジェクトを動かす
-            //_characterController.Move(moveDelta);
+            _characterController.Move(moveDelta);
 
 
         }
