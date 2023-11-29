@@ -52,8 +52,8 @@ public class cameraRb : MonoBehaviour
             if (Mathf.Abs(cameraInfo.y) > 0.001f)
             {
                 // âÒì]é≤ÇÕÉJÉÅÉâé©êgÇÃXé≤
-                this.transform.RotateAround(this.transform.position,Vector3.right, cameraInfo.y * 4f);
-                Quaternion RotateInitZ = new Quaternion(0, 0, this.transform.rotation.z,0);
+                //this.transform.RotateAround(this.transform.position,Vector3.right, cameraInfo.y * 4f);
+                //Quaternion RotateInitZ = new Quaternion(0, 0, this.transform.rotation.z,0);
                  
             }
 
