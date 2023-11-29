@@ -7,6 +7,8 @@ public class PMove : MonoBehaviour
 {
     Rigidbody myRb;
 
+    Vector3 gravity;
+
     [Header("ˆÚ“®‚Ì‘¬‚³"), SerializeField]
     private float _speed = 3;
 
@@ -24,6 +26,8 @@ public class PMove : MonoBehaviour
 
     int dushSpeed = 1;
 
+    Vector3 pos;
+
     /// <summary>
     /// ˆÚ“®Action(PlayerInput‘¤‚©‚çŒÄ‚Î‚ê‚é)
     /// </summary>
@@ -37,6 +41,8 @@ public class PMove : MonoBehaviour
 
     private void Awake()
     {
+        myRb = GetComponent<Rigidbody>();  
+        gravity = new Vector3(0.0f, 5f, 0.0f);
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
         //myRb = GetComponent<Rigidbody>();
@@ -46,12 +52,17 @@ public class PMove : MonoBehaviour
 
     private void Update()
     {
-
+        
+        if(transform.position.y>=0.05)
+        {
+            Debug.Log("fuck");
+            myRb.AddForce(gravity);
+        }
         dushSpeed = 1;
 
         if (dushFlag == true)
         {
-            dushSpeed = 10;
+            dushSpeed = 6;
         }
 
 
@@ -111,6 +122,8 @@ public class PMove : MonoBehaviour
 
 
         _characterController.Move(moveDelta);
+       
+        
         if (_inputMove != Vector2.zero)
         {
             //myRb.velocity= moveDelta;
