@@ -64,8 +64,8 @@ public class Boss1State : MonoBehaviour
 
         myRb = GetComponent<Rigidbody>();
         //forceDirection = new Vector3(0f, 4.24f, -2.0f);
-        forcePowerFront = 14f;
-        forcePowerUp = 17.52f;
+        forcePowerFront = 16f;
+        forcePowerUp = 14f;
     }
 
     // Update is called once per frame
@@ -124,7 +124,7 @@ public class Boss1State : MonoBehaviour
                 //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
 
             }
-            if (jumpCount > 2000)
+            if (jumpCount > 1200)
             {
                 jumpCount = 0;
                 jumpFlag = false;
@@ -147,15 +147,15 @@ public class Boss1State : MonoBehaviour
             deathAnimationFrame += 0.08f;
         }
 
-        //if(moveFlag)
-        //{
-        //    targetRot = Quaternion.LookRotation(playerPos);
-        //    targetRot.z = 0;//横回転しかしないように固定
-        //    targetRot.x = 0;//同上
-        //    this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
+        if (moveFlag)
+        {
+            targetRot = Quaternion.LookRotation(playerPos);
+            targetRot.z = 0;//横回転しかしないように固定
+            targetRot.x = 0;//同上
+            this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
 
-        //    transform.position += transform.forward * 0.1f;
-        //}
+            transform.position += transform.forward * 0.1f;
+        }
     }
 
     //剣に当たった時にダメージを受けてHPバーが減るように
@@ -165,9 +165,9 @@ public class Boss1State : MonoBehaviour
         {
             //Debug.Log("hit");
 
-            slider.value -= 20f;
+            slider.value -= 8f;
             //なんかfloatの誤差？で時々ミリ残るため一応範囲指定
-            if(slider.value <= 0.005)
+            if(slider.value <= 0.05)
             {
                 Hp = 0;
             }
