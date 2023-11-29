@@ -77,13 +77,14 @@ public class Boss1State : MonoBehaviour
             deathFlag = true;
         }
 
-        if(deathAnimationFrame >= 15f)
+        if(deathAnimationFrame >= 12f)
         {
             Destroy(this.gameObject);
             Drop = Instantiate(Item);
             Vector3 itemDropPos = transform.position;
             itemDropPos.y += 2;
             Drop.transform.position = itemDropPos;
+
         }
 
         playerPos = player.transform.position;
@@ -130,11 +131,14 @@ public class Boss1State : MonoBehaviour
                 jumpFlag = false;
             }
         }
-        else
+
+        if(!jumpFlag || !deathFlag)
         {
             targetRot = Quaternion.LookRotation(playerPos - transform.position);
             targetRot.z = 0;//横回転しかしないように固定
             targetRot.x = 0;//同上
+
+            
             this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
         }
 
@@ -147,15 +151,15 @@ public class Boss1State : MonoBehaviour
             deathAnimationFrame += 0.08f;
         }
 
-        if (moveFlag)
-        {
-            targetRot = Quaternion.LookRotation(playerPos);
-            targetRot.z = 0;//横回転しかしないように固定
-            targetRot.x = 0;//同上
-            this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
+        //if (moveFlag)
+        //{
+        //    targetRot = Quaternion.LookRotation(playerPos);
+        //    targetRot.z = 0;//横回転しかしないように固定
+        //    targetRot.x = 0;//同上
+        //    this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
 
-            transform.position += transform.forward * 0.1f;
-        }
+        //    transform.position += transform.forward * 0.1f;
+        //}
     }
 
     //剣に当たった時にダメージを受けてHPバーが減るように
