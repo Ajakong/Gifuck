@@ -47,11 +47,11 @@ public class cameraRb : MonoBehaviour
                 this.transform.RotateAround(this.transform.position, Vector3.up, cameraInfo.x * 20f);
             }
             // Y•ûŒü‚Éˆê’è—ÊˆÚ“®‚µ‚Ä‚¢‚ê‚Îc‰ñ“]
-            //if (Mathf.Abs(cameraInfo.y) > 0.001f)
-            //{
-            //    // ‰ñ“]²‚ÍƒJƒƒ‰©g‚ÌX²
-            //    cameraMoveBase.transform.RotateAround(cameraMoveBase.transform.position, -Vector3.right, cameraInfo.y * 1f);
-            //}
+            if (Mathf.Abs(cameraInfo.y) > 0.001f)
+            {
+                // ‰ñ“]²‚ÍƒJƒƒ‰©g‚ÌX²
+                this.transform.RotateAround(this.transform.position, -Vector3.right, cameraInfo.y * 4f);
+            }
 
 
 
