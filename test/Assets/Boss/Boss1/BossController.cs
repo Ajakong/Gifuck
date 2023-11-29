@@ -15,6 +15,7 @@ public class BossController : MonoBehaviour
 
     //パラメータ関数の定義
     public EnemyState state; //キャラの状態
+    GameObject targetObject;
     private Transform targetTransform; //ターゲットの情報
     private NavMeshAgent navMeshAgent; //NavMeshAgentコンポーネント
     public Animator animator; //Animatorコンポーネント
@@ -24,6 +25,7 @@ public class BossController : MonoBehaviour
 
     void Start()
     {
+        targetObject = GameObject.Find("targetObject");
         //キャラのNavMeshAgentコンポーネントとnavMeshAgentを関連付ける
         navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -35,6 +37,8 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
+        //targetTransform = targetObject.transform;
+
         //プレイヤーを目的地にして追跡する
         if (state == EnemyState.Chase)
         {
