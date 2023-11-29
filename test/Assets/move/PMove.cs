@@ -100,7 +100,7 @@ public class PMove : MonoBehaviour
 
         // 現在フレームの移動量を移動速度から計算
         var moveDelta = moveVelocity * Time.deltaTime * dushSpeed;
-        
+
         //_rotation.x = moveVelocity.x; _rotation.y = moveVelocity.y;
 
         //_rotation.z = moveVelocity.z;
@@ -110,12 +110,12 @@ public class PMove : MonoBehaviour
         //transform.forward= moveVelocity;
 
 
-
+        _characterController.Move(moveDelta);
         if (_inputMove != Vector2.zero)
         {
             //myRb.velocity= moveDelta;
             // CharacterControllerに移動量を指定し、オブジェクトを動かす
-            _characterController.Move(moveDelta);
+           
 
 
         }
