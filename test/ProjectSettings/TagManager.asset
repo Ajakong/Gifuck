@@ -9,6 +9,7 @@ TagManager:
   - ground
   - Enemy
   - item
+  - bossArm
   layers:
   - Default
   - TransparentFX

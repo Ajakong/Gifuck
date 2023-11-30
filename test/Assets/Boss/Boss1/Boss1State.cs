@@ -73,6 +73,7 @@ public class Boss1State : MonoBehaviour
     {
         if (Hp <= 0)
         {
+            Time.timeScale = 0.4f;
             animator.SetBool("DeathBool",true);
             deathFlag = true;
         }
@@ -101,9 +102,16 @@ public class Boss1State : MonoBehaviour
             jumpFlag = true;
         }
 
-        if (dis > 8f && dis <= 40f && !jumpFlag)
+        if (dis > 6f && dis <= 40f && !jumpFlag)
         {
             animator.SetBool("walkBool", true);
+
+            targetRot = Quaternion.LookRotation(playerPos - transform.position);
+            targetRot.z = 0;//横回転しかしないように固定
+            targetRot.x = 0;//同上
+
+
+            this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
 
             transform.position += transform.forward * 0.008f;
             //moveFlag = true;
@@ -112,6 +120,11 @@ public class Boss1State : MonoBehaviour
         {
             animator.SetBool("walkBool", false);
             //moveFlag = false;
+        }
+
+        if(dis <= 6)
+        {
+            animator.SetTrigger("attackTrigger");
         }
 
         if (jumpFlag)
@@ -134,12 +147,12 @@ public class Boss1State : MonoBehaviour
 
         if(!jumpFlag || !deathFlag)
         {
-            targetRot = Quaternion.LookRotation(playerPos - transform.position);
-            targetRot.z = 0;//横回転しかしないように固定
-            targetRot.x = 0;//同上
+            //targetRot = Quaternion.LookRotation(playerPos - transform.position);
+            //targetRot.z = 0;//横回転しかしないように固定
+            //targetRot.x = 0;//同上
 
             
-            this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
+            //this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
         }
 
     }
