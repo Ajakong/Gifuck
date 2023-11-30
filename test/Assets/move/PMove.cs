@@ -23,10 +23,11 @@ public class PMove : MonoBehaviour
     private float _turnVelocity;
 
     bool dushFlag = false;
+    bool groundFlag = true;
 
     int dushSpeed = 1;
 
-    Vector3 pos;
+    
 
     /// <summary>
     /// 移動Action(PlayerInput側から呼ばれる)
@@ -42,7 +43,7 @@ public class PMove : MonoBehaviour
     private void Awake()
     {
         myRb = GetComponent<Rigidbody>();  
-        gravity = new Vector3(0.0f, 5f, 0.0f);
+        gravity = new Vector3(0.0f, -5000f, 0.0f);
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
         //myRb = GetComponent<Rigidbody>();
@@ -53,11 +54,7 @@ public class PMove : MonoBehaviour
     private void Update()
     {
         
-        if(transform.position.y>=0.05)
-        {
-            Debug.Log("fuck");
-            myRb.AddForce(gravity);
-        }
+        
         dushSpeed = 1;
 
         if (dushFlag == true)
@@ -76,11 +73,6 @@ public class PMove : MonoBehaviour
             _inputMove.y * _speed
         );
         // カメラの角度分だけ移動量を回転
-        
-        
-        
-        
-        
         
         
         moveVelocity = Quaternion.Euler(0, cameraAngleY, 0) * moveVelocity;
@@ -110,7 +102,7 @@ public class PMove : MonoBehaviour
         }
 
         // 現在フレームの移動量を移動速度から計算
-        var moveDelta = moveVelocity * Time.deltaTime * dushSpeed;
+        var moveDelta =new Vector3(moveVelocity.x * Time.deltaTime * dushSpeed,moveVelocity.y* Time.deltaTime, moveVelocity.z * Time.deltaTime * dushSpeed);
 
         //_rotation.x = moveVelocity.x; _rotation.y = moveVelocity.y;
 
@@ -122,8 +114,12 @@ public class PMove : MonoBehaviour
 
 
         _characterController.Move(moveDelta);
-       
-        
+        if(groundFlag==false)
+        {
+            Debug.Log("tuintuin");
+            myRb.AddForce(gravity,ForceMode.Acceleration);
+        }
+
         if (_inputMove != Vector2.zero)
         {
             //myRb.velocity= moveDelta;
@@ -132,10 +128,18 @@ public class PMove : MonoBehaviour
 
 
         }
-
-
+        Debug.Log(groundFlag);
+        
     }
 
+   
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "ground")
+        {
+            groundFlag = false;
+        }
+    }
     void OnCollisionEnter(Collision col)
     {
         //Debug.Log("hit");
@@ -150,8 +154,13 @@ public class PMove : MonoBehaviour
 
         //    }
         //}
-    }
 
+        if (col.gameObject.tag == "ground")
+        {
+
+            groundFlag = true;
+        }
+    }
 
     public void OnDush(InputAction.CallbackContext context)
     {
