@@ -10,12 +10,17 @@ public class UniState : MonoBehaviour
 
     int UniHp=100;
 
+    public GameObject healLight;
+    bool healFlag = false;
+    int lightTimer;
+
     GameObject hpBar;
     Slider slider;
 
     // Start is called before the first frame update
     void Start()
     {
+        healLight.SetActive(false);
         hpBar = GameObject.Find("playerHP");
         slider = hpBar.GetComponent<Slider>();
         slider.value = 0;
@@ -41,12 +46,26 @@ public class UniState : MonoBehaviour
                 {
                     UniHp += 60;
                     HealItem--;
+                    healFlag = true;
                 }
                 else
                 {
                     Debug.Log("HP‚ªƒ}ƒ“ƒ^ƒ“DEATHI");
                 }
 
+            }
+            
+        }
+
+        if(healFlag==true)
+        {
+            lightTimer++;
+            healLight.SetActive(true);
+            if(lightTimer>=150)
+            {
+                healFlag=false;
+                lightTimer=0;
+                healLight.SetActive(false);
             }
         }
     }
