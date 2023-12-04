@@ -967,33 +967,21 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1740410976}
-        m_TargetAssemblyTypeName: playerRb, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1740410975}
-        m_TargetAssemblyTypeName: playerMove, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1740410977}
         m_TargetAssemblyTypeName: PMove, Assembly-CSharp
         m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1740410969}
+        m_TargetAssemblyTypeName: animation, Assembly-CSharp
+        m_MethodName: OnWalk
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1106,7 +1094,19 @@ MonoBehaviour:
     m_ActionId: 489cd234-32f2-4f53-a401-97b1b0af9673
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1740410977}
+        m_TargetAssemblyTypeName: PMove, Assembly-CSharp
+        m_MethodName: OnDush
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: bc65dc8c-7b43-4814-b35b-5454ae262eae
     m_ActionName: Player/Dush[/XInputControllerWindows/leftStickPress]
   m_NeverAutoSwitchControlSchemes: 0
@@ -7207,9 +7207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f7811aa0f7e4f9ddeb0b0eefbc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMoveBase: {fileID: 0}
-  cameraMoveBaseTra: {fileID: 0}
-  camera: {fileID: 0}
+  _speed: 3
+  _targetCamera: {fileID: 0}
 --- !u!114 &1740410976
 MonoBehaviour:
   m_ObjectHideFlags: 0

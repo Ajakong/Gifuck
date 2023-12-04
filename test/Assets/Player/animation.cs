@@ -38,45 +38,58 @@ public class animation : MonoBehaviour
             moveFlag = false;
         }
 
-        //ジャンプ
-        if (Input.GetKey(KeyCode.Space) && !(Input.GetKey(KeyCode.LeftShift)))
-        {
-            animator.SetTrigger("jumpTrigger");
-        }
+    //    //ジャンプ
+    //    if (Input.GetKey(KeyCode.Space) && !(Input.GetKey(KeyCode.LeftShift)))
+    //    {
+    //        animator.SetTrigger("jumpTrigger");
+    //    }
 
-        //ダッシュ
-        //移動キーを押しているかつダッシュキーを押しているとき
-        if ((Input.GetKey(KeyCode.LeftShift)) && (moveFlag == true))
-        {
-            animator.SetBool("dashBool", true);
-        }
-        else
-        {
-            animator.SetBool("dashBool", false);
-        }
+    //    //ダッシュ
+    //    //移動キーを押しているかつダッシュキーを押しているとき
+    //    if ((Input.GetKey(KeyCode.LeftShift)) && (moveFlag == true))
+    //    {
+    //        animator.SetBool("dashBool", true);
+    //    }
+    //    else
+    //    {
+    //        animator.SetBool("dashBool", false);
+    //    }
 
-        //攻撃
-        if (Input.GetMouseButton(0))
-        {
-            if (pushFlag == false)
-            {
-                pushFlag = true;
-                animator.SetBool(parameterName, parameterValue);
-            }
-        }
-        else
-        {
-            pushFlag = false;
-        }
+    //    //攻撃
+    //    if (Input.GetMouseButton(0))
+    //    {
+    //        if (pushFlag == false)
+    //        {
+    //            pushFlag = true;
+    //            animator.SetTrigger("swordTrigger");
+    //        }
+    //        else
+    //        {
+    //            pushFlag = false;
+    //        }
+    //    }
+
+    }
+
+   public void OnWalk(InputAction.CallbackContext context)
+    {
+        animator.SetBool("move",true);
+        moveFlag = true;
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        animator.SetTrigger("dashTrigger");
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (pushFlag == false)
-        {
-            pushFlag = true;
-            animator.SetBool(parameterName, parameterValue);
-        }
+        //if (pushFlag == false)
+        //{
+            //pushFlag = true;
+            animator.SetTrigger("swordTrigger");
+        //}
+        
     }
 
     public void OnJump(InputAction.CallbackContext context)
