@@ -80,12 +80,12 @@ public class Boss1State : MonoBehaviour
 
         if(deathAnimationFrame >= 12f)
         {
+            Time.timeScale = 1.0f;
             Destroy(this.gameObject);
             Drop = Instantiate(Item);
             Vector3 itemDropPos = transform.position;
             itemDropPos.y += 2;
             Drop.transform.position = itemDropPos;
-
         }
 
         playerPos = player.transform.position;
