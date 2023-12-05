@@ -9,6 +9,7 @@ public class Boss1State : MonoBehaviour
     Animator animator;
     //rigidBody取得
     Rigidbody myRb;
+    Vector3 thisPos;
 
     //最大HP
     public int maxHp = 100;
@@ -53,6 +54,8 @@ public class Boss1State : MonoBehaviour
     //死んだかどうか
     bool deathFlag = false;
 
+    Transform tempTrans;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +76,10 @@ public class Boss1State : MonoBehaviour
     {
         if (Hp <= 0)
         {
+            if(!tempTrans)
+            {
+                tempTrans = this.transform;
+            }
             Time.timeScale = 0.4f;
             animator.SetBool("DeathBool",true);
             deathFlag = true;
@@ -80,6 +87,7 @@ public class Boss1State : MonoBehaviour
 
         if(deathAnimationFrame >= 12f)
         {
+  
             Time.timeScale = 1.0f;
             Destroy(this.gameObject);
             Drop = Instantiate(Item);
@@ -88,71 +96,61 @@ public class Boss1State : MonoBehaviour
             Drop.transform.position = itemDropPos;
         }
 
-        playerPos = player.transform.position;
 
-        
 
-        dis = Vector3.Distance(playerPos, transform.position);
-
-        //プレイヤーと自分(ボス)の距離を測ってジャンプと近接を判断
-        if(dis > 30f && !jumpFlag)
+        if (!deathFlag)
         {
-            //groundFlag = true;
-            animator.SetTrigger("jumpTrigger");
-            jumpFlag = true;
-        }
+            playerPos = player.transform.position;
+            thisPos = this.transform.position;
+            dis = Vector3.Distance(thisPos, playerPos);
 
-        if (dis > 6f && dis <= 40f && !jumpFlag)
-        {
-            animator.SetBool("walkBool", true);
-
-            targetRot = Quaternion.LookRotation(playerPos - transform.position);
-            targetRot.z = 0;//横回転しかしないように固定
-            targetRot.x = 0;//同上
-
-
-            this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
-
-            transform.position += transform.forward * 0.008f;
-            //moveFlag = true;
-        }
-        else
-        {
-            animator.SetBool("walkBool", false);
-            //moveFlag = false;
-        }
-
-        if(dis <= 6)
-        {
-            animator.SetTrigger("attackTrigger");
-        }
-
-        if (jumpFlag)
-        {
-            jumpCount++;
-            if (jumpCount == 160)
+            /*プレイヤーに向かって歩く*/
+            if (dis > 6f && dis <= 40f && !jumpFlag)
             {
-                force = forcePowerFront * transform.forward + forcePowerUp * transform.up;
+                animator.SetBool("walkBool", true);
 
-                myRb.AddForce(force, ForceMode.Impulse);
-                //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
+                targetRot = Quaternion.LookRotation(playerPos - transform.position);
+                targetRot.z = 0;//横回転しかしないように固定
+                targetRot.x = 0;//同上
 
+
+                this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
+
+                transform.position += transform.forward * 0.008f;
+                //moveFlag = true;
             }
-            if (jumpCount > 1200)
+            else
             {
-                jumpCount = 0;
-                jumpFlag = false;
+                animator.SetBool("walkBool", false);
+                //moveFlag = false;
             }
-        }
 
-        if(!jumpFlag || !deathFlag)
-        {
-            //targetRot = Quaternion.LookRotation(playerPos - transform.position);
-            //targetRot.z = 0;//横回転しかしないように固定
-            //targetRot.x = 0;//同上
+            //近いと近接攻撃をする
+            if (dis <= 6)
+            {
+                animator.SetTrigger("attackTrigger");
+            }
 
-            
-            //this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
+            //プレイヤーと自分(ボス)の距離を測ってジャンプ
+            if (dis > 30f && !jumpFlag)
+            {
+                //groundFlag = true;
+                animator.SetTrigger("jumpTrigger");
+                jumpCount++;
+                if (jumpCount == 160)
+                {
+                    force = forcePowerFront * transform.forward + forcePowerUp * transform.up;
+
+                    myRb.AddForce(force, ForceMode.Impulse);
+                    //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
+
+                }
+                else if (jumpCount > 1200)
+                {
+                    jumpCount = 0;
+                    jumpFlag = false;
+                }
+            }
         }
 
     }
@@ -163,16 +161,6 @@ public class Boss1State : MonoBehaviour
         {
             deathAnimationFrame += 0.08f;
         }
-
-        //if (moveFlag)
-        //{
-        //    targetRot = Quaternion.LookRotation(playerPos);
-        //    targetRot.z = 0;//横回転しかしないように固定
-        //    targetRot.x = 0;//同上
-        //    this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
-
-        //    transform.position += transform.forward * 0.1f;
-        //}
     }
 
     //剣に当たった時にダメージを受けてHPバーが減るように
