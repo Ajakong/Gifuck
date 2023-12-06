@@ -8,10 +8,15 @@ public class tutoCanvasManager : MonoBehaviour
     public GameObject HpbarInfo;
     public GameObject PotionInfo;
     public GameObject TimerInfo;
+    public GameObject unitychan;
+
+    PHpDecCount HpCount;
 
     int UIManageCounter=0;
 
     int timer = 0;
+
+    int playerHp;
 
 
     // Start is called before the first frame update
@@ -20,12 +25,15 @@ public class tutoCanvasManager : MonoBehaviour
         HpbarInfo.SetActive(false);
         PotionInfo.SetActive(false);
         TimerInfo.SetActive(false); 
-        
+        HpCount=unitychan.GetComponent<PHpDecCount>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerHp = HpCount.HpCounting;
+
+
         if(UIManageCounter==0&&timer>=100)
         {
             HpbarInfo.SetActive(true);
