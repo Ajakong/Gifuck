@@ -16,6 +16,8 @@ public class animation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         animator = GetComponent<Animator>();
         pushFlag = false;
         moveFlag = false;
@@ -26,17 +28,17 @@ public class animation : MonoBehaviour
     {
         //移動
         //もし移動キーを押している場合、移動アニメーションをするように
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
-            Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
-        {
-            animator.SetBool("move", true);
-            moveFlag = true;
-        }
-        else
-        {
-            animator.SetBool("move", false);
-            moveFlag = false;
-        }
+        //if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
+        //    Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+        //{
+        //    animator.SetBool("move", true);
+        //    moveFlag = true;
+        //}
+        //else
+        //{
+        //    animator.SetBool("move", false);
+        //    moveFlag = false;
+        //}
 
     //    //ジャンプ
     //    if (Input.GetKey(KeyCode.Space) && !(Input.GetKey(KeyCode.LeftShift)))
@@ -69,13 +71,28 @@ public class animation : MonoBehaviour
     //        }
     //    }
 
+        animator.SetBool("move", false);
+        if(moveFlag)
+        {
+          animator.SetBool("move", true);
+        }
+
+        
     }
 
    public void OnWalk(InputAction.CallbackContext context)
     {
-        animator.SetBool("move",true);
-        moveFlag = true;
+
+        if (context.ReadValue<Vector2>() != Vector2.zero)
+        {
+            moveFlag = true;
+        }
+        else
+        {
+            moveFlag=false;
+        }
     }
+
 
     public void OnDash(InputAction.CallbackContext context)
     {
@@ -96,4 +113,6 @@ public class animation : MonoBehaviour
     {
         animator.SetTrigger("jumpTrigger");
     }
+
+
 }

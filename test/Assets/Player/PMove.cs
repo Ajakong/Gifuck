@@ -22,12 +22,12 @@ public class PMove : MonoBehaviour
     private float _verticalVelocity;
     private float _turnVelocity;
 
-    bool dushFlag = false;
+    public bool dushFlag = false;
     bool groundFlag = true;
 
     int dushSpeed = 1;
 
-    
+
 
     /// <summary>
     /// 移動Action(PlayerInput側から呼ばれる)
@@ -36,31 +36,32 @@ public class PMove : MonoBehaviour
     {
         // 入力値を保持しておく
         _inputMove = context.ReadValue<Vector2>();
-        dushFlag = false;
     }
 
 
     private void Awake()
     {
-        myRb = GetComponent<Rigidbody>();  
+        myRb = GetComponent<Rigidbody>();
         gravity = new Vector3(0.0f, -5000f, 0.0f);
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
         //myRb = GetComponent<Rigidbody>();
         if (_targetCamera == null)
             _targetCamera = Camera.main;
+
+        dushSpeed = 0;
     }
 
     private void Update()
     {
-        
-        
-        dushSpeed = 1;
-
-        if (dushFlag == true)
-        {
-            dushSpeed = 6;
-        }
+        //if (dushFlag)
+        //{
+        //    dushSpeed = 6;
+        //}
+        //else
+        //{
+        //    dushSpeed = 1;
+        //}
 
 
         // カメラの向き（角度[deg]）取得
@@ -73,8 +74,8 @@ public class PMove : MonoBehaviour
             _inputMove.y * _speed
         );
         // カメラの角度分だけ移動量を回転
-        
-        
+
+
         moveVelocity = Quaternion.Euler(0, cameraAngleY, 0) * moveVelocity;
         //myRb.transform.forward= Quaternion.Euler(0, cameraAngleY, 0) *transform.forward;
 
@@ -100,9 +101,13 @@ public class PMove : MonoBehaviour
             // オブジェクトの回転を更新
             _transform.rotation = Quaternion.Euler(0, angleY, 0);
         }
+        else
+        {
+            dushFlag = false;
+        }
 
         // 現在フレームの移動量を移動速度から計算
-        var moveDelta =new Vector3(moveVelocity.x * Time.deltaTime * dushSpeed,moveVelocity.y* Time.deltaTime, moveVelocity.z * Time.deltaTime * dushSpeed);
+        var moveDelta = new Vector3(moveVelocity.x * Time.deltaTime * dushSpeed, moveVelocity.y * Time.deltaTime, moveVelocity.z * Time.deltaTime * dushSpeed);
 
         //_rotation.x = moveVelocity.x; _rotation.y = moveVelocity.y;
 
@@ -114,25 +119,25 @@ public class PMove : MonoBehaviour
 
 
         _characterController.Move(moveDelta);
-        if(groundFlag==false)
+        if (groundFlag == false)
         {
             Debug.Log("tuintuin");
-            myRb.AddForce(gravity,ForceMode.Acceleration);
+            myRb.AddForce(gravity, ForceMode.Acceleration);
         }
 
         if (_inputMove != Vector2.zero)
         {
             //myRb.velocity= moveDelta;
             // CharacterControllerに移動量を指定し、オブジェクトを動かす
-           
+
 
 
         }
         Debug.Log(groundFlag);
-        
+
     }
 
-   
+
     void OnCollisionExit(Collision col)
     {
         if (col.gameObject.tag == "ground")
@@ -164,9 +169,26 @@ public class PMove : MonoBehaviour
 
     public void OnDush(InputAction.CallbackContext context)
     {
-        dushFlag = true;
+
+        //if (_inputMove != Vector2.zero)
+        //{
+        //    if (dushFlag)
+        //    {
+        //        dushFlag = false;
+        //    }
+        //    else
+        //    {
+        //        dushFlag = true;
+        //    }
+        //}
+        dushSpeed = 4;
     }
 
+    // 離された瞬間のコールバック
+    public void OnRelease(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
 
-
+        dushSpeed = 1;
+    }
 }

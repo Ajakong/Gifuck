@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "releaseMove",
+                    "type": "Value",
+                    "id": "035b601a-0655-4096-97fb-c5bbfce1d5f8",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Look",
                     "type": "Value",
                     "id": "9ae314d3-060f-43ff-9cdf-cb4ed46e07d6",
@@ -48,6 +57,15 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "releaseDush",
+                    "type": "Button",
+                    "id": "cec76341-c13a-4db4-9a6a-7cdee40846eb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -66,7 +84,7 @@
                     "id": "978bfe49-cc26-4a3d-ab7b-7d7a29327403",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.9)",
                     "groups": ";Gamepad",
                     "action": "Move",
                     "isComposite": false,
@@ -295,8 +313,8 @@
                 {
                     "name": "",
                     "id": "a07a42a1-cf45-4cb9-beae-c195f8a12e9b",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Dush",
@@ -311,6 +329,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5d2bef1-03ee-4a0c-87de-67620cb55b95",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "releaseDush",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f53b935f-6b85-4db6-a30a-bf70304cf8b6",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "releaseMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
