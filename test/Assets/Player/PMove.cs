@@ -54,14 +54,14 @@ public class PMove : MonoBehaviour
 
     private void Update()
     {
-        //if (dushFlag)
-        //{
-        //    dushSpeed = 6;
-        //}
-        //else
-        //{
-        //    dushSpeed = 1;
-        //}
+        if (dushFlag)
+        {
+            dushSpeed = 6;
+        }
+        else
+        {
+            dushSpeed = 1;
+        }
 
 
         // カメラの向き（角度[deg]）取得
