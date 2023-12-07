@@ -15,7 +15,7 @@ public class Sword : MonoBehaviour
     Transform playerTransform;
 
     //敵の基礎能力
-    EnemyState EHp;
+    tutoEnemyState EHp;
 
     //プレイヤーに当たったかどうか
     bool isHitFlag = false;
@@ -183,7 +183,7 @@ public class Sword : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("aiaiaiai");
-            EHp = collision.GetComponent<EnemyState>();
+            EHp = collision.GetComponent<tutoEnemyState>();
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;
             if(collCoolTime>=45)
@@ -236,7 +236,7 @@ public class Sword : MonoBehaviour
         {
             Debug.Log("aiaiaiai");
 
-            EHp = collision.gameObject.GetComponent<EnemyState>();
+            EHp = collision.gameObject.GetComponent<tutoEnemyState>();
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;
             if (collCoolTime >= 45)

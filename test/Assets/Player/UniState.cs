@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class UniState : MonoBehaviour
 {
-    public int HealItem=3;
+    public int HealItem = 3;
 
-    int UniHp=100;
+    int UniHp = 100;
 
     public GameObject healLight;
     bool healFlag = false;
@@ -31,40 +32,27 @@ public class UniState : MonoBehaviour
     {
         slider.value = UniHp;
 
-        if(UniHp<=0)
+        if (UniHp <= 0)
         {
-            UniHp=0;
+            UniHp = 0;
             //ですエフェクト
             SceneManager.LoadScene("GameOver");
         }
 
-        if(Input.GetKeyUp(KeyCode.H))
-        {
-            if(HealItem>=1)
-            {
-                if (UniHp < 100)
-                {
-                    UniHp += 60;
-                    HealItem--;
-                    healFlag = true;
-                }
-                else
-                {
-                    Debug.Log("HPがマンタンDEATH！");
-                }
-
-            }
+        //if (Input.GetKeyUp(KeyCode.H))
+        //{
             
-        }
 
-        if(healFlag==true)
+        //}
+
+        if (healFlag == true)
         {
             lightTimer++;
             healLight.SetActive(true);
-            if(lightTimer>=150)
+            if (lightTimer >= 150)
             {
-                healFlag=false;
-                lightTimer=0;
+                healFlag = false;
+                lightTimer = 0;
                 healLight.SetActive(false);
             }
         }
@@ -79,5 +67,22 @@ public class UniState : MonoBehaviour
     public int HealNum
     {
         get { return HealItem; }
+    }
+    public void Heal(InputAction.CallbackContext context)
+    {
+        if (HealItem >= 1)
+        {
+            if (UniHp < 100)
+            {
+                UniHp += 60;
+                HealItem--;
+                healFlag = true;
+            }
+            else
+            {
+                Debug.Log("HPがマンタンDEATH！");
+            }
+
+        }
     }
 }
