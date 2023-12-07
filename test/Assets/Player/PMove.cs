@@ -49,19 +49,19 @@ public class PMove : MonoBehaviour
         if (_targetCamera == null)
             _targetCamera = Camera.main;
 
-        dushSpeed = 0;
+        dushSpeed = 1;
     }
 
     private void Update()
     {
-        if (dushFlag)
-        {
-            dushSpeed = 6;
-        }
-        else
-        {
-            dushSpeed = 1;
-        }
+        //if (dushFlag)
+        //{
+        //    dushSpeed = 6;
+        //}
+        //else
+        //{
+        //    dushSpeed = 1;
+        //}
 
 
         // カメラの向き（角度[deg]）取得
@@ -70,7 +70,7 @@ public class PMove : MonoBehaviour
         // 操作入力と鉛直方向速度から、現在速度を計算
         var moveVelocity = new Vector3(
             _inputMove.x * _speed,
-            0,
+            myRb.velocity.y,
             _inputMove.y * _speed
         );
         // カメラの角度分だけ移動量を回転

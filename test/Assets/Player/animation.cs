@@ -7,106 +7,84 @@ public class animation : MonoBehaviour
 {
     Animator animator;
 
+    Vector2 tempVec;
+
     public string parameterName = "";
     public bool parameterValue = true;
 
     public bool moveFlag;
 
-    bool pushFlag;
+    public bool dushFalg;
     // Start is called before the first frame update
     void Start()
     {
 
 
         animator = GetComponent<Animator>();
-        pushFlag = false;
+        dushFalg = false;
         moveFlag = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //移動
-        //もし移動キーを押している場合、移動アニメーションをするように
-        //if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
-        //    Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
-        //{
-        //    animator.SetBool("move", true);
-        //    moveFlag = true;
-        //}
-        //else
-        //{
-        //    animator.SetBool("move", false);
-        //    moveFlag = false;
-        //}
-
-    //    //ジャンプ
-    //    if (Input.GetKey(KeyCode.Space) && !(Input.GetKey(KeyCode.LeftShift)))
-    //    {
-    //        animator.SetTrigger("jumpTrigger");
-    //    }
-
-    //    //ダッシュ
-    //    //移動キーを押しているかつダッシュキーを押しているとき
-    //    if ((Input.GetKey(KeyCode.LeftShift)) && (moveFlag == true))
-    //    {
-    //        animator.SetBool("dashBool", true);
-    //    }
-    //    else
-    //    {
-    //        animator.SetBool("dashBool", false);
-    //    }
-
-    //    //攻撃
-    //    if (Input.GetMouseButton(0))
-    //    {
-    //        if (pushFlag == false)
-    //        {
-    //            pushFlag = true;
-    //            animator.SetTrigger("swordTrigger");
-    //        }
-    //        else
-    //        {
-    //            pushFlag = false;
-    //        }
-    //    }
+        tempVec = Vector2.zero;
 
         animator.SetBool("move", false);
-        if(moveFlag)
+        if (moveFlag)
         {
-          animator.SetBool("move", true);
+            animator.SetBool("move", true);
         }
 
-        
+
+        if (moveFlag && dushFalg)
+        {
+            animator.SetBool("dashBool", true);
+
+        }
+        else
+        {
+            animator.SetBool("dashBool", false);
+
+        }
+
     }
 
-   public void OnWalk(InputAction.CallbackContext context)
+    public void OnWalk(InputAction.CallbackContext context)
     {
-
-        if (context.ReadValue<Vector2>() != Vector2.zero)
+        tempVec = context.ReadValue<Vector2>();
+        if (tempVec != Vector2.zero)
         {
             moveFlag = true;
         }
         else
         {
-            moveFlag=false;
+            moveFlag = false;
         }
+
     }
 
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("dashTrigger");
+        //if (tempVec == Vector2.zero)
+        //{
+        //    return;
+        //}
+
+        dushFalg = true;
+    }
+
+    public void OnRelease(InputAction.CallbackContext context)
+    {
+       // if (!context.performed) return;
+
+        dushFalg = false;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        //if (pushFlag == false)
-        //{
-            //pushFlag = true;
-            animator.SetTrigger("swordTrigger");
-        //}
-        
+        animator.SetTrigger("swordTrigger");
     }
 
     public void OnJump(InputAction.CallbackContext context)
