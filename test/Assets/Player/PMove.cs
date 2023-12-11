@@ -70,7 +70,7 @@ public class PMove : MonoBehaviour
         // 操作入力と鉛直方向速度から、現在速度を計算
         var moveVelocity = new Vector3(
             _inputMove.x * _speed,
-            myRb.velocity.y,
+            0,
             _inputMove.y * _speed
         );
         // カメラの角度分だけ移動量を回転
