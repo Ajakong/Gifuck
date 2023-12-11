@@ -190,10 +190,10 @@ public class Sword : MonoBehaviour
     void OnTriggerEnter(Collider collision) // “–‚½‚è”»’è‚ðŽ@’m
     {
 
-        Debug.Log("aiaiaiai");
+      
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("aiaiaiai");
+            Debug.Log(swordAt);
             EHp = collision.gameObject.GetComponent<EnemyState>();
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;

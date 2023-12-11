@@ -27,6 +27,7 @@ public class UniState : MonoBehaviour
         hpBar = GameObject.Find("playerHP");
         slider = hpBar.GetComponent<Slider>();
         slider.value = 0;
+        power = 30;
     }
 
     // Update is called once per frame
