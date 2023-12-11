@@ -8,6 +8,7 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     GameObject player;
+    UniState power;
 
     //プレイヤーの座標
     Vector3 playerLocalPos;
@@ -60,6 +61,8 @@ public class Sword : MonoBehaviour
         //"player"を探す
         //player = GameObject.Find("Player");
         player = GameObject.Find("unitychan");
+        //Playerのパワーを受け取る
+        power = player.GetComponent<UniState>();
         //装備する前の剣の座標を指定
         swordPos = new Vector3(0.0f, 1.0f, 3.0f);
 
@@ -154,6 +157,8 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
+        swordAt = power.powerNum;
+
         if (Input.GetMouseButtonDown(0))
         {
             colFlag = true;
@@ -183,7 +188,7 @@ public class Sword : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("aiaiaiai");
-            EHp = collision.GetComponent<tutoEnemyState>();
+            EHp = collision.gameObject.GetComponent<tutoEnemyState>();
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;
             if(collCoolTime>=45)

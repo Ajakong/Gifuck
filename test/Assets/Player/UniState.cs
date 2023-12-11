@@ -15,6 +15,8 @@ public class UniState : MonoBehaviour
     bool healFlag = false;
     int lightTimer;
 
+    public int power=0;
+
     GameObject hpBar;
     Slider slider;
 
@@ -41,7 +43,7 @@ public class UniState : MonoBehaviour
 
         //if (Input.GetKeyUp(KeyCode.H))
         //{
-            
+
 
         //}
 
@@ -68,6 +70,11 @@ public class UniState : MonoBehaviour
     {
         get { return HealItem; }
     }
+
+    public int powerNum
+    {
+        get { return power; }
+    }
     public void Heal(InputAction.CallbackContext context)
     {
         if (HealItem >= 1)
@@ -83,6 +90,15 @@ public class UniState : MonoBehaviour
                 Debug.Log("HP‚ªƒ}ƒ“ƒ^ƒ“DEATHI");
             }
 
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "item")
+        {
+            power++;
+            Destroy(collision.gameObject);
         }
     }
 }
