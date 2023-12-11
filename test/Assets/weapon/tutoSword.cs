@@ -5,11 +5,9 @@ using System.Net.Mime;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Sword : MonoBehaviour
+public class tutoSword : MonoBehaviour
 {
     GameObject player;
-
-    public GameObject Enemy;
     UniState power;
 
     //プレイヤーの座標
@@ -18,7 +16,7 @@ public class Sword : MonoBehaviour
     Transform playerTransform;
 
     //敵の基礎能力
-    EnemyState EHp;
+    tutoEnemyState EHp;
 
     //プレイヤーに当たったかどうか
     bool isHitFlag = false;
@@ -50,11 +48,11 @@ public class Sword : MonoBehaviour
     public float count = 0.0f;
     bool colFlag = false;
 
-    int StopTime=0;
+    int StopTime = 0;
     bool eneSto;
 
-    int collCoolTime ;
-    bool CoolTimeFlag=false;
+    int collCoolTime;
+    bool CoolTimeFlag = false;
 
 
     // Start is called before the first frame update
@@ -85,8 +83,6 @@ public class Sword : MonoBehaviour
         col = GetComponent<BoxCollider>();
 
         hitVec = new Vector3(0, -2, 0);
-
-       
     }
 
     // Update is called once per frame
@@ -145,18 +141,18 @@ public class Sword : MonoBehaviour
             else if (count > 1.5f || count <= 30f)
             {
                 col.enabled = false;
-            
+
             }
 
         }
 
-        if(count > 55)
+        if (count > 55)
         {
             colFlag = false;
             count = 0;
         }
 
-        
+
 
 
     }
@@ -180,12 +176,12 @@ public class Sword : MonoBehaviour
             StopTime = 0;
             eneSto = false;
         }
-        
+
         collCoolTime++;
-        
+
     }
 
-    
+
 
     void OnTriggerEnter(Collider collision) // 当たり判定を察知
     {
@@ -194,10 +190,10 @@ public class Sword : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("aiaiaiai");
-            EHp = collision.gameObject.GetComponent<EnemyState>();
+            EHp = collision.gameObject.GetComponent<tutoEnemyState>();
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;
-            if(collCoolTime>=45)
+            if (collCoolTime >= 45)
             {
                 HitStop();
                 collCoolTime = 0;
@@ -217,7 +213,7 @@ public class Sword : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
 
-            
+
             //プレイヤーに当たった(剣の動きを消す)
             isHitFlag = true;
             //剣をプレイヤーの子オブジェクトにする
@@ -243,7 +239,7 @@ public class Sword : MonoBehaviour
 
         }
 
-  
+
     }
 
     void OnCollisionExit(Collision collision)
@@ -253,7 +249,7 @@ public class Sword : MonoBehaviour
         {
             Debug.Log("aiaiaiai");
 
-            EHp = collision.gameObject.GetComponent<EnemyState>();
+            EHp = collision.gameObject.GetComponent<tutoEnemyState>();
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;
             if (collCoolTime >= 45)
