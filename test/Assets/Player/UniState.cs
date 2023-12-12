@@ -98,6 +98,7 @@ public class UniState : MonoBehaviour
     {
         if (collision.gameObject.tag == "item")
         {
+            Debug.Log("powerUp");
             power++;
             Destroy(collision.gameObject);
         }
