@@ -165,6 +165,7 @@ MonoBehaviour:
   maxHp: 100
   Hp: 100
   attack: 5
+  world: {fileID: 3027191141945949325, guid: cad8002cc08c0cb47a3e319ca6b1ae27, type: 3}
   Item: {fileID: 7627553022071714383, guid: 8ed7d5952cf308144bddeb4254460a4c, type: 3}
 --- !u!114 &3885535379320397856
 MonoBehaviour:

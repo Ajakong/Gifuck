@@ -99,7 +99,10 @@ public class UniState : MonoBehaviour
         if (hit.gameObject.tag == "item")
         {
             Debug.Log("powerUp");
-            power++;
+            if (power <= 80)
+            {  
+                power++;
+            }
             Destroy(hit.gameObject);
         }
     }

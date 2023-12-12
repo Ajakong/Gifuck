@@ -9,24 +9,36 @@ public class EnemyState : MonoBehaviour
 
     public int attack = 5;
 
+    int powerUpCount;
+
+    int powerUpInterval=2;
+
+    float worldTime;
+
+    public GameObject world;
+
     public GameObject Item;
     GameObject Drop;
     
     UniState state;
 
-    
+    theWorldTime time; 
    
 
-    Rigidbody velo;
+    
     // Start is called before the first frame update
     void Start()
     {
         
+        time=world.GetComponent<theWorldTime>();
+        Hp = maxHp;
     }
 
     // Update is called once per frame
     void Update()
     {
+        worldTime=time.timeMove;
+
         //transform.position = transform.position;
         //Ž€‚ñ‚¾
         if (Hp < 1)
@@ -39,6 +51,13 @@ public class EnemyState : MonoBehaviour
             Destroy(gameObject);
         }
         
+        if(worldTime>=powerUpInterval*powerUpCount)
+        {
+            maxHp += 20 ;
+            powerUpCount++;
+        }
+       
+
     }
     public int HpMove
     {

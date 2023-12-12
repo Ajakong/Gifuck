@@ -57,6 +57,8 @@ public class Sword : MonoBehaviour
     bool CoolTimeFlag=false;
 
 
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -207,7 +209,8 @@ public class Sword : MonoBehaviour
             hitVec.x = collision.gameObject.transform.position.x - transform.position.x;
             hitVec.z = collision.gameObject.transform.position.z - transform.position.z;
             hitVec.Normalize();
-            collision.gameObject.transform.Translate(hitVec*2);
+            rb=collision.gameObject.GetComponent<Rigidbody>();
+            rb.velocity += hitVec;
 
 
 
