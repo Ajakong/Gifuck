@@ -94,13 +94,13 @@ public class UniState : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (collision.gameObject.tag == "item")
+        if (hit.gameObject.tag == "item")
         {
             Debug.Log("powerUp");
             power++;
-            Destroy(collision.gameObject);
+            Destroy(hit.gameObject);
         }
     }
 }
