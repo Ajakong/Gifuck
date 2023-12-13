@@ -15,7 +15,6 @@ public class theWorldTime : MonoBehaviour
     void Update()
     {
         time = Time.time;
-        Debug.Log(time);
     }
 
     public float timeMove

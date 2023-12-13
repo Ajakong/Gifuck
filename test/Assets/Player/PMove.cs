@@ -5,9 +5,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PMove : MonoBehaviour
 {
-    Rigidbody myRb;
-
-    Vector3 gravity;
+   
 
     [Header("ˆÚ“®‚Ì‘¬‚³"), SerializeField]
     private float _speed = 3;
@@ -41,8 +39,8 @@ public class PMove : MonoBehaviour
 
     private void Awake()
     {
-        myRb = GetComponent<Rigidbody>();
-        gravity = new Vector3(0.0f, -5000f, 0.0f);
+       
+
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
         //myRb = GetComponent<Rigidbody>();
@@ -119,11 +117,6 @@ public class PMove : MonoBehaviour
 
 
         _characterController.Move(moveDelta);
-        if (groundFlag == false)
-        {
-            Debug.Log("tuintuin");
-            myRb.AddForce(gravity, ForceMode.Acceleration);
-        }
 
         if (_inputMove != Vector2.zero)
         {

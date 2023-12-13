@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class TimerControl : MonoBehaviour
 {
     //float countTimer = 0;
+    [SerializeField]
     float countSecond = 0.49f;
+    [SerializeField]
     int countMinute = 1;
     // Start is called before the first frame update
     void Start()

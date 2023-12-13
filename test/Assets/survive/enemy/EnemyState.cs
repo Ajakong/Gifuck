@@ -15,7 +15,7 @@ public class EnemyState : MonoBehaviour
 
     float worldTime;
 
-    public GameObject world;
+    GameObject world;
 
     public GameObject Item;
     GameObject Drop;
@@ -29,7 +29,7 @@ public class EnemyState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        world = GameObject.Find("world");
         time=world.GetComponent<theWorldTime>();
         Hp = maxHp;
     }
@@ -69,7 +69,7 @@ public class EnemyState : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-           
+            
 
 
             state = collision.gameObject.GetComponent<UniState>();
