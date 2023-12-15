@@ -32,7 +32,9 @@ public class EneRes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //そうだ、大声を出しながらplayerの近くにスポーンさせるナリ
+        RandX = Random.Range(-30, 30);
+        RandZ = Random.Range(-30, 30);
 
 
         //ここがリスポーン処理
@@ -44,9 +46,7 @@ public class EneRes : MonoBehaviour
             
         }
 
-        //そうだ、大声を出しながらplayerの近くにスポーンさせるナリ
-        RandX = Random.Range(-30, 30);
-        RandZ = Random.Range(-30, 30);
+       
     }
 
     private void FixedUpdate()

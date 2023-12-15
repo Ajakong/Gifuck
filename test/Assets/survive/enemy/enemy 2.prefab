@@ -165,7 +165,6 @@ MonoBehaviour:
   maxHp: 100
   Hp: 100
   attack: 5
-  world: {fileID: 3027191141945949325, guid: cad8002cc08c0cb47a3e319ca6b1ae27, type: 3}
   Item: {fileID: 7627553022071714383, guid: 8ed7d5952cf308144bddeb4254460a4c, type: 3}
 --- !u!114 &3885535379320397856
 MonoBehaviour:
@@ -179,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7d28d5aafa12a4582ee32ec65ac66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 3027191141945949325, guid: cad8002cc08c0cb47a3e319ca6b1ae27, type: 3}
+  eneBullet: {fileID: 7166297969396922653, guid: fe8ec85cb6845dd4094161720c8a8b6f, type: 3}
 --- !u!114 &7942930023887977281
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,35 +4,46 @@ using UnityEngine;
 
 public class enemyDirector : MonoBehaviour
 {
-    
+    public GameObject eneBullet;
 
-    float moveSpeed ;//敵がプレイヤーに近づく速度
+    GameObject LightningBullet;
+
+    float moveSpeed;//敵がプレイヤーに近づく速度
     float MaxSpeed = 0.01f;
 
 
     float timeCounter;
-    float speedUpInterval=10;
-    int speedUpCounter=1;
+    float speedUpInterval = 10;
+    int speedUpCounter = 1;
 
-   
+    Vector3 collisionImpact;
+    Vector3 Shoot;
 
     theWorldTime time;
 
     GameObject world;
-    
+
+    Rigidbody myRb;
+
     // Start is called before the first frame update
     void Awake()
     {
+        Shoot = new Vector3(0, 2, 0);
+
+        myRb = GetComponent<Rigidbody>();
+      
         world = GameObject.Find("world");
         time = world.GetComponent<theWorldTime>();
         moveSpeed = MaxSpeed;
-        Debug.Log(moveSpeed);
+       
     }
 
     // Update is called once per frame
 
     private void Update()
     {
+        collisionImpact=myRb.velocity;
+        collisionImpact.y=collisionImpact.x;
         Vector3 targetPos = GameObject.Find("unitychan").transform.position;//playerを見つける
         Quaternion targetRot = Quaternion.LookRotation(targetPos);//LookRoatationで移動ベクトルに回転したのをtargetRotに代入
         targetRot.z = 0;//横回転しかしないように固定
@@ -40,14 +51,16 @@ public class enemyDirector : MonoBehaviour
         this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
 
         timeCounter = time.timeMove;
-        Debug.Log(MaxSpeed);
-        if (timeCounter>=speedUpInterval*speedUpCounter)//割り算を使用しない理由はfloatなので条件指定に==が使いづらくなるため
+      
+        if (timeCounter >= speedUpInterval * speedUpCounter)//割り算を使用しない理由はfloatなので条件指定に==が使いづらくなるため
         {
-            
-            
+            LightningBullet=Instantiate(eneBullet);
+            LightningBullet.transform.position=transform.position;
+            LightningBullet.transform.position += Shoot;
+
             MaxSpeed += 0.002f;
             speedUpCounter++;
-            
+
         }
     }
     void FixedUpdate()
@@ -55,6 +68,12 @@ public class enemyDirector : MonoBehaviour
         Vector3 targetPos = GameObject.Find("unitychan").transform.position; //プレイヤーの位置を取得、targetPosに代入
         Vector3 startPos = transform.position;//エネミーの位置を取得、startPosに代入
 
-        transform.position = Vector3.Lerp(startPos, targetPos, MaxSpeed);//二点間を埋めるようにmovespeedの速さで移動
+        transform.position = Vector3.Lerp(startPos, targetPos, MaxSpeed);//二点間を埋めるようにspeedの速さで移動
+    }
+
+    void OnTriggerEnter(Collider collision) // 当たり判定を察知
+    {
+        
+
     }
 }
