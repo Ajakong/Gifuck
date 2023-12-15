@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe0845aeddc04e41b1c6c6fbc9b3d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemy: {fileID: 0}
   RootObject: {fileID: 1251518070}
   count: 0
 --- !u!65 &285831441
@@ -1392,7 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   Hp: 100
-  Item: {fileID: 7627553022071714383, guid: 8ed7d5952cf308144bddeb4254460a4c, type: 3}
+  Item: {fileID: 7797422507424061959, guid: 5a2d70436cb426545bebc588613dd0df, type: 3}
   player: {fileID: 1740410966}
   dis: 0
   jumpCount: 0
@@ -7298,6 +7299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _targetCamera: {fileID: 0}
+  dushFlag: 0
 --- !u!114 &1740410976
 MonoBehaviour:
   m_ObjectHideFlags: 0
