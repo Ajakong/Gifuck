@@ -16,6 +16,8 @@ public class enemyDirector : MonoBehaviour
     float speedUpInterval = 10;
     int speedUpCounter = 1;
 
+    bool playerChase;
+
     Vector3 collisionImpact;
     Vector3 Shoot;
 
@@ -54,9 +56,7 @@ public class enemyDirector : MonoBehaviour
       
         if (timeCounter >= speedUpInterval * speedUpCounter)//割り算を使用しない理由はfloatなので条件指定に==が使いづらくなるため
         {
-            LightningBullet=Instantiate(eneBullet);
-            LightningBullet.transform.position=transform.position;
-            LightningBullet.transform.position += Shoot;
+           
 
             MaxSpeed += 0.002f;
             speedUpCounter++;
@@ -68,12 +68,26 @@ public class enemyDirector : MonoBehaviour
         Vector3 targetPos = GameObject.Find("unitychan").transform.position; //プレイヤーの位置を取得、targetPosに代入
         Vector3 startPos = transform.position;//エネミーの位置を取得、startPosに代入
 
-        transform.position = Vector3.Lerp(startPos, targetPos, MaxSpeed);//二点間を埋めるようにspeedの速さで移動
+        if(playerChase==true)
+        {
+            transform.position = Vector3.Lerp(startPos, targetPos, MaxSpeed);//二点間を埋めるようにspeedの速さで移動
+        }
     }
 
-    void OnTriggerEnter(Collider collision) // 当たり判定を察知
+    void OnTriggerStay(Collider collision) // 当たり判定を察知
     {
-        
+        if(collision.gameObject.tag=="Player")
+        {
+            playerChase = true;
+        }
 
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerChase = false;
+        }
     }
 }

@@ -17,6 +17,8 @@ public class UniState : MonoBehaviour
 
     public int power=0;
 
+    
+
     GameObject hpBar;
     Slider slider;
 
@@ -61,6 +63,11 @@ public class UniState : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
+
     public int UniHpMove
     {
         get { return UniHp; }
@@ -78,20 +85,31 @@ public class UniState : MonoBehaviour
     }
     public void Heal(InputAction.CallbackContext context)
     {
-        if (HealItem >= 1)
+        if(healFlag==false)
         {
-            if (UniHp < 100)
+            if (HealItem >= 1)
             {
-                UniHp += 60;
-                HealItem--;
-                healFlag = true;
-            }
-            else
-            {
-                Debug.Log("HPがマンタンDEATH！");
-            }
+                if (UniHp < 100)
+                {
+                    UniHp += 60;
+                    HealItem--;
+                    healFlag = true;
+                }
+                else
+                {
+                    Debug.Log("HPがマンタンDEATH！");
+                }
 
+            }
         }
+        
+    }
+
+    public void OnRelease(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        
     }
 
     public void OnControllerColliderHit(ControllerColliderHit hit)

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ItemCon : MonoBehaviour
 {
+    float speed=0.00001f;
+
+    int awakeCount;
+
+    int playerCount;
+
     Rigidbody myRb;
 
     Vector3 DropUp;
@@ -13,11 +19,17 @@ public class ItemCon : MonoBehaviour
 
     public GameObject SwordInfo;
 
-    GameObject sword2; 
+    GameObject sword2;
+
+    private void Awake()
+    {
+        awakeCount++;
+        playerCount=awakeCount;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        oyaObj = GameObject.Find("Character1_RightHandMiddle1");
+       
         DropUp =new Vector3(0,3f,0);
         //myRb.AddForce(DropUp,ForceMode.Impulse);
         transform.position += DropUp; 
@@ -30,22 +42,26 @@ public class ItemCon : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void FixedUpdate()
     {
-        if(other.gameObject.tag == "Player")
+        speed *= 2.0f;
+
+        Vector3 targetPos = GameObject.Find("unitychan").transform.position; //プレイヤーの位置を取得、targetPosに代入
+        Vector3 startPos = transform.position;//エネミーの位置を取得、startPosに代入
+        
+        transform.position = Vector3.Lerp(startPos, targetPos, speed);//二点間を埋めるようにspeedの速さで移動
+        
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
-            GameObject sword = GameObject.Find("ObjSword");
-            Transform transform = sword.transform;
-            sword2 = Instantiate(SwordInfo);
-            sword2.gameObject.transform.parent = oyaObj.gameObject.transform;
-            sword2.transform.position = transform.position;
-            sword2.transform.localEulerAngles = transform.localEulerAngles;
-            sword2.transform.localScale = transform.localScale;
-
-            Destroy(sword.gameObject);
-
 
             Destroy(this.gameObject);
         }
+
+
     }
+   
 }

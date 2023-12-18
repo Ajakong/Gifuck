@@ -376,7 +376,7 @@
                     "name": "",
                     "id": "66741224-6fbd-4f09-9687-032cd68ac51b",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Heal",

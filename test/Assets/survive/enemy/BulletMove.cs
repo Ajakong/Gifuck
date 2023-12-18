@@ -46,7 +46,7 @@ public class BulletMove : MonoBehaviour
         toPlayer.y=targetPos.y - transform.position.y;
         toPlayer.z=targetPos.z - transform.position.z;
 
-        Debug.Log(toPlayer);
+       
         
         toPlayer.Normalize();
 
@@ -57,6 +57,7 @@ public class BulletMove : MonoBehaviour
 
     void OnTriggerEnter(Collider collision) // “–‚½‚è”»’è‚ðŽ@’m
     {
+        Debug.Log("Destroy");
         if(collision.gameObject.tag=="Player")
         {
             state = collision.gameObject.GetComponent<UniState>();
