@@ -61,7 +61,9 @@ public class animation : MonoBehaviour
             attackCount = 0;
             m_attackFlag = false;
             trailRenderer.Clear();
+            trailRenderer.enabled = false ;
         }
+        Debug.Log(attackCount);
     }
 
     private void FixedUpdate()
