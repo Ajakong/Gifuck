@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1231047971098810598}
   - component: {fileID: 1231047971098810602}
   - component: {fileID: 5298725071711264008}
-  - component: {fileID: -1486779809932964082}
   m_Layer: 0
   m_Name: ObjSword
   m_TagString: Untagged
@@ -133,18 +132,6 @@ MonoBehaviour:
   RootObject: {fileID: 0}
   count: 0
 --- !u!114 &5298725071711264008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2149596131510216906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f82254dcabd854ab5597d744dda47d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1486779809932964082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

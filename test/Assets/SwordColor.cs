@@ -18,8 +18,9 @@ public class SwordColor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_count>=60)
+        if(m_count>=30)
         {
+            m_count = 0;
             colorR=Random.Range(0,255);
             colorG=Random.Range(0,255);
             colorB=Random.Range(0,255);

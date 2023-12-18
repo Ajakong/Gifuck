@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   Hp: 100
-  Item: {fileID: 7797422507424061959, guid: 5a2d70436cb426545bebc588613dd0df, type: 3}
+  Item: {fileID: 2149596131510216906, guid: 617b039ea4dff674490d9f991d711266, type: 3}
   player: {fileID: 1740410966}
   dis: 0
   jumpCount: 0
@@ -7218,6 +7218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbd49e07d7d723409a8bb3d6364199c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sword: {fileID: 0}
   parameterName: swordTrigger
   parameterValue: 1
   moveFlag: 0
@@ -7300,6 +7301,7 @@ MonoBehaviour:
   _speed: 3
   _targetCamera: {fileID: 0}
   dushFlag: 0
+  SwordInfo: {fileID: 0}
 --- !u!114 &1740410976
 MonoBehaviour:
   m_ObjectHideFlags: 0
