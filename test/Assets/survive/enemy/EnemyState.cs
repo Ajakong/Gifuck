@@ -18,8 +18,13 @@ public class EnemyState : MonoBehaviour
     GameObject world;
 
     public GameObject Item;
+
+   
     GameObject Drop;
-    
+
+    public GameObject Die;
+    GameObject DieEffect;
+
     UniState state;
 
     theWorldTime time; 
@@ -43,7 +48,9 @@ public class EnemyState : MonoBehaviour
         //Ž€‚ñ‚¾
         if (Hp < 1)
         {
-           
+            DieEffect=Instantiate(Die);
+            DieEffect.transform.position = transform.position;
+
             Destroy(this.gameObject);
             //itemDrop‚·‚éƒiƒŠ
             Drop = Instantiate(Item);

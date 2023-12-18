@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class animation : MonoBehaviour
 {
+    TrailRenderer trailRenderer;
+
+    public GameObject sword;
     Animator animator;
 
     Vector2 tempVec;
@@ -15,14 +18,19 @@ public class animation : MonoBehaviour
     public bool moveFlag;
 
     public bool dushFalg;
+
+    bool m_attackFlag;
+    int attackCount;
     // Start is called before the first frame update
     void Start()
     {
-
+        trailRenderer = sword.GetComponent<TrailRenderer>();
 
         animator = GetComponent<Animator>();
         dushFalg = false;
         moveFlag = false;
+
+        trailRenderer.enabled = false;
     }
 
     // Update is called once per frame
@@ -48,6 +56,21 @@ public class animation : MonoBehaviour
 
         }
 
+        if(attackCount>=60)
+        {
+            attackCount = 0;
+            m_attackFlag = false;
+            trailRenderer.Clear();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(m_attackFlag)
+        {
+            trailRenderer.enabled = true;
+            attackCount++;
+        }
     }
 
     public void OnWalk(InputAction.CallbackContext context)
@@ -84,7 +107,13 @@ public class animation : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("swordTrigger");
+        if(m_attackFlag==false)
+        {
+            m_attackFlag = true;
+
+            animator.SetTrigger("swordTrigger");
+            
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)

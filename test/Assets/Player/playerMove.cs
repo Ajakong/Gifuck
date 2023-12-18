@@ -114,7 +114,7 @@ public class playerMove : MonoBehaviour
         if(collision.gameObject.tag=="item")
         {
             ItemCount++;
-            Debug.Log(ItemCount);
+            
             if (ItemCount == 10)
             {
                 GameObject sword = GameObject.Find("ObjSword");

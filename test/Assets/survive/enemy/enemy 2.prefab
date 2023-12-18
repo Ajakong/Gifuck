@@ -167,6 +167,7 @@ MonoBehaviour:
   Hp: 100
   attack: 5
   Item: {fileID: 7627553022071714383, guid: 8ed7d5952cf308144bddeb4254460a4c, type: 3}
+  Die: {fileID: 5978648413883117236, guid: ca15b54731f890c4faeb6b0c4412188b, type: 3}
 --- !u!114 &3885535379320397856
 MonoBehaviour:
   m_ObjectHideFlags: 0

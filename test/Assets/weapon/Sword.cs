@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    
     GameObject player;
 
     public GameObject Enemy;
@@ -94,7 +95,7 @@ public class Sword : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+       
 
         //プレイヤーに当たる前の処理
         if (!isHitFlag)
