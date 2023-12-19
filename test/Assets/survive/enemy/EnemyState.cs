@@ -27,10 +27,9 @@ public class EnemyState : MonoBehaviour
 
     UniState state;
 
-    theWorldTime time; 
-   
+    theWorldTime time;
 
-    
+            
     // Start is called before the first frame update
     void Start()
     {

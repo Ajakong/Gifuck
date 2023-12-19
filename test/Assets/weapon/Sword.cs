@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    
     GameObject player;
 
     public GameObject Enemy;
@@ -60,9 +59,16 @@ public class Sword : MonoBehaviour
 
     Rigidbody rb;
 
+    AudioSource hit;
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        hit = GetComponent<AudioSource>();
+
+       
+
         //"player"を探す
         //player = GameObject.Find("Player");
         player = GameObject.Find("unitychan");
@@ -96,7 +102,6 @@ public class Sword : MonoBehaviour
     void FixedUpdate()
     {
        
-
         //プレイヤーに当たる前の処理
         if (!isHitFlag)
         {
@@ -188,19 +193,18 @@ public class Sword : MonoBehaviour
         
     }
 
-    
-
-    void OnTriggerEnter(Collider collision) // 当たり判定を察知
+    private void OnCollisionEnter(Collision collision)
     {
 
-      
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log(swordAt);
             EHp = collision.gameObject.GetComponent<EnemyState>();
+            hit.Play();
+
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;
-            if(collCoolTime>=45)
+            if (collCoolTime >= 45)
             {
                 HitStop();
                 collCoolTime = 0;
@@ -210,17 +214,18 @@ public class Sword : MonoBehaviour
             hitVec.x = collision.gameObject.transform.position.x - transform.position.x;
             hitVec.z = collision.gameObject.transform.position.z - transform.position.z;
             hitVec.Normalize();
-            rb=collision.gameObject.GetComponent<Rigidbody>();
+            rb = collision.gameObject.GetComponent<Rigidbody>();
             rb.velocity += hitVec;
 
 
 
 
         }
-
+        
         if (collision.gameObject.tag == "Player")
         {
-
+            col=this.GetComponent<BoxCollider>();
+            col.isTrigger= true;
             
             //プレイヤーに当たった(剣の動きを消す)
             isHitFlag = true;
@@ -246,8 +251,16 @@ public class Sword : MonoBehaviour
             //col.enabled = false;
 
         }
+    }
 
-  
+    void OnTriggerEnter(Collider collision) // 当たり判定を察知
+    {
+
+        col.isTrigger = false;
+
+
+
+
     }
 
     void OnCollisionExit(Collision collision)
@@ -259,6 +272,7 @@ public class Sword : MonoBehaviour
 
             EHp = collision.gameObject.GetComponent<EnemyState>();
             EHp.HpMove -= swordAt;
+
             CoolTimeFlag = true;
             if (collCoolTime >= 45)
             {
