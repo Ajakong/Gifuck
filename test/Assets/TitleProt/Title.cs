@@ -8,6 +8,9 @@ using System.Collections.Specialized;
 
 public class Title : MonoBehaviour
 {
+    public AudioSource select;
+    public AudioSource selectChoise;
+
     public GameObject playGame;
     public GameObject toTuto;
 
@@ -27,9 +30,12 @@ public class Title : MonoBehaviour
 
     bool choiseInter=false;
 
+    
+
     // Start is called before the first frame update
     void Awake()
     {
+        
         toTuto.SetActive(false);
         playGame.SetActive(true);
 
@@ -67,6 +73,7 @@ public class Title : MonoBehaviour
         {
             if (choiseInter == false)
             {
+                select.Play();
                 choise++;
             }
             choiseInter =true;
@@ -128,6 +135,7 @@ public class Title : MonoBehaviour
 
     public void ToNext(InputAction.CallbackContext context)
     {
+        selectChoise.Play();
         if (isToGame)
         {
             SceneManager.LoadScene("SampleScene");
