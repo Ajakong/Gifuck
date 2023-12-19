@@ -8,8 +8,8 @@ using System.Collections.Specialized;
 
 public class Title : MonoBehaviour
 {
-    GameObject firstText;
-    GameObject secondText;
+    public GameObject playGame;
+    public GameObject toTuto;
 
     Vector3 startFirstTextSize;
     Vector3 startSecondTextSize;
@@ -25,13 +25,13 @@ public class Title : MonoBehaviour
 
     int choise=0;
 
+    bool choiseInter=false;
+
     // Start is called before the first frame update
     void Awake()
     {
-        firstText = GameObject.Find("GameStart");
-        startFirstTextSize = firstText.transform.localScale;
-        secondText = GameObject.Find("toTutorial");
-        startSecondTextSize = secondText.transform.localScale;
+        toTuto.SetActive(false);
+        playGame.SetActive(true);
 
     }
 
@@ -63,19 +63,30 @@ public class Title : MonoBehaviour
             //secondFlag = false;
         }
 
-        if (Mathf.Abs(axis.y) >= 0.8f)
+        if (Mathf.Abs(axis.y) >= 0.9f)
         {
-
-            choise++;
+            if (choiseInter == false)
+            {
+                choise++;
+            }
+            choiseInter =true;
+        }
+        if (Mathf.Abs(axis.y) <= 0.2f)
+        {
+            choiseInter = false;
         }
         UnityEngine.Debug.Log(isToGame);
         if(choise%2==0)
         {
-
+            
+            toTuto.SetActive(false);
+            playGame.SetActive(true);
             isToGame = true;
         }
         if(choise%2==1)
         {
+            playGame.SetActive(false);
+            toTuto.SetActive(true);
             isToGame= false;
         }
         //if (firstFlag)
