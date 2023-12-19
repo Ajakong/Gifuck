@@ -23,6 +23,8 @@ public class Title : MonoBehaviour
 
     Vector2 axis = Vector2.zero;
 
+    int choise=0;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,6 +32,7 @@ public class Title : MonoBehaviour
         startFirstTextSize = firstText.transform.localScale;
         secondText = GameObject.Find("toTutorial");
         startSecondTextSize = secondText.transform.localScale;
+
     }
 
     public void OnInputStick(InputAction.CallbackContext context)
@@ -60,6 +63,21 @@ public class Title : MonoBehaviour
             //secondFlag = false;
         }
 
+        if (Mathf.Abs(axis.y) >= 0.8f)
+        {
+
+            choise++;
+        }
+        UnityEngine.Debug.Log(isToGame);
+        if(choise%2==0)
+        {
+
+            isToGame = true;
+        }
+        if(choise%2==1)
+        {
+            isToGame= false;
+        }
         //if (firstFlag)
         //{
         //    if (isToGame)
