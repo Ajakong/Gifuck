@@ -6340,6 +6340,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3b9c388a-bae2-47d9-9b01-cd5d167d0f5b
     m_ActionName: Player/Heal[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c9e0b84-fed3-4411-b012-29a6bdc469d7
+    m_ActionName: Player/Pause[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1775098005}
+        m_TargetAssemblyTypeName: Title, Assembly-CSharp
+        m_MethodName: OnInputStick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 393dcb86-bfd8-4040-ba6a-643e019980a7
+    m_ActionName: Player/Up[/XInputControllerWindows/leftStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -6556,15 +6576,15 @@ RectTransform:
   m_GameObject: {fileID: 1762058927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.04, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.099999994, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 403868987}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.8, y: -13.4}
+  m_AnchoredPosition: {x: 18.8, y: -19.68}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1762058929
@@ -6703,6 +6723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084a99e6d9b1c0147b1e4a6e4229c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstFlag: 0
+  secondFlag: 0
 --- !u!114 &1774562055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6824,11 +6846,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775098000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 084a99e6d9b1c0147b1e4a6e4229c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstFlag: 0
+  secondFlag: 0
 --- !u!1 &1903385564
 GameObject:
   m_ObjectHideFlags: 0
@@ -6990,8 +7014,8 @@ RectTransform:
   m_GameObject: {fileID: 2040631942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.1, y: 0.04, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.22000001, y: 0.088, z: 2.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 403868987}
   m_RootOrder: 0
