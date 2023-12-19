@@ -29,13 +29,13 @@ public class EnemyState : MonoBehaviour
 
     theWorldTime time;
 
-            
     // Start is called before the first frame update
     void Start()
     {
         world = GameObject.Find("world");
         time=world.GetComponent<theWorldTime>();
         Hp = maxHp;
+
     }
 
     // Update is called once per frame
@@ -47,6 +47,7 @@ public class EnemyState : MonoBehaviour
         //Ž€‚ñ‚¾
         if (Hp < 1)
         {
+            
             DieEffect=Instantiate(Die);
             DieEffect.transform.position = transform.position;
 

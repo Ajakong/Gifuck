@@ -21,10 +21,17 @@ public class ItemCon : MonoBehaviour
 
     GameObject sword2;
 
+    public GameObject scoreCounter;
+    ScoreCount score;
+
+
     private void Awake()
     {
         awakeCount++;
         playerCount=awakeCount;
+
+        score = scoreCounter.GetComponent<ScoreCount>();
+
     }
     // Start is called before the first frame update
     void Start()
@@ -57,6 +64,7 @@ public class ItemCon : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            score.scoreMove += 100;
 
             Destroy(this.gameObject);
         }
