@@ -39,8 +39,6 @@ public class PMove : MonoBehaviour
 
     private void Awake()
     {
-       
-
         _transform = transform;
         _characterController = GetComponent<CharacterController>();
         //myRb = GetComponent<Rigidbody>();
