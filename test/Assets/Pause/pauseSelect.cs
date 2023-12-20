@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.InputSystem;
 using System.Diagnostics;
 using System.Collections.Specialized;
 
-public class Title : MonoBehaviour
+public class pauseSelect : MonoBehaviour
 {
     public AudioSource select;
     public AudioSource selectChoise;
@@ -22,22 +23,22 @@ public class Title : MonoBehaviour
     public bool firstFlag = true;
     public bool secondFlag = false;
 
-    
+
 
     int isSelect = 0;
 
     Vector2 axis = Vector2.zero;
 
-    int choise=0;
+    int choise = 0;
 
-    bool choiseInter=false;
+    bool choiseInter = false;
 
-    
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        
+
         Continue.SetActive(true);
         Info.SetActive(false);
         secret.SetActive(false);
@@ -80,14 +81,14 @@ public class Title : MonoBehaviour
                 select.Play();
                 choise++;
             }
-            choiseInter =true;
+            choiseInter = true;
         }
         if (Mathf.Abs(axis.y) <= 0.2f)
         {
             choiseInter = false;
         }
-        
-        if(choise%4==0)
+
+        if (choise % 4 == 0)
         {
             isSelect = 0;
             Continue.SetActive(true);
@@ -95,7 +96,7 @@ public class Title : MonoBehaviour
             secret.SetActive(false);
             toTitle.SetActive(false);
         }
-        if(choise%4==1)
+        if (choise % 4 == 1)
         {
             isSelect = 1;
             Continue.SetActive(false);
@@ -160,14 +161,21 @@ public class Title : MonoBehaviour
     public void ToNext(InputAction.CallbackContext context)
     {
         selectChoise.Play();
-        if (isToGame)
+        if (isSelect == 0)
         {
-            SceneManager.LoadScene("SampleScene");
-
+            //pauseÁ‚·
         }
-        else if (!isToGame)
+        else if (isSelect == 1)
         {
-            SceneManager.LoadScene("tutoreal");
+            //info‚Ì•\Ž¦
+        }
+        else if (isSelect == 2)
+        {
+            //???‚Ì•\Ž¦
+        }
+        else if (isSelect == 3)
+        {
+            SceneManager.LoadScene("TitleProt");
         }
 
     }
