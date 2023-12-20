@@ -8,6 +8,8 @@ public class animation : MonoBehaviour
     TrailRenderer trailRenderer;
 
     public GameObject sword;
+    BoxCollider swordCol;
+
     Animator animator;
 
     Vector2 tempVec;
@@ -25,8 +27,10 @@ public class animation : MonoBehaviour
     void Start()
     {
         trailRenderer = sword.GetComponent<TrailRenderer>();
-
+        swordCol=sword.GetComponent<BoxCollider>();
         animator = GetComponent<Animator>();
+        swordCol.enabled = true;
+
         dushFalg = false;
         moveFlag = false;
 
@@ -55,21 +59,29 @@ public class animation : MonoBehaviour
             animator.SetBool("dashBool", false);
 
         }
-
-        if(attackCount>=60)
-        {
-            attackCount = 0;
-            m_attackFlag = false;
-            trailRenderer.Clear();
-            trailRenderer.enabled = false ;
-        }
         Debug.Log(attackCount);
+        
+       
     }
 
     private void FixedUpdate()
     {
-        if(m_attackFlag)
+       
+        if (attackCount >= 60)
         {
+            swordCol.enabled = false;
+            attackCount = 0;
+            m_attackFlag = false;
+            if (trailRenderer.enabled == true)
+            {
+                trailRenderer.Clear();
+                trailRenderer.enabled = false;
+            }
+        }
+        if (m_attackFlag)
+        {
+
+
             trailRenderer.enabled = true;
             attackCount++;
         }
@@ -112,9 +124,18 @@ public class animation : MonoBehaviour
         if(m_attackFlag==false)
         {
             m_attackFlag = true;
-
+            swordCol.enabled = true;
             animator.SetTrigger("swordTrigger");
-            
+
+            //TrailRendererの頂点情報からメッシュを生成する
+            TrailRenderer paintObjectTrailRenderer = sword.GetComponent<TrailRenderer>();
+            //子にコライダーだけ持つオブジェクトを作成する
+            GameObject colliderContainer = new GameObject("TrailCollider");
+            colliderContainer.transform.SetParent(sword.transform);
+            MeshCollider meshCollider = colliderContainer.AddComponent<MeshCollider>();
+            //Mesh mesh = new Mesh();
+            //paintObjectTrailRenderer.BakeMesh(mesh);
+            //meshCollider.sharedMesh = mesh;
         }
     }
 

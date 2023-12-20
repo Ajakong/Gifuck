@@ -226,7 +226,10 @@ public class Sword : MonoBehaviour
         {
             col=this.GetComponent<BoxCollider>();
             col.isTrigger= true;
-            
+            if(isHitFlag==false)
+            {
+                col.enabled = false;
+            }
             //プレイヤーに当たった(剣の動きを消す)
             isHitFlag = true;
             //剣をプレイヤーの子オブジェクトにする
@@ -265,7 +268,7 @@ public class Sword : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        Debug.Log("aiaiaiai");
+        
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("aiaiaiai");

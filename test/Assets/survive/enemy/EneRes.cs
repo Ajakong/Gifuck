@@ -42,7 +42,7 @@ public class EneRes : MonoBehaviour
         {
             reS = 1;
             enemy = Instantiate(EnemyPre);
-            enemy.transform.position = new Vector3(transform.position.x+RandX, 10, transform.position.z+RandZ);
+            enemy.transform.position = new Vector3(transform.position.x+RandX, 20, transform.position.z+RandZ);
             
         }
 
