@@ -11,10 +11,8 @@ public class Title : MonoBehaviour
     public AudioSource select;
     public AudioSource selectChoise;
 
-    public GameObject Continue;
-    public GameObject Info;
-    public GameObject secret;
-    public GameObject toTitle;
+    public GameObject playGame;
+    public GameObject toTuto;
 
     Vector3 startFirstTextSize;
     Vector3 startSecondTextSize;
@@ -24,7 +22,7 @@ public class Title : MonoBehaviour
 
     
 
-    int isSelect = 0;
+    bool isToGame= false;
 
     Vector2 axis = Vector2.zero;
 
@@ -38,10 +36,8 @@ public class Title : MonoBehaviour
     void Awake()
     {
         
-        Continue.SetActive(true);
-        Info.SetActive(false);
-        secret.SetActive(false);
-        toTitle.SetActive(false);
+        playGame.SetActive(true);
+        toTuto.SetActive(false);
 
     }
 
@@ -87,39 +83,17 @@ public class Title : MonoBehaviour
             choiseInter = false;
         }
         
-        if(choise%4==0)
+        if(choise%2==0)
         {
-            isSelect = 0;
-            Continue.SetActive(true);
-            Info.SetActive(false);
-            secret.SetActive(false);
-            toTitle.SetActive(false);
+            playGame.SetActive(true);
+            toTuto.SetActive(false);
         }
-        if(choise%4==1)
+        if(choise%2==1)
         {
-            isSelect = 1;
-            Continue.SetActive(false);
-            Info.SetActive(true);
-            secret.SetActive(false);
-            toTitle.SetActive(false);
+            playGame.SetActive(false);
+            toTuto.SetActive(true);
         }
-        if (choise % 4 == 2)
-        {
-            isSelect = 2;
-            Continue.SetActive(false);
-            Info.SetActive(false);
-            secret.SetActive(true);
-
-            toTitle.SetActive(false);
-        }
-        if (choise % 4 == 3)
-        {
-            isSelect = 3;
-            Continue.SetActive(false);
-            Info.SetActive(false);
-            secret.SetActive(false);
-            toTitle.SetActive(true);
-        }
+        
         //if (firstFlag)
         //{
         //    if (isToGame)
