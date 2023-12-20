@@ -31,19 +31,26 @@ public class pauseSelect : MonoBehaviour
 
     int choise = 0;
 
+    bool selectFlag=false;
     bool choiseInter = false;
 
-
+    public GameObject pause;
+    public GameObject UniInfo;
+    public GameObject topSecret;
 
     // Start is called before the first frame update
     void Awake()
     {
 
+        //panelのコントロール
         Continue.SetActive(true);
         Info.SetActive(false);
         secret.SetActive(false);
         toTitle.SetActive(false);
 
+        //Infoのコントロール
+        UniInfo.SetActive(false);
+        topSecret.SetActive(false);
     }
 
     public void OnInputStick(InputAction.CallbackContext context)
@@ -67,6 +74,7 @@ public class pauseSelect : MonoBehaviour
     void Update()
     {
 
+        UnityEngine.Debug.Log(choise);
         if (axis == Vector2.zero)
         {
             UnityEngine.Debug.Log(axis.y);
@@ -74,7 +82,16 @@ public class pauseSelect : MonoBehaviour
             //secondFlag = false;
         }
 
-        if (Mathf.Abs(axis.y) >= 0.9f)
+        if (axis.y >= 0.6f)
+        {
+            if (choiseInter == false)
+            {
+                select.Play();
+                choise--;
+            }
+            choiseInter = true;
+        }
+        if (axis.y <= -0.6f)
         {
             if (choiseInter == false)
             {
@@ -96,7 +113,7 @@ public class pauseSelect : MonoBehaviour
             secret.SetActive(false);
             toTitle.SetActive(false);
         }
-        if (choise % 4 == 1)
+        if (choise % 4 == 1||choise%4==-3)
         {
             isSelect = 1;
             Continue.SetActive(false);
@@ -104,7 +121,7 @@ public class pauseSelect : MonoBehaviour
             secret.SetActive(false);
             toTitle.SetActive(false);
         }
-        if (choise % 4 == 2)
+        if (choise % 4 == 2||choise%4==-2)
         {
             isSelect = 2;
             Continue.SetActive(false);
@@ -113,7 +130,7 @@ public class pauseSelect : MonoBehaviour
 
             toTitle.SetActive(false);
         }
-        if (choise % 4 == 3)
+        if (choise % 4 == 3||choise%4==-1)
         {
             isSelect = 3;
             Continue.SetActive(false);
@@ -160,22 +177,41 @@ public class pauseSelect : MonoBehaviour
 
     public void ToNext(InputAction.CallbackContext context)
     {
+
+        UnityEngine.Debug.Log("iloveyou");
         selectChoise.Play();
-        if (isSelect == 0)
+        if(selectFlag==true)
         {
-            //pause消す
+            UniInfo.SetActive(false);
+            topSecret.SetActive(false);
         }
-        else if (isSelect == 1)
+        else
         {
-            //infoの表示
-        }
-        else if (isSelect == 2)
-        {
-            //???の表示
-        }
-        else if (isSelect == 3)
-        {
-            SceneManager.LoadScene("TitleProt");
+            if (isSelect == 0)
+            {
+                //初期化
+                UniInfo.SetActive(false);
+                topSecret.SetActive(false);
+                choise = 0;
+
+                this.gameObject.SetActive(false);
+            }
+            else if (isSelect == 1)
+            {
+                //infoの表示
+                UniInfo.SetActive(true);
+                selectFlag = true;
+            }
+            else if (isSelect == 2)
+            {
+                //???の表示
+                topSecret.SetActive(true);
+                selectFlag = true;
+            }
+            else if (isSelect == 3)
+            {
+                SceneManager.LoadScene("TitleProt");
+            }
         }
 
     }

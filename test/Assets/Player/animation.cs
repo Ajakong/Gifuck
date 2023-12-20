@@ -59,7 +59,7 @@ public class animation : MonoBehaviour
             animator.SetBool("dashBool", false);
 
         }
-        Debug.Log(attackCount);
+        //Debug.Log(attackCount);
         
        
     }

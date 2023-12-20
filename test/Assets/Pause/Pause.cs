@@ -23,8 +23,9 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pauseIma.SetActive(pause);
-        menuIma.SetActive(pause);
+        //pauseIma.SetActive(pause);
+
+        //menuIma.SetActive(pause);
         
        
 
@@ -36,23 +37,26 @@ public class Pause : MonoBehaviour
 
     public void Pausing(InputAction.CallbackContext context)
     {
-        //ê‡ñæÇÕïsóvÉiÉä
-        if (backFlag == false)
+            
+        if(pauseIma.activeSelf==true)
         {
-            pause = true;
-            backFlag = true;
-
-
-            Time.timeScale = 0;
-        }
-        else
-        {
+            pauseIma.SetActive (false);
             pause = false;
             backFlag = false;
             Info.SetActive(false);
 
             Time.timeScale = 1;
         }
+        else if(pauseIma.activeSelf==false)
+        {
+            pause = true;
+            backFlag = true;
+            pauseIma.SetActive(true);
+
+            Time.timeScale = 0;
+
+        }
+
 
     }
 }
