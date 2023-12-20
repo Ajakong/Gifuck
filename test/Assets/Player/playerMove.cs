@@ -115,20 +115,20 @@ public class playerMove : MonoBehaviour
         {
             ItemCount++;
             
-            if (ItemCount == 10)
-            {
-                GameObject sword = GameObject.Find("ObjSword");
-                Transform transform = sword.transform;
-                sword2 = Instantiate(SwordInfo);
-                sword2.gameObject.transform.parent = oyaObj.gameObject.transform;
-                sword2.transform.position = transform.position;
-                sword2.transform.localEulerAngles = transform.localEulerAngles;
-                sword2.transform.localScale = transform.localScale;
+            //if (ItemCount == 10)
+            //{
+            //    GameObject sword = GameObject.Find("ObjSword");
+            //    Transform transform = sword.transform;
+            //    sword2 = Instantiate(SwordInfo);
+            //    sword2.gameObject.transform.parent = oyaObj.gameObject.transform;
+            //    sword2.transform.position = transform.position;
+            //    sword2.transform.localEulerAngles = transform.localEulerAngles;
+            //    sword2.transform.localScale = transform.localScale;
 
-                Destroy(sword.gameObject);
+            //    Destroy(sword.gameObject);
 
 
-            }
+            //}
         }
         
 
