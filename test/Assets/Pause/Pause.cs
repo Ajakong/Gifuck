@@ -26,8 +26,17 @@ public class Pause : MonoBehaviour
         //pauseIma.SetActive(pause);
 
         //menuIma.SetActive(pause);
-        
-       
+
+        if (pauseIma.activeSelf == true)
+        {
+            Time.timeScale = 0;
+
+        }
+        else
+        {
+            Time.timeScale = 1;
+
+        }
 
 
 
@@ -45,7 +54,7 @@ public class Pause : MonoBehaviour
             backFlag = false;
             Info.SetActive(false);
 
-            Time.timeScale = 1;
+            
         }
         else if(pauseIma.activeSelf==false)
         {
@@ -53,8 +62,7 @@ public class Pause : MonoBehaviour
             backFlag = true;
             pauseIma.SetActive(true);
 
-            Time.timeScale = 0;
-
+            
         }
 
 

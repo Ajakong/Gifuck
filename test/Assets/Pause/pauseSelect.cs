@@ -73,7 +73,7 @@ public class pauseSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         UnityEngine.Debug.Log(choise);
         if (axis == Vector2.zero)
         {
@@ -179,9 +179,10 @@ public class pauseSelect : MonoBehaviour
     {
 
         UnityEngine.Debug.Log("iloveyou");
-        selectChoise.Play();
+        //selectChoise.Play();
         if(selectFlag==true)
         {
+            selectFlag = false;
             UniInfo.SetActive(false);
             topSecret.SetActive(false);
         }
@@ -193,7 +194,7 @@ public class pauseSelect : MonoBehaviour
                 UniInfo.SetActive(false);
                 topSecret.SetActive(false);
                 choise = 0;
-
+                
                 this.gameObject.SetActive(false);
             }
             else if (isSelect == 1)
