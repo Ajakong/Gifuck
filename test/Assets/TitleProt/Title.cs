@@ -85,11 +85,13 @@ public class Title : MonoBehaviour
         
         if(choise%2==0)
         {
+            isToGame= true;
             playGame.SetActive(true);
             toTuto.SetActive(false);
         }
         if(choise%2==1)
         {
+            isToGame = false;
             playGame.SetActive(false);
             toTuto.SetActive(true);
         }
