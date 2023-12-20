@@ -29,13 +29,23 @@ public class EnemyState : MonoBehaviour
 
     theWorldTime time;
 
+    KillEneCount count;
+    GameObject counter;
+
+    EnemyHp EneHp;
+    GameObject EneHpUI;
+
     // Start is called before the first frame update
     void Start()
     {
         world = GameObject.Find("world");
         time=world.GetComponent<theWorldTime>();
         Hp = maxHp;
-
+        counter = GameObject.Find("KillEnemy");
+        count=counter.GetComponent<KillEneCount>();
+        EneHpUI = GameObject.Find("EnemyHp");
+        EneHp=EneHp.GetComponent<EnemyHp>();
+        
     }
 
     // Update is called once per frame
@@ -47,7 +57,7 @@ public class EnemyState : MonoBehaviour
         //Ž€‚ñ‚¾
         if (Hp < 1)
         {
-            
+            count.KillMove += 1;
             DieEffect=Instantiate(Die);
             DieEffect.transform.position = transform.position;
 
@@ -62,6 +72,7 @@ public class EnemyState : MonoBehaviour
         {
             maxHp += 20 ;
             powerUpCount++;
+            EneHp.HpMove = maxHp;
         }
        
 

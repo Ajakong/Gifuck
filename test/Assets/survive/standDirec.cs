@@ -6,6 +6,8 @@ using UnityEngine.PlayerLoop;
 public class standDirec : MonoBehaviour
 {
     public GameObject Boss;
+    public GameObject sun;
+    public GameObject demonsSun;
 
     bool MoveWorld=false;
     int MoveWorldInterval=0;
@@ -14,14 +16,22 @@ public class standDirec : MonoBehaviour
     void Start()
     {
         Boss.SetActive(false);
+        demonsSun.SetActive(false);
+        sun.SetActive(true);
     }
 
     // Update is called once per frame
 
     private void Update()
     {
-        if(MoveWorldInterval>=60)
+        if (MoveWorldInterval>=50)
         {
+            sun.SetActive(false);
+
+        }
+        if (MoveWorldInterval>=60)
+        {
+            demonsSun.SetActive(true);
             Boss.SetActive(true);
         }
     }

@@ -27,6 +27,9 @@ public class enemyDirector : MonoBehaviour
 
     Rigidbody myRb;
 
+    EneSpeed EneSpeed;
+    GameObject EneSpeedUI;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,7 +40,9 @@ public class enemyDirector : MonoBehaviour
         world = GameObject.Find("world");
         time = world.GetComponent<theWorldTime>();
         moveSpeed = MaxSpeed;
-       
+        EneSpeedUI = GameObject.Find("EneSpeed");
+        EneSpeed = EneSpeedUI.GetComponent<EneSpeed>();
+
     }
 
     // Update is called once per frame
@@ -60,7 +65,7 @@ public class enemyDirector : MonoBehaviour
 
             MaxSpeed += 0.002f;
             speedUpCounter++;
-
+            EneSpeed.SpeedMove = MaxSpeed;
         }
     }
     void FixedUpdate()

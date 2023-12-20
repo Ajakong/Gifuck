@@ -19,7 +19,7 @@ public class playerMove : MonoBehaviour
     private float _speed = 500f;
 
     [Header("ÉJÉÅÉâ"), SerializeField]
-    private Camera _targetCamera;
+    Camera _targetCamera;
 
     private Transform _transform;
     
@@ -54,7 +54,8 @@ public class playerMove : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+
+        //DontDestroyOnLoad(this);
         myRb = GetComponent<Rigidbody>();
         oyaObj = GameObject.Find("Character1_RightHandMiddle1");
 
