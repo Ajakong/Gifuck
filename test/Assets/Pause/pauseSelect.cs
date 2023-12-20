@@ -178,7 +178,7 @@ public class pauseSelect : MonoBehaviour
     public void ToNext(InputAction.CallbackContext context)
     {
 
-        UnityEngine.Debug.Log("iloveyou");
+        
         //selectChoise.Play();
         if(selectFlag==true)
         {

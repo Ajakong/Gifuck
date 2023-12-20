@@ -54,6 +54,7 @@ public class playerMove : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         myRb = GetComponent<Rigidbody>();
         oyaObj = GameObject.Find("Character1_RightHandMiddle1");
 

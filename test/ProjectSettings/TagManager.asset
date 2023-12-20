@@ -11,11 +11,12 @@ TagManager:
   - item
   - bossArm
   - spirit
+  - bonus
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - player
@@ -42,7 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - ground
   - 
   m_SortingLayers:
   - name: Default

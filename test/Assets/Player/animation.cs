@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class animation : MonoBehaviour
 {
+    Rigidbody rb;
+
+
     TrailRenderer trailRenderer;
 
     public GameObject sword;
     BoxCollider swordCol;
 
     Animator animator;
+
+    Ray ray;
+    Vector3 originRay;
+    Vector3 RayCast;
 
     Vector2 tempVec;
 
@@ -26,6 +34,8 @@ public class animation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb=GetComponent<Rigidbody>();
+        RayCast = new Vector3(0, -1, 0);
         trailRenderer = sword.GetComponent<TrailRenderer>();
         swordCol=sword.GetComponent<BoxCollider>();
         animator = GetComponent<Animator>();
@@ -60,8 +70,8 @@ public class animation : MonoBehaviour
 
         }
         //Debug.Log(attackCount);
+
         
-       
     }
 
     private void FixedUpdate()
@@ -141,7 +151,17 @@ public class animation : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("jumpTrigger");
+        RaycastHit hit;
+        originRay = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
+
+        ray = new Ray(originRay, RayCast);
+        Debug.Log(originRay);
+        if(Physics.Raycast(originRay,RayCast,-500,30))
+        {
+            
+            rb.AddForce(0, 5, 0, ForceMode.Impulse);
+            animator.SetTrigger("jumpTrigger");
+        }
     }
 
 

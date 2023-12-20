@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -526,6 +526,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: df248139392b5a0438de493b3dee1bbd, type: 3}
       propertyPath: m_Name
       value: ObjSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: df248139392b5a0438de493b3dee1bbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: df248139392b5a0438de493b3dee1bbd, type: 3}
       propertyPath: m_TagString
@@ -3106,14 +3110,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972187731}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a51d546d1f96f2540adaed695df05a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
   Hp: 100
-  Item: {fileID: 2149596131510216906, guid: 617b039ea4dff674490d9f991d711266, type: 3}
+  Item: {fileID: 1646317322865468770, guid: 436eaf35eb69d21419388c3e951e9f8f, type: 3}
   player: {fileID: 1740410966}
   dis: 0
   jumpCount: 0

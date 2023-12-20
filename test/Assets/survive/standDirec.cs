@@ -42,6 +42,7 @@ public class standDirec : MonoBehaviour
         {
             Debug.Log("°‚ÌŒŸ’m");
             MoveWorld = true;
+
         }
     }
 }
