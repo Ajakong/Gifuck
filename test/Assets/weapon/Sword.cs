@@ -146,16 +146,7 @@ public class Sword : MonoBehaviour
         if (colFlag)
         {
             count++;
-            if (count >= 1f && count <= 1.5f)
-            {
-                col.enabled = true;
-            }
-            else if (count > 1.5f || count <= 30f)
-            {
-                col.enabled = false;
             
-            }
-
         }
 
         if(count > 55)
@@ -173,6 +164,21 @@ public class Sword : MonoBehaviour
     {
         swordAt = power.powerNum;
 
+
+        if(colFlag)
+        {
+            col.isTrigger = false;
+            if (count >= 1f && count <= 1.5f)
+            {
+                col.enabled = true;
+            }
+            else if (count > 1.5f || count <= 30f)
+            {
+                col.enabled = true;
+
+            }
+
+        }
         if (Input.GetMouseButtonDown(0))
         {
             colFlag = true;

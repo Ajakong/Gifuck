@@ -2533,21 +2533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1443375bbf863458d71e78910d3698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1013809134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013809132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe0845aeddc04e41b1c6c6fbc9b3d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemy: {fileID: 3885535379320397859, guid: 4552bb1d24679824a845721bee950743, type: 3}
-  RootObject: {fileID: 217939850}
-  count: 0
 --- !u!82 &1013809135
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2781,6 +2766,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!114 &1013809139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013809132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f59d8ce048ea140a68e0b908cd71a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 1888274863}
+  RootObject: {fileID: 217939850}
+  count: 0
 --- !u!1 &1132095100
 GameObject:
   m_ObjectHideFlags: 0

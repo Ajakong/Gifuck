@@ -8,6 +8,8 @@ using UnityEngine;
 public class tutoSword : MonoBehaviour
 {
     GameObject player;
+
+    public GameObject Enemy;
     UniState power;
 
     //プレイヤーの座標
@@ -16,7 +18,7 @@ public class tutoSword : MonoBehaviour
     Transform playerTransform;
 
     //敵の基礎能力
-    tutoEnemyState EHp;
+    EnemyState EHp;
 
     //プレイヤーに当たったかどうか
     bool isHitFlag = false;
@@ -55,9 +57,18 @@ public class tutoSword : MonoBehaviour
     bool CoolTimeFlag = false;
 
 
+    Rigidbody rb;
+
+    AudioSource hit;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        hit = GetComponent<AudioSource>();
+
+
+
         //"player"を探す
         //player = GameObject.Find("Player");
         player = GameObject.Find("unitychan");
@@ -83,12 +94,13 @@ public class tutoSword : MonoBehaviour
         col = GetComponent<BoxCollider>();
 
         hitVec = new Vector3(0, -2, 0);
+
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
 
         //プレイヤーに当たる前の処理
         if (!isHitFlag)
@@ -134,10 +146,15 @@ public class tutoSword : MonoBehaviour
         if (colFlag)
         {
             count++;
-            
-            col.enabled = false;
-            
-           
+            if (count >= 1f && count <= 1.5f)
+            {
+                col.enabled = true;
+            }
+            else if (count > 1.5f || count <= 30f)
+            {
+                col.enabled = false;
+
+            }
 
         }
 
@@ -176,16 +193,15 @@ public class tutoSword : MonoBehaviour
 
     }
 
-
-
-    void OnTriggerEnter(Collider collision) // 当たり判定を察知
+    private void OnCollisionEnter(Collision collision)
     {
 
-        Debug.Log("aiaiaiai");
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("aiaiaiai");
-            EHp = collision.gameObject.GetComponent<tutoEnemyState>();
+
+            EHp = collision.gameObject.GetComponent<EnemyState>();
+            hit.Play();
+
             EHp.HpMove -= swordAt;
             CoolTimeFlag = true;
             if (collCoolTime >= 45)
@@ -198,16 +214,16 @@ public class tutoSword : MonoBehaviour
             hitVec.x = collision.gameObject.transform.position.x - transform.position.x;
             hitVec.z = collision.gameObject.transform.position.z - transform.position.z;
             hitVec.Normalize();
-            transform.position -= hitVec;
+            rb = collision.gameObject.GetComponent<Rigidbody>();
+            rb.velocity += hitVec;
 
-            colFlag = true;
+
 
 
         }
 
         if (collision.gameObject.tag == "Player")
         {
-
 
             //プレイヤーに当たった(剣の動きを消す)
             isHitFlag = true;
@@ -231,21 +247,34 @@ public class tutoSword : MonoBehaviour
 
             ////当たり判定削除
             //col.enabled = false;
+            col = this.GetComponent<BoxCollider>();
+            col.isTrigger = true;
+
+            col.enabled = false;
 
         }
+    }
+
+    void OnTriggerEnter(Collider collision) // 当たり判定を察知
+    {
+
+        col.isTrigger = false;
+
+
 
 
     }
 
     void OnCollisionExit(Collision collision)
     {
-        Debug.Log("aiaiaiai");
+
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("aiaiaiai");
 
-            EHp = collision.gameObject.GetComponent<tutoEnemyState>();
+            EHp = collision.gameObject.GetComponent<EnemyState>();
             EHp.HpMove -= swordAt;
+
             CoolTimeFlag = true;
             if (collCoolTime >= 45)
             {
