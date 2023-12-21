@@ -134,15 +134,10 @@ public class tutoSword : MonoBehaviour
         if (colFlag)
         {
             count++;
-            if (count >= 1f && count <= 1.5f)
-            {
-                col.enabled = true;
-            }
-            else if (count > 1.5f || count <= 30f)
-            {
-                col.enabled = false;
-
-            }
+            
+            col.enabled = false;
+            
+           
 
         }
 
@@ -205,7 +200,7 @@ public class tutoSword : MonoBehaviour
             hitVec.Normalize();
             transform.position -= hitVec;
 
-
+            colFlag = true;
 
 
         }

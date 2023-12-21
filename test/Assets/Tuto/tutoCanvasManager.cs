@@ -9,6 +9,8 @@ public class tutoCanvasManager : MonoBehaviour
     public GameObject HpbarLowInfo;
     public GameObject PotionInfo;
     public GameObject TimerInfo;
+    public GameObject ButtonInfo;
+
     public GameObject unitychan;
 
     PHpDecCount HpCount;
@@ -21,6 +23,10 @@ public class tutoCanvasManager : MonoBehaviour
 
     bool lowHpFlag=false;
 
+    Vector3 scale;
+
+
+    RectTransform trans;
 
     // Start is called before the first frame update
     void Start()
@@ -29,22 +35,26 @@ public class tutoCanvasManager : MonoBehaviour
         HpbarLowInfo.SetActive(false);
         PotionInfo.SetActive(false);
         TimerInfo.SetActive(false);
+        ButtonInfo.SetActive(false);
         
         HpCount=unitychan.GetComponent<PHpDecCount>();
 
+
+        scale = new Vector3(0.25f, 0.25f, 1);
+        trans=ButtonInfo.GetComponent<RectTransform>();    
     }
 
     // Update is called once per frame
     void Update()
     {
         playerHp = HpCount.HpCounting;
-
+       
 
         if(UIManageCounter==0&&timer>=100)
         {
             HpbarInfo.SetActive(true);
         }
-        if(UIManageCounter == 1 && timer >= 100&&playerHp >=4)
+        if(UIManageCounter == 1 && timer >= 100&&playerHp >=2)
         {
             HpbarLowInfo.SetActive(true);
             lowHpFlag=true;
@@ -56,6 +66,10 @@ public class tutoCanvasManager : MonoBehaviour
         if (UIManageCounter == 3 && timer >= 100)
         {
             TimerInfo.SetActive(true);
+        }
+        if (UIManageCounter == 4)
+        {
+            ButtonInfo.SetActive(true);
         }
 
     }
@@ -75,7 +89,7 @@ public class tutoCanvasManager : MonoBehaviour
             UIManageCounter++;
             Time.timeScale = 1.0f;
         }
-        if(UIManageCounter == 1 && timer >= 100 && playerHp >= 4)
+        if(UIManageCounter == 1 && timer >= 100 && playerHp >= 2)
         {
             HpbarLowInfo.SetActive(false);
             timer = 0;
@@ -95,6 +109,13 @@ public class tutoCanvasManager : MonoBehaviour
             timer = 0;
             UIManageCounter++;
             Time.timeScale = 1.0f;
+        }
+        if(UIManageCounter==4 && timer >= 100)
+        {
+           
+            ButtonInfo.transform.localScale = scale;
+            trans.anchoredPosition = new Vector3(-242, 484, 1);
+
         }
     }
 }
