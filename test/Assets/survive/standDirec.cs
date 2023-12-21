@@ -8,6 +8,7 @@ public class standDirec : MonoBehaviour
     public GameObject Boss;
     public GameObject sun;
     public GameObject demonsSun;
+    public GameObject Demon;
 
     bool MoveWorld=false;
     int MoveWorldInterval=0;
@@ -18,6 +19,7 @@ public class standDirec : MonoBehaviour
         Boss.SetActive(false);
         demonsSun.SetActive(false);
         sun.SetActive(true);
+        Demon.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class standDirec : MonoBehaviour
         {
             demonsSun.SetActive(true);
             Boss.SetActive(true);
+            Demon.SetActive(true);
         }
     }
     void FixedUpdate()
