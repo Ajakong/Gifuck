@@ -224,12 +224,7 @@ public class Sword : MonoBehaviour
         
         if (collision.gameObject.tag == "Player")
         {
-            col=this.GetComponent<BoxCollider>();
-            col.isTrigger= true;
-            if(isHitFlag==false)
-            {
-                col.enabled = false;
-            }
+           
             //プレイヤーに当たった(剣の動きを消す)
             isHitFlag = true;
             //剣をプレイヤーの子オブジェクトにする
@@ -252,7 +247,11 @@ public class Sword : MonoBehaviour
 
             ////当たり判定削除
             //col.enabled = false;
-
+            col = this.GetComponent<BoxCollider>();
+            col.isTrigger = true;
+            
+            col.enabled = false;
+            
         }
     }
 

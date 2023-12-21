@@ -63,7 +63,7 @@ public class enemyDirector : MonoBehaviour
         {
            
 
-            MaxSpeed += 0.002f;
+            MaxSpeed += 0.001f;
             speedUpCounter++;
             EneSpeed.SpeedMove = MaxSpeed;
         }

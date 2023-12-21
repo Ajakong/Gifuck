@@ -17,8 +17,8 @@ public class EneSpeed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Speed = Info.SpeedMove;
-        GetComponent<Text>().text = "Speed : " + Speed.ToString("00");
+        Speed = Info.SpeedMove*100;
+        GetComponent<Text>().text = "Speed : " + Speed.ToString("f4");
 
     }
 

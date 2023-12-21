@@ -13,7 +13,7 @@ public class Pause : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        pauseIma.SetActive(false);
        
     }
 

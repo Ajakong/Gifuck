@@ -7,14 +7,13 @@ using UnityEngine.InputSystem;
 using System.Diagnostics;
 using System.Collections.Specialized;
 
-public class pauseSelect : MonoBehaviour
+public class tutoPauseSelect : MonoBehaviour
 {
     public AudioSource select;
     public AudioSource selectChoise;
 
     public GameObject Continue;
-    public GameObject Info;
-    public GameObject secret;
+   
     public GameObject toTitle;
 
     Vector3 startFirstTextSize;
@@ -31,28 +30,24 @@ public class pauseSelect : MonoBehaviour
 
     int choise = 0;
 
-    bool selectFlag=false;
+    bool selectFlag = false;
     bool choiseInter = false;
 
     public GameObject pause;
-    public GameObject UniInfo;
-    public GameObject topSecret;
+    
 
-   
+
 
     // Start is called before the first frame update
     void Awake()
     {
 
         //panelのコントロール
-        Continue.SetActive(true);
-        Info.SetActive(false);
-        secret.SetActive(false);
+        Continue.SetActive(false);
+        
         toTitle.SetActive(false);
 
-        //Infoのコントロール
-        UniInfo.SetActive(false);
-        topSecret.SetActive(false);
+        
     }
 
     public void OnInputStick(InputAction.CallbackContext context)
@@ -75,8 +70,8 @@ public class pauseSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+
         if (axis == Vector2.zero)
         {
             UnityEngine.Debug.Log(axis.y);
@@ -95,7 +90,7 @@ public class pauseSelect : MonoBehaviour
         }
         if (axis.y <= -0.6f && selectFlag == false)
         {
-            if (choiseInter == false )
+            if (choiseInter == false)
             {
                 select.Play();
                 choise++;
@@ -107,39 +102,21 @@ public class pauseSelect : MonoBehaviour
             choiseInter = false;
         }
 
-        if (choise % 4 == 0)
+        if (choise % 2 == 0)
         {
             isSelect = 0;
             Continue.SetActive(true);
-            Info.SetActive(false);
-            secret.SetActive(false);
+            
             toTitle.SetActive(false);
         }
-        if (choise % 4 == 1||choise%4==-3)
+        if (choise % 2 == 1)
         {
             isSelect = 1;
             Continue.SetActive(false);
-            Info.SetActive(true);
-            secret.SetActive(false);
-            toTitle.SetActive(false);
-        }
-        if (choise % 4 == 2||choise%4==-2)
-        {
-            isSelect = 2;
-            Continue.SetActive(false);
-            Info.SetActive(false);
-            secret.SetActive(true);
-
-            toTitle.SetActive(false);
-        }
-        if (choise % 4 == 3||choise%4==-1)
-        {
-            isSelect = 3;
-            Continue.SetActive(false);
-            Info.SetActive(false);
-            secret.SetActive(false);
+           
             toTitle.SetActive(true);
         }
+        
         //if (firstFlag)
         //{
         //    if (isToGame)
@@ -176,46 +153,34 @@ public class pauseSelect : MonoBehaviour
         //    //SceneManager.LoadScene("SampleScene");
         //}
 
-        
+
 
     }
 
     public void ToNext(InputAction.CallbackContext context)
     {
 
-        
+
         //selectChoise.Play();
-        if(selectFlag==true)
+        if (selectFlag == true)
         {
             selectFlag = false;
-            UniInfo.SetActive(false);
-            topSecret.SetActive(false);
+           
         }
         else
         {
             if (isSelect == 0)
             {
                 //初期化
-                UniInfo.SetActive(false);
-                topSecret.SetActive(false);
-                choise = 0;
                 
+                choise = 0;
+
                 this.gameObject.SetActive(false);
             }
             else if (isSelect == 1)
             {
-                //infoの表示
-                UniInfo.SetActive(true);
-                selectFlag = true;
-            }
-            else if (isSelect == 2)
-            {
-                //???の表示
-                topSecret.SetActive(true);
-                selectFlag = true;
-            }
-            else if (isSelect == 3)
-            {
+                
+           
                 SceneManager.LoadScene("TitleProt");
             }
         }
@@ -224,18 +189,16 @@ public class pauseSelect : MonoBehaviour
 
     public void Pausing(InputAction.CallbackContext context)
     {
-        if(this.gameObject.activeSelf == true)
-        {//初期化
-            UniInfo.SetActive(false);
-            topSecret.SetActive(false);
+        if (this.gameObject.activeSelf == true)
+        {
             choise = 0;
             selectFlag = false;
-            
+
         }
 
         else if (this.gameObject.activeSelf == false)
         {
-           
+
 
 
         }
@@ -243,7 +206,7 @@ public class pauseSelect : MonoBehaviour
 
     }
 
-        void TextSizeChange(GameObject big, GameObject small)
+    void TextSizeChange(GameObject big, GameObject small)
     {
         big.transform.localScale = big.transform.localScale * 1.6f;
         small.transform.localScale = small.transform.localScale / 1.6f;
