@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Boss1State : MonoBehaviour
 {
+    public GameObject theSun;
+    public GameObject demonsSun;
+    public GameObject surviveGate;
+
     //アニメーション
     Animator animator;
     //rigidBody取得
@@ -89,11 +93,16 @@ public class Boss1State : MonoBehaviour
         {
   
             Time.timeScale = 1.0f;
-            Destroy(this.gameObject);
             Drop = Instantiate(Item);
             Vector3 itemDropPos = transform.position;
             itemDropPos.y += 2;
             Drop.transform.position = itemDropPos;
+
+            theSun.SetActive(true);
+            demonsSun.SetActive(false);
+            surviveGate.SetActive(true);
+            Destroy(this.gameObject);
+            
         }
 
 

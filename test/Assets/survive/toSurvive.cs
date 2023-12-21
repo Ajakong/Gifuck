@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class toSurvive : MonoBehaviour
 {
+    public GameObject alter;
+    public GameObject backAlter;
+
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,9 @@ public class toSurvive : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
+            player.transform.position = backAlter.transform.position;
 
-            SceneManager.LoadScene("SampleScene");
+            alter.SetActive(false);
         }
     }
 
