@@ -38,7 +38,7 @@ public class pauseSelect : MonoBehaviour
     public GameObject UniInfo;
     public GameObject topSecret;
 
-   
+    public GameObject scoreCounter;
 
     // Start is called before the first frame update
     void Awake()
@@ -216,6 +216,8 @@ public class pauseSelect : MonoBehaviour
             }
             else if (isSelect == 3)
             {
+                choise = 0;
+                Destroy(scoreCounter);
                 SceneManager.LoadScene("TitleProt");
             }
         }

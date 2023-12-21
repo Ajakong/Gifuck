@@ -29,7 +29,7 @@ public class standDirec : MonoBehaviour
             sun.SetActive(false);
 
         }
-        if (MoveWorldInterval>=60)
+        if (MoveWorldInterval>=180)
         {
             demonsSun.SetActive(true);
             Boss.SetActive(true);

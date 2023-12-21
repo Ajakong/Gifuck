@@ -14,6 +14,10 @@ public class Title : MonoBehaviour
     public GameObject playGame;
     public GameObject toTuto;
 
+    public GameObject GameBlackOut;
+
+    public GameObject tutoBlackOut;
+
     Vector3 startFirstTextSize;
     Vector3 startSecondTextSize;
 
@@ -39,6 +43,8 @@ public class Title : MonoBehaviour
         playGame.SetActive(true);
         toTuto.SetActive(false);
 
+        GameBlackOut.SetActive(false);
+        tutoBlackOut.SetActive(false);
     }
 
     public void OnInputStick(InputAction.CallbackContext context)
@@ -138,12 +144,14 @@ public class Title : MonoBehaviour
         selectChoise.Play();
         if (isToGame)
         {
-            SceneManager.LoadScene("SampleScene");
+            GameBlackOut.SetActive(true);
+            //SceneManager.LoadScene("SampleScene");
 
         }
         else if (!isToGame)
         {
-            SceneManager.LoadScene("tutoreal");
+            tutoBlackOut.SetActive(true);
+            //SceneManager.LoadScene("tutoreal");
         }
 
     }

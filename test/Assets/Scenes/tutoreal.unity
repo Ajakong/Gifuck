@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 353488588}
   - component: {fileID: 353488587}
   - component: {fileID: 353488586}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Terrain_(0.00, 0.00, -1000.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2052,6 +2052,10 @@ PrefabInstance:
       propertyPath: sword
       value: 
       objectReference: {fileID: 1013809132}
+    - target: {fileID: 8728850215355296272, guid: 812f2b3c2ca6c2844bc94891483ca435, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1073741824
+      objectReference: {fileID: 0}
     - target: {fileID: 8728850215355296273, guid: 812f2b3c2ca6c2844bc94891483ca435, type: 3}
       propertyPath: m_Center.y
       value: 1
@@ -2445,7 +2449,7 @@ GameObject:
   - component: {fileID: 1013399268}
   - component: {fileID: 1013399267}
   - component: {fileID: 1013399266}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3232,7 +3236,7 @@ GameObject:
   - component: {fileID: 1268009260}
   - component: {fileID: 1268009259}
   - component: {fileID: 1268009258}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Terrain_(-1000.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,7 +4972,7 @@ GameObject:
   - component: {fileID: 1912862713}
   - component: {fileID: 1912862712}
   - component: {fileID: 1912862711}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Terrain_(-1000.00, 0.00, -1000.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
