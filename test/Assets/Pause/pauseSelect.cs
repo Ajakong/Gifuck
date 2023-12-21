@@ -38,6 +38,8 @@ public class pauseSelect : MonoBehaviour
     public GameObject UniInfo;
     public GameObject topSecret;
 
+   
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -82,7 +84,7 @@ public class pauseSelect : MonoBehaviour
             //secondFlag = false;
         }
 
-        if (axis.y >= 0.6f)
+        if (axis.y >= 0.6f && selectFlag == false)
         {
             if (choiseInter == false)
             {
@@ -91,9 +93,9 @@ public class pauseSelect : MonoBehaviour
             }
             choiseInter = true;
         }
-        if (axis.y <= -0.6f)
+        if (axis.y <= -0.6f && selectFlag == false)
         {
-            if (choiseInter == false)
+            if (choiseInter == false )
             {
                 select.Play();
                 choise++;
@@ -173,6 +175,9 @@ public class pauseSelect : MonoBehaviour
         //{
         //    //SceneManager.LoadScene("SampleScene");
         //}
+
+        
+
     }
 
     public void ToNext(InputAction.CallbackContext context)
@@ -217,8 +222,28 @@ public class pauseSelect : MonoBehaviour
 
     }
 
+    public void Pausing(InputAction.CallbackContext context)
+    {
+        if(this.gameObject.activeSelf == true)
+        {//‰Šú‰»
+            UniInfo.SetActive(false);
+            topSecret.SetActive(false);
+            choise = 0;
+            selectFlag = false;
+            
+        }
 
-    void TextSizeChange(GameObject big, GameObject small)
+        else if (this.gameObject.activeSelf == false)
+        {
+           
+
+
+        }
+
+
+    }
+
+        void TextSizeChange(GameObject big, GameObject small)
     {
         big.transform.localScale = big.transform.localScale * 1.6f;
         small.transform.localScale = small.transform.localScale / 1.6f;

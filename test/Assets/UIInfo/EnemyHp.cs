@@ -7,21 +7,20 @@ using UnityEngine.UI;
 public class EnemyHp : MonoBehaviour
 {
     int Hp;
+    EnemyHpCatch Info;
+    public GameObject eneDfe;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Info=eneDfe.GetComponent<EnemyHpCatch>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = "Atk : " + Hp.ToString("00");
+        Hp = Info.HpMove;
+        GetComponent<Text>().text = "Hp : " + Hp.ToString("00");
 
     }
-    public int HpMove
-    {
-        get { return Hp; }
-        set { Hp = value; }
-    }
+    
 }

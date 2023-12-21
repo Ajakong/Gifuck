@@ -31,6 +31,8 @@ public class animation : MonoBehaviour
 
     bool m_attackFlag;
     int attackCount;
+
+    [SerializeField] private LayerMask groundLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -151,15 +153,15 @@ public class animation : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        RaycastHit hit;
-        originRay = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
+        
+        originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
 
         ray = new Ray(originRay, RayCast);
         Debug.Log(originRay);
-        if(Physics.Raycast(originRay,RayCast,-500,30))
+        if(Physics.Raycast(originRay,RayCast,3,groundLayer))
         {
             
-            rb.AddForce(0, 5, 0, ForceMode.Impulse);
+            rb.AddForce(0, 3, 0, ForceMode.Impulse);
             animator.SetTrigger("jumpTrigger");
         }
     }

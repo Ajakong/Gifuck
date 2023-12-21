@@ -8,12 +8,13 @@ using UnityEngine.UI;
 public class PlayerAtk : MonoBehaviour
 {
     Sword swordInfo;
-    public GameObject sword;
+    GameObject sword;
 
     int SwordAtk;
     // Start is called before the first frame update
     void Start()
     {
+        sword = GameObject.Find("ObjSword");
         swordInfo = sword.GetComponent<Sword>();
     }
 

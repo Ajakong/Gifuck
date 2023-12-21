@@ -29,10 +29,10 @@ public class EnemyState : MonoBehaviour
 
     theWorldTime time;
 
-    KillEneCount count;
+    KillEneCountCatch count;
     GameObject counter;
 
-    EnemyHp EneHp;
+    EnemyHpCatch EneHp;
     GameObject EneHpUI;
 
     // Start is called before the first frame update
@@ -41,10 +41,10 @@ public class EnemyState : MonoBehaviour
         world = GameObject.Find("world");
         time=world.GetComponent<theWorldTime>();
         Hp = maxHp;
-        counter = GameObject.Find("KillEnemy");
-        count=counter.GetComponent<KillEneCount>();
-        EneHpUI = GameObject.Find("EnemyHp");
-        EneHp=EneHp.GetComponent<EnemyHp>();
+        counter = GameObject.Find("EneKillingCount");
+        count=counter.GetComponent<KillEneCountCatch>();
+        EneHpUI = GameObject.Find("EneDFE");
+        EneHp=EneHpUI.GetComponent<EnemyHpCatch>();
         
     }
 
@@ -94,4 +94,6 @@ public class EnemyState : MonoBehaviour
             state.UniHpMove -= attack;
         }
     }
+
+
 }

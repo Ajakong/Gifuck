@@ -6,22 +6,21 @@ using UnityEngine.UI;
 public class EneSpeed : MonoBehaviour
 {
     public float Speed;
+    EneSpeedCatch Info;
+    public GameObject eneSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Info=eneSpeed.GetComponent<EneSpeedCatch>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Speed = Info.SpeedMove;
         GetComponent<Text>().text = "Speed : " + Speed.ToString("00");
 
     }
 
-    public float SpeedMove
-    {
-        get { return Speed; }
-        set { Speed = value; }
-    }
+    
 }
