@@ -12667,7 +12667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countSecond: 0.49
-  countMinute: 5
+  countMinute: 2
 --- !u!114 &1291825117
 MonoBehaviour:
   m_ObjectHideFlags: 0
