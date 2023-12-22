@@ -8,6 +8,7 @@ public class Boss1State : MonoBehaviour
     public GameObject theSun;
     public GameObject demonsSun;
     public GameObject surviveGate;
+   
 
     //アニメーション
     Animator animator;
@@ -60,6 +61,21 @@ public class Boss1State : MonoBehaviour
 
     Transform tempTrans;
 
+    public GameObject LeftArm;
+    bool AttackFlag = false;
+    int CollCount;
+
+    public GameObject jumpImpact;
+    GameObject impact;
+    bool impactFlag=false;
+
+    Ray ray;
+    Vector3 originRay;
+    Vector3 RayCast;
+
+    Vector2 tempVec;
+
+    [SerializeField] private LayerMask groundLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,11 +89,20 @@ public class Boss1State : MonoBehaviour
         //forceDirection = new Vector3(0f, 4.24f, -2.0f);
         forcePowerFront = 16f;
         forcePowerUp = 14f;
+        LeftArm.GetComponent<BoxCollider>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if(AttackFlag==true)
+        {
+            if(CollCount>=20)
+            {
+                LeftArm.GetComponent<BoxCollider>().enabled = false;
+            }
+        }
         if (Hp <= 0)
         {
             if(!tempTrans)
@@ -94,6 +119,7 @@ public class Boss1State : MonoBehaviour
             theSun.SetActive(true);
             demonsSun.SetActive(false);
             surviveGate.SetActive(true);
+            
 
             Time.timeScale = 1.0f;
             Drop = Instantiate(Item);
@@ -116,7 +142,7 @@ public class Boss1State : MonoBehaviour
             dis = Vector3.Distance(thisPos, playerPos);
 
             /*プレイヤーに向かって歩く*/
-            if (dis > 6f && dis <= 40f && !jumpFlag)
+            if (dis > 6.0f && dis <= 60.0f && !jumpFlag)
             {
                 animator.SetBool("walkBool", true);
 
@@ -137,28 +163,45 @@ public class Boss1State : MonoBehaviour
             }
 
             //近いと近接攻撃をする
-            if (dis <= 6)
+            if (dis <= 6.0f)
             {
                 animator.SetTrigger("attackTrigger");
+                LeftArm.GetComponent<BoxCollider>().enabled = true;
+                AttackFlag = true;
             }
 
             //プレイヤーと自分(ボス)の距離を測ってジャンプ
-            if (dis > 30f && !jumpFlag)
+            if (dis > 60f && !jumpFlag)
             {
                 //groundFlag = true;
                 animator.SetTrigger("jumpTrigger");
                 jumpCount++;
+                jumpFlag = true;
                 if (jumpCount == 160)
                 {
                     force = forcePowerFront * transform.forward + forcePowerUp * transform.up;
 
                     myRb.AddForce(force, ForceMode.Impulse);
                     //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
-
+                    impactFlag = true;
+                }
+                else if(jumpCount>=300&&jumpCount<=1200)
+                {
+                    if (Physics.Raycast(originRay, RayCast, 80, groundLayer) && impactFlag == false)
+                    {
+                        impactFlag = true;
+                        impact = Instantiate(jumpImpact);
+                        impact.transform.position = transform.position;
+                    }
                 }
                 else if (jumpCount > 1200)
                 {
-                    jumpCount = 0;
+                    originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+
+                    ray = new Ray(originRay, RayCast);
+                    Debug.Log(originRay);
+                    
+                        jumpCount = 0;
                     jumpFlag = false;
                 }
             }
@@ -171,6 +214,11 @@ public class Boss1State : MonoBehaviour
         if(deathFlag)
         {
             deathAnimationFrame += 0.08f;
+        }
+
+        if(AttackFlag==true)
+        {
+            CollCount++;
         }
     }
 

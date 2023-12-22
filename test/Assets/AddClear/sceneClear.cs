@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 public class sceneClear : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,8 +17,13 @@ public class sceneClear : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("panpanpanpanpanpan");
-            SceneManager.LoadScene("TitleProt");
+         
         }
+    }
+
+    public void toNext(InputAction.CallbackContext context)
+    {
+        Debug.Log("panpanpanpanpanpan");
+        SceneManager.LoadScene("TitleProt");
     }
 }

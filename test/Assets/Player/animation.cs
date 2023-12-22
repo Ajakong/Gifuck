@@ -79,7 +79,7 @@ public class animation : MonoBehaviour
     private void FixedUpdate()
     {
        
-        if (attackCount >= 60)
+        if (attackCount >= 40)
         {
             swordCol.enabled = false;
             attackCount = 0;
@@ -161,7 +161,7 @@ public class animation : MonoBehaviour
         if(Physics.Raycast(originRay,RayCast,3,groundLayer))
         {
             
-            rb.AddForce(0, 3, 0, ForceMode.Impulse);
+            rb.AddForce(0, 2, 0, ForceMode.Impulse);
             animator.SetTrigger("jumpTrigger");
         }
     }

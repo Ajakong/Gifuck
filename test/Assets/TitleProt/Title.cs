@@ -13,6 +13,7 @@ public class Title : MonoBehaviour
 
     public GameObject playGame;
     public GameObject toTuto;
+    public GameObject endGame;
 
     public GameObject GameBlackOut;
 
@@ -26,7 +27,7 @@ public class Title : MonoBehaviour
 
     
 
-    bool isToGame= false;
+    int isToGame= 0;
 
     Vector2 axis = Vector2.zero;
 
@@ -42,6 +43,7 @@ public class Title : MonoBehaviour
         
         playGame.SetActive(true);
         toTuto.SetActive(false);
+        endGame.SetActive(false);
 
         GameBlackOut.SetActive(false);
         tutoBlackOut.SetActive(false);
@@ -75,33 +77,51 @@ public class Title : MonoBehaviour
             //secondFlag = false;
         }
 
-        if (Mathf.Abs(axis.y) >= 0.9f)
+        if (axis.y >= 0.9f)
+        {
+            if (choiseInter == false)
+            {
+                select.Play();
+                choise--;
+            }
+            choiseInter =true;
+        }
+        if (axis.y <= -0.9f)
         {
             if (choiseInter == false)
             {
                 select.Play();
                 choise++;
             }
-            choiseInter =true;
+            choiseInter = true;
         }
         if (Mathf.Abs(axis.y) <= 0.2f)
         {
             choiseInter = false;
         }
         
-        if(choise%2==0)
+        if(choise%3==0)
         {
-            isToGame= true;
+            isToGame= 0;
             playGame.SetActive(true);
             toTuto.SetActive(false);
+            endGame.SetActive(false);
         }
-        if(choise%2==1)
+        if(choise%3==1||choise % 3 == -2)
         {
-            isToGame = false;
+            isToGame = 1;
             playGame.SetActive(false);
             toTuto.SetActive(true);
+            endGame.SetActive(false);
         }
-        
+        if (choise % 3 == 2|| choise % 3 == -1)
+        {
+            isToGame = 2;
+            playGame.SetActive(false);
+            toTuto.SetActive(false);
+            endGame.SetActive(true);
+        }
+
         //if (firstFlag)
         //{
         //    if (isToGame)
@@ -142,16 +162,20 @@ public class Title : MonoBehaviour
     public void ToNext(InputAction.CallbackContext context)
     {
         selectChoise.Play();
-        if (isToGame)
+        if (isToGame==0)
         {
             GameBlackOut.SetActive(true);
             //SceneManager.LoadScene("SampleScene");
 
         }
-        else if (!isToGame)
+        else if (isToGame==1)
         {
             tutoBlackOut.SetActive(true);
             //SceneManager.LoadScene("tutoreal");
+        }
+        else if(isToGame==2)
+        {
+            Application.Quit();
         }
 
     }

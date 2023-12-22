@@ -29,7 +29,7 @@ public class scoreCapsule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HitCount>=3)
+        if(HitCount>=1)
         {
             Destroy(this.gameObject);
         }
@@ -39,7 +39,7 @@ public class scoreCapsule : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sword")
         {
-            for(int i=0;i<4;i++)
+            for(int i=0;i<2;i++)
             {
                 drop = Instantiate(Item);
                 dropRen=drop.GetComponent<Renderer>();
@@ -51,8 +51,8 @@ public class scoreCapsule : MonoBehaviour
                 drop.transform.localScale = dropScale;
                 drop.transform.position = transform.position;
                 itemRb = drop.GetComponent<Rigidbody>();
-                RandomVel = new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10), 5f, Random.Range(transform.position.z - 10, transform.position.z + 10));
-                itemRb.AddForce(RandomVel);
+                RandomVel = new Vector3(Random.Range(transform.position.x - 2, transform.position.x + 2), 5f, Random.Range(transform.position.z - 2, transform.position.z + 2));
+                drop.transform.position = RandomVel;
             }
             HitCount++;
 
