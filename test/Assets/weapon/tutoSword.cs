@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Net.Mime;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class tutoSword : MonoBehaviour
 {
@@ -296,5 +297,13 @@ public class tutoSword : MonoBehaviour
     {
         Time.timeScale = 0;
         eneSto = true;
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            colFlag= true;
+        }
     }
 }

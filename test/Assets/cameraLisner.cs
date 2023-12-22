@@ -19,7 +19,12 @@ public class cameraLisner : MonoBehaviour
         Range.x = stand.transform.position.x - transform.position.x;
         Range.z = stand.transform.position.z - transform.position.z;
         Range.y = 0;
-        if(Mathf.Sqrt(Range.x*Range.x+Range.z*Range.z)<=200)
+        if (stand.activeSelf == false)
+        {
+            Range.x = 1000;
+        }
+
+        if (Mathf.Sqrt(Range.x*Range.x+Range.z*Range.z)<=200)
         {
             Bgm.volume-=0.01f;
         }
@@ -27,6 +32,6 @@ public class cameraLisner : MonoBehaviour
         {
             Bgm.volume += 0.01f;
         }
-
+        
     }
 }
