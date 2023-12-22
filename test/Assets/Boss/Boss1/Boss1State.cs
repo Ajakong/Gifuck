@@ -59,6 +59,8 @@ public class Boss1State : MonoBehaviour
     //死んだかどうか
     bool deathFlag = false;
 
+    bool jumpIntervalFlag = false;
+
     Transform tempTrans;
 
     public GameObject LeftArm;
@@ -90,8 +92,8 @@ public class Boss1State : MonoBehaviour
 
         myRb = GetComponent<Rigidbody>();
         //forceDirection = new Vector3(0f, 4.24f, -2.0f);
-        forcePowerFront = 16f;
-        forcePowerUp = 14f;
+        forcePowerFront = 32.0f;
+        forcePowerUp = 136.0f;
         LeftArm.GetComponent<BoxCollider>().enabled = false;
         origin = this.transform.rotation;
     }
@@ -182,13 +184,13 @@ public class Boss1State : MonoBehaviour
             }
 
             //プレイヤーと自分(ボス)の距離を測ってジャンプ
-            if (dis > 60f && !jumpFlag)
+            if (dis > 60.0f && !jumpFlag)
             {
                 //groundFlag = true;
                 animator.SetTrigger("jumpTrigger");
-                jumpCount++;
+                jumpIntervalFlag = true;
                 jumpFlag = true;
-                if (jumpCount == 160)
+                if (jumpCount == 120)
                 {
                     force = forcePowerFront * transform.forward + forcePowerUp * transform.up;
 
@@ -196,7 +198,7 @@ public class Boss1State : MonoBehaviour
                     //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
                     impactFlag = true;
                 }
-                else if(jumpCount>=300&&jumpCount<=1200)
+                else if(jumpCount>=300&&jumpCount<=600)
                 {
                     if (Physics.Raycast(originRay, RayCast, 80, groundLayer) && impactFlag == false)
                     {
@@ -205,15 +207,24 @@ public class Boss1State : MonoBehaviour
                         impact.transform.position = transform.position;
                     }
                 }
-                else if (jumpCount > 1200)
+                else if (jumpCount > 600)
                 {
                     originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
 
                     ray = new Ray(originRay, RayCast);
                     Debug.Log(originRay);
-                    
-                        jumpCount = 0;
+
+                }
+            }
+
+            if(jumpIntervalFlag)
+            {
+                jumpCount++;
+                if(jumpCount >= 600)
+                {
+                    jumpCount = 0;
                     jumpFlag = false;
+                    jumpIntervalFlag = false;
                 }
             }
         }
