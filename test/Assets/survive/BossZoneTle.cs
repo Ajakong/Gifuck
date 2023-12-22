@@ -7,11 +7,15 @@ public class BossZoneTle : MonoBehaviour
 {
     public GameObject Player;
 
+    public GameObject Ui;
+
+
     Vector3 BossZonePos;
     // Start is called before the first frame update
     void Start()
     {
         BossZonePos = new Vector3(1500, 0, 0);
+        
     }
 
     // Update is called once per frame
@@ -24,8 +28,10 @@ public class BossZoneTle : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-
+            Ui.SetActive(true);
+            Player.GetComponent<EneRes>().enabled = false;
             Player.transform.position = BossZonePos;
         }
+
     }
 }

@@ -17,12 +17,13 @@ public class BossItem : MonoBehaviour
     //親オブジェクトにするオブジェクト名
     GameObject oyaObj;
 
-    public GameObject SwordInfo;
+    GameObject SwordInfo;
+    
 
-    GameObject sword2;
+    GameObject Player;
 
     GameObject scoreCounter;
-    public ScoreCount Score;
+    ScoreCount Score;
 
 
     private void Awake()
@@ -32,6 +33,8 @@ public class BossItem : MonoBehaviour
         scoreCounter = GameObject.Find("scoreCounter");
         Score = scoreCounter.GetComponent<ScoreCount>();
 
+        SwordInfo = GameObject.Find("ObjSword");
+        Player = GameObject.Find("unitychan");
     }
     // Start is called before the first frame update
     void Start()
@@ -53,7 +56,7 @@ public class BossItem : MonoBehaviour
     {
         speed *= 2.0f;
 
-        Vector3 targetPos = GameObject.Find("ObjSword").transform.position; //プレイヤーの位置を取得、targetPosに代入
+        Vector3 targetPos =Player.transform.position; //プレイヤーの位置を取得、targetPosに代入
         Vector3 startPos = transform.position;//エネミーの位置を取得、startPosに代入
 
         transform.position = Vector3.Lerp(startPos, targetPos, speed);//二点間を埋めるようにspeedの速さで移動
@@ -62,9 +65,9 @@ public class BossItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Sword")
+        if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.AddComponent<SwordColor>();
+            SwordInfo.AddComponent<SwordColor>();
 
             Score.scoreMove += 2000;
 

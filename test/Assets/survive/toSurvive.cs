@@ -26,7 +26,7 @@ public class toSurvive : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.transform.position = backAlter.transform.position;
-
+            player.GetComponent<EneRes>().enabled = true;
             alter.SetActive(false);
         }
     }

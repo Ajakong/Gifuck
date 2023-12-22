@@ -19,24 +19,9 @@ public class theWorldTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(startFlag==true)
-        {
-            if(time<=3)
-            {
-                time = Time.time;
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-                time = 0;
-                startFlag = false;
-            }
-        }
-        else 
-        {
+        
             time = Time.time;
-        }
+        
         
     }
 

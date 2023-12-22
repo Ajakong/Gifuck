@@ -10,6 +10,8 @@ public class standDirec : MonoBehaviour
     public GameObject demonsSun;
     public GameObject Demon;
 
+    public GameObject Ui;
+
     bool MoveWorld=false;
     int MoveWorldInterval=0;
 
@@ -20,6 +22,7 @@ public class standDirec : MonoBehaviour
         demonsSun.SetActive(false);
         sun.SetActive(true);
         Demon.SetActive(false);
+        Ui.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class standDirec : MonoBehaviour
         }
         if (MoveWorldInterval>=180)
         {
+            
             demonsSun.SetActive(true);
             Boss.SetActive(true);
             Demon.SetActive(true);
@@ -49,7 +53,7 @@ public class standDirec : MonoBehaviour
 
     
 
-    void OnTriggerStay(Collider collision) // “–‚½‚è”»’è‚ðŽ@’m
+    void OnTriggerEnter(Collider collision) // “–‚½‚è”»’è‚ðŽ@’m
     {
         if(collision.gameObject.tag=="spirit")
         {
