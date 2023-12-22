@@ -101,8 +101,10 @@ public class Boss1State : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
 
-        if(AttackFlag==true)
+        
+        if (AttackFlag==true)
         {
             
                
@@ -153,7 +155,7 @@ public class Boss1State : MonoBehaviour
             dis = Vector3.Distance(thisPos, playerPos);
 
             /*プレイヤーに向かって歩く*/
-            if (dis > 6.0f && dis <= 60.0f/* && !jumpFlag*/)
+            if (dis > 5.0f && dis <= 60.0f && !jumpFlag)
             {
                 animator.SetBool("walkBool", true);
 
@@ -165,7 +167,7 @@ public class Boss1State : MonoBehaviour
 
                 this.transform.rotation = this.transform.rotation * targetRot;//オブジェクトの角度をtargetRotにする
 
-                transform.position += transform.forward * 0.008f;
+                transform.position += transform.forward * 0.028f;
                 //moveFlag = true;
             }
             else
@@ -175,7 +177,7 @@ public class Boss1State : MonoBehaviour
             }
 
             //近いと近接攻撃をする
-            if (dis <= 6.0f)
+            if (dis <= 5.0f)
             {
                 
                 animator.SetTrigger("attackTrigger");
@@ -189,38 +191,53 @@ public class Boss1State : MonoBehaviour
                 //groundFlag = true;
                 animator.SetTrigger("jumpTrigger");
                 jumpIntervalFlag = true;
-                jumpFlag = true;
-                if (jumpCount == 120)
+                
+                if (jumpCount == 30)
                 {
-                    force = forcePowerFront * transform.forward + forcePowerUp * transform.up;
+                    this.transform.rotation = origin;
 
-                    myRb.AddForce(force, ForceMode.Impulse);
+                    targetRot = Quaternion.LookRotation(transform.position - playerPos);
+                    targetRot.z = 0;//横回転しかしないように固定
+                    targetRot.x = 0;//同上
+
+
+                    this.transform.rotation = this.transform.rotation * targetRot;//オブジェクトの角度をtargetRotにする
+
+                    rotateFlag = false;
+                    force =transform.forward + transform.up;
+                    force.Normalize();
+                    myRb.AddForce(force*dis/2.8f, ForceMode.Impulse);
                     //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
                     impactFlag = true;
                 }
-                else if(jumpCount>=300&&jumpCount<=600)
+                else if(jumpCount>=30)
                 {
-                    if (Physics.Raycast(originRay, RayCast, 80, groundLayer) && impactFlag == false)
+                    
+                    originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+
+                    if (Physics.Raycast(originRay, RayCast, 4, groundLayer) && impactFlag == false)
                     {
+
                         impactFlag = true;
                         impact = Instantiate(jumpImpact);
                         impact.transform.position = transform.position;
+                        jumpFlag = false;
                     }
                 }
-                else if (jumpCount > 600)
-                {
-                    originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+                //else if (jumpCount > 100)
+                //{
+                //    originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
 
-                    ray = new Ray(originRay, RayCast);
-                    Debug.Log(originRay);
-
-                }
+                //    ray = new Ray(originRay, RayCast);
+                //    Debug.Log(originRay);
+                //    jumpFlag = false;
+                //}
             }
 
             if(jumpIntervalFlag)
             {
                 jumpCount++;
-                if(jumpCount >= 600)
+                if(jumpCount >= 100)
                 {
                     jumpCount = 0;
                     jumpFlag = false;
@@ -239,6 +256,8 @@ public class Boss1State : MonoBehaviour
         }
         if(AttackFlag==true&&rotateFlag==true)
         {
+            this.transform.rotation = origin;
+
             targetRot = Quaternion.LookRotation(transform.position - playerPos);
             targetRot.z = 0;//横回転しかしないように固定
             targetRot.x = 0;//同上

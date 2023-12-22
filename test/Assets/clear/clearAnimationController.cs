@@ -22,17 +22,28 @@ public class clearAnimationController : MonoBehaviour
 
     public void OnX(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("XTri");
+        if(context.performed)
+        {
+            animator.SetTrigger("XTri");
+
+        }
     }
 
     public void OnY(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("YTri");
-    }
+        if (context.performed)
+        {
 
+            animator.SetTrigger("YTri");
+        }
+    }
     public void OnA(InputAction.CallbackContext context)
     {
-        animator.SetTrigger("ATri");
+        if (context.performed)
+        {
+
+            animator.SetTrigger("ATri");
+        }
     }
 }
 

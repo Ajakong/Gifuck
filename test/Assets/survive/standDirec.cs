@@ -9,6 +9,7 @@ public class standDirec : MonoBehaviour
     public GameObject sun;
     public GameObject demonsSun;
     public GameObject Demon;
+    public GameObject gate;
 
     public GameObject Ui;
 
@@ -23,6 +24,7 @@ public class standDirec : MonoBehaviour
         sun.SetActive(true);
         Demon.SetActive(false);
         Ui.SetActive(false);
+        gate.SetActive(false);
     }
 
     // Update is called once per frame
