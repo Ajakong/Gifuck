@@ -42,17 +42,20 @@ public class Pause : MonoBehaviour
 
     public void Pausing(InputAction.CallbackContext context)
     {
-        if(pauseIma.activeSelf==true)
+        if(context.performed)
         {
-            pauseIma.SetActive(false);
-            pause = false;
-            backFlag = false;
-        }
-        else
-        {
-            pause = true;
-            backFlag = true;
-            pauseIma.SetActive(true);
+            if (pauseIma.activeSelf == true)
+            {
+                pauseIma.SetActive(false);
+                pause = false;
+                backFlag = false;
+            }
+            else
+            {
+                pause = true;
+                backFlag = true;
+                pauseIma.SetActive(true);
+            }
         }
 
 

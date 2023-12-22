@@ -133,36 +133,43 @@ public class animation : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(m_attackFlag==false)
+        if(context.performed)
         {
-            m_attackFlag = true;
-            swordCol.enabled = true;
-            animator.SetTrigger("swordTrigger");
+            if (m_attackFlag == false)
+            {
+                m_attackFlag = true;
+                swordCol.enabled = true;
+                animator.SetTrigger("swordTrigger");
 
-            //TrailRendererの頂点情報からメッシュを生成する
-            TrailRenderer paintObjectTrailRenderer = sword.GetComponent<TrailRenderer>();
-            //子にコライダーだけ持つオブジェクトを作成する
-            GameObject colliderContainer = new GameObject("TrailCollider");
-            colliderContainer.transform.SetParent(sword.transform);
-            MeshCollider meshCollider = colliderContainer.AddComponent<MeshCollider>();
-            //Mesh mesh = new Mesh();
-            //paintObjectTrailRenderer.BakeMesh(mesh);
-            //meshCollider.sharedMesh = mesh;
+                //TrailRendererの頂点情報からメッシュを生成する
+                TrailRenderer paintObjectTrailRenderer = sword.GetComponent<TrailRenderer>();
+                //子にコライダーだけ持つオブジェクトを作成する
+                GameObject colliderContainer = new GameObject("TrailCollider");
+                colliderContainer.transform.SetParent(sword.transform);
+                MeshCollider meshCollider = colliderContainer.AddComponent<MeshCollider>();
+                //Mesh mesh = new Mesh();
+                //paintObjectTrailRenderer.BakeMesh(mesh);
+                //meshCollider.sharedMesh = mesh;
+            }
         }
+        
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        
-        originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-
-        ray = new Ray(originRay, RayCast);
-        Debug.Log(originRay);
-        if(Physics.Raycast(originRay,RayCast,3,groundLayer))
+        if(context.performed)
         {
-            
-            rb.AddForce(0, 2, 0, ForceMode.Impulse);
-            animator.SetTrigger("jumpTrigger");
+            originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+
+            ray = new Ray(originRay, RayCast);
+            Debug.Log("oi,nandakoreha");
+            if (Physics.Raycast(originRay, RayCast, 3, groundLayer))
+            {
+
+                rb.AddForce(0, 2, 0, ForceMode.Impulse);
+                animator.SetTrigger("jumpTrigger");
+            }
         }
+        
     }
 }

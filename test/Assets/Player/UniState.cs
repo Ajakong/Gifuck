@@ -86,24 +86,27 @@ public class UniState : MonoBehaviour
     }
     public void Heal(InputAction.CallbackContext context)
     {
-        if(healFlag==false)
+        if(context.performed)
         {
-            if (HealItem >= 1)
+            if (healFlag == false)
             {
-                if (UniHp < 100)
+                if (HealItem >= 1)
                 {
-                    UniHp += 60;
-                    HealItem--;
-                    healFlag = true;
-                }
-                else
-                {
-                    Debug.Log("HPがマンタンDEATH！");
-                }
+                    if (UniHp < 100)
+                    {
+                        UniHp += 60;
+                        HealItem--;
+                        healFlag = true;
+                    }
+                    else
+                    {
+                        Debug.Log("HPがマンタンDEATH！");
+                    }
 
+                }
             }
         }
-        
+
     }
 
     public void OnRelease(InputAction.CallbackContext context)

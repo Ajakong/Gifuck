@@ -57,9 +57,11 @@ public class pauseSelect : MonoBehaviour
 
     public void OnInputStick(InputAction.CallbackContext context)
     {
+        if(context.performed)
+        {
+            axis = context.ReadValue<Vector2>();
+        }
 
-
-        axis = context.ReadValue<Vector2>();
 
         // UnityEngine.Debug.Log(axis.y);
 
@@ -182,45 +184,46 @@ public class pauseSelect : MonoBehaviour
 
     public void ToNext(InputAction.CallbackContext context)
     {
-
-        
-        //selectChoise.Play();
-        if(selectFlag==true)
-        {
-            selectFlag = false;
-            UniInfo.SetActive(false);
-            topSecret.SetActive(false);
-        }
-        else
-        {
-            if (isSelect == 0)
+        if(context.performed)
+        {//selectChoise.Play();
+            if (selectFlag == true)
             {
-                //初期化
+                selectFlag = false;
                 UniInfo.SetActive(false);
                 topSecret.SetActive(false);
-                choise = 0;
-                
-                this.gameObject.SetActive(false);
             }
-            else if (isSelect == 1)
+            else
             {
-                //infoの表示
-                UniInfo.SetActive(true);
-                selectFlag = true;
-            }
-            else if (isSelect == 2)
-            {
-                //???の表示
-                topSecret.SetActive(true);
-                selectFlag = true;
-            }
-            else if (isSelect == 3)
-            {
-                choise = 0;
-                Destroy(scoreCounter);
-                SceneManager.LoadScene("TitleProt");
+                if (isSelect == 0)
+                {
+                    //初期化
+                    UniInfo.SetActive(false);
+                    topSecret.SetActive(false);
+                    choise = 0;
+
+                    this.gameObject.SetActive(false);
+                }
+                else if (isSelect == 1)
+                {
+                    //infoの表示
+                    UniInfo.SetActive(true);
+                    selectFlag = true;
+                }
+                else if (isSelect == 2)
+                {
+                    //???の表示
+                    topSecret.SetActive(true);
+                    selectFlag = true;
+                }
+                else if (isSelect == 3)
+                {
+                    choise = 0;
+                    Destroy(scoreCounter);
+                    SceneManager.LoadScene("TitleProt");
+                }
             }
         }
+
 
     }
 
