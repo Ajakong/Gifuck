@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0779747, g: 0.091784775, b: 0.11758982, a: 1}
+  m_IndirectSpecularColor: {r: 0.0779748, g: 0.09178494, b: 0.11758991, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2874,7 +2874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &439653938
 Transform:
   m_ObjectHideFlags: 0
@@ -9449,13 +9449,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51d546d1f96f2540adaed695df05a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theSun: {fileID: 0}
-  demonsSun: {fileID: 0}
+  theSun: {fileID: 1240956780}
+  demonsSun: {fileID: 1174699059}
   surviveGate: {fileID: 0}
-  maxHp: 1
-  Hp: 1
-  Item: {fileID: 7627553022071714383, guid: 8ed7d5952cf308144bddeb4254460a4c, type: 3}
-  player: {fileID: 0}
+  maxHp: 100
+  Hp: 100
+  Item: {fileID: 1646317322865468770, guid: 436eaf35eb69d21419388c3e951e9f8f, type: 3}
+  player: {fileID: 1277932736}
   dis: 0
   jumpCount: 0
 --- !u!54 &667471217
@@ -10994,7 +10994,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972187731}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a51d546d1f96f2540adaed695df05a13, type: 3}
   m_Name: 
@@ -25290,7 +25290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5c7c9b479922041ac0a20551b99bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1277932736}
 --- !u!135 &2100709686
 SphereCollider:
   m_ObjectHideFlags: 0

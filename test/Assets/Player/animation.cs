@@ -165,6 +165,4 @@ public class animation : MonoBehaviour
             animator.SetTrigger("jumpTrigger");
         }
     }
-
-
 }

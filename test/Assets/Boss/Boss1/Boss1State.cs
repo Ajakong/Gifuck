@@ -179,7 +179,7 @@ public class Boss1State : MonoBehaviour
         {
             //Debug.Log("hit");
 
-            slider.value -= 8f;
+            slider.value -= 2f;
             //なんかfloatの誤差？で時々ミリ残るため一応範囲指定
             if(slider.value <= 0.05)
             {
