@@ -13525,15 +13525,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 278.2
+      value: 305.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: 8.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -437.4
+      value: -426.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13565,15 +13565,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 734293354579748749, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1682
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 734293354579748749, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0687
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 734293354579748749, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.052
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 16cf2517d9b238c49b6ff05ddc40af53, type: 3}
       propertyPath: m_Name
@@ -34927,6 +34927,7 @@ GameObject:
   - component: {fileID: 2060334862}
   - component: {fileID: 2060334865}
   - component: {fileID: 2060334866}
+  - component: {fileID: 2060334867}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -35109,6 +35110,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stand: {fileID: 1367637288}
+--- !u!114 &2060334867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060334861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173dd87f843b68340a7f1887e50fcf4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2069411209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3885535379320397914, guid: 4552bb1d24679824a845721bee950743, type: 3}

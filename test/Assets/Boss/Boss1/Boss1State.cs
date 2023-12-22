@@ -78,6 +78,7 @@ public class Boss1State : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     Quaternion origin;
+    bool rotateFlag=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -101,8 +102,13 @@ public class Boss1State : MonoBehaviour
 
         if(AttackFlag==true)
         {
-            if(CollCount>=10)
+            
+               
+            if(CollCount>=40)
             {
+                CollCount = 0;
+                AttackFlag = false;
+                rotateFlag = false;
                 LeftArm.GetComponent<BoxCollider>().enabled = false;
             }
         }
@@ -169,12 +175,7 @@ public class Boss1State : MonoBehaviour
             //近いと近接攻撃をする
             if (dis <= 6.0f)
             {
-                targetRot = Quaternion.LookRotation(transform.position - playerPos);
-                targetRot.z = 0;//横回転しかしないように固定
-                targetRot.x = 0;//同上
                 
-
-                this.transform.rotation = this.transform.rotation*targetRot;//オブジェクトの角度をtargetRotにする
                 animator.SetTrigger("attackTrigger");
                 LeftArm.GetComponent<BoxCollider>().enabled = true;
                 AttackFlag = true;
@@ -225,7 +226,17 @@ public class Boss1State : MonoBehaviour
         {
             deathAnimationFrame += 0.08f;
         }
+        if(AttackFlag==true&&rotateFlag==true)
+        {
+            targetRot = Quaternion.LookRotation(transform.position - playerPos);
+            targetRot.z = 0;//横回転しかしないように固定
+            targetRot.x = 0;//同上
 
+
+            this.transform.rotation = this.transform.rotation * targetRot;//オブジェクトの角度をtargetRotにする
+
+            rotateFlag = false;
+        }
         if(AttackFlag==true)
         {
             CollCount++;
