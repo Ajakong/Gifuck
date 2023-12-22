@@ -91,16 +91,18 @@ public class Boss1State : MonoBehaviour
 
         if(deathAnimationFrame >= 12f)
         {
-  
+            theSun.SetActive(true);
+            demonsSun.SetActive(false);
+            surviveGate.SetActive(true);
+
             Time.timeScale = 1.0f;
             Drop = Instantiate(Item);
             Vector3 itemDropPos = transform.position;
             itemDropPos.y += 2;
             Drop.transform.position = itemDropPos;
 
-            theSun.SetActive(true);
-            demonsSun.SetActive(false);
-            surviveGate.SetActive(true);
+            
+
             Destroy(this.gameObject);
             
         }

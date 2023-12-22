@@ -13,6 +13,8 @@ public class BossUI : MonoBehaviour
     bool deleteFlag = false;
     public int count = 0;
 
+    bool flagFlag=false;
+
     //GameObject obj = GameObject.Find("Boss");
     //Boss1State state;
 
@@ -28,7 +30,11 @@ public class BossUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(slider.value <= 0.005)
+        if (slider.value >= 1)
+        {
+            flagFlag = true;
+        }
+        if(slider.value <= 0.005&&flagFlag==true)
         {
             deleteFlag = true;
         }
