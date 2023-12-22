@@ -44,19 +44,7 @@ public class sceneClear : MonoBehaviour
 
     public void OnInputStick(InputAction.CallbackContext context)
     {
-
-
         axis = context.ReadValue<Vector2>();
-
-        // UnityEngine.Debug.Log(axis.y);
-
-
-        //if (axis.y > -0.5f)
-        //{
-        //    UnityEngine.Debug.Log(axis.y);
-        //    secondFlag = true;
-        //    firstFlag = false;
-        //}
     }
 
     // Update is called once per frame
@@ -107,43 +95,6 @@ public class sceneClear : MonoBehaviour
             toTitle.SetActive(true);
             
         }
-        
-
-        //if (firstFlag)
-        //{
-        //    if (isToGame)
-        //    {
-        //        UnityEngine.Debug.Log("ã≠êßèIóπ1");
-        //       return;
-        //    }
-
-        //    TextSizeChange(firstText, secondText);
-        //    //secondText.transform.localScale = secondText.transform.localScale / 1.8f;
-        //    //firstText.transform.localScale = firstText.transform.localScale * 1.4f;
-        //    firstFlag = false;
-        //    isToGame = true;
-        //}
-
-
-        //if (secondFlag)
-        //{
-        //    if (!isToGame)
-        //    {
-        //        UnityEngine.Debug.Log("ã≠êßèIóπ2");
-        //        return;
-        //    }
-        //    TextSizeChange(secondText, firstText);
-        //    //firstText.transform.localScale = firstText.transform.localScale / 1.4f;
-        //    //secondText.transform.localScale = secondText.transform.localScale * 1.8f;
-        //    secondFlag = false;
-        //    isToGame = false;
-        //}
-
-        //UnityEngine.Debug.Log(firstFlag);
-        //if (Input.GetKey(KeyCode.Space))
-        //{
-        //    //SceneManager.LoadScene("SampleScene");
-        //}
     }
 
     public void ToNext(InputAction.CallbackContext context)
@@ -170,12 +121,4 @@ public class sceneClear : MonoBehaviour
         }
         
     }
-
-
-    void TextSizeChange(GameObject big, GameObject small)
-    {
-        big.transform.localScale = big.transform.localScale * 1.6f;
-        small.transform.localScale = small.transform.localScale / 1.6f;
-    }
-
 }
