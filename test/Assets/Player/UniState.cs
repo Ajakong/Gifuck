@@ -82,6 +82,7 @@ public class UniState : MonoBehaviour
     public int powerNum
     {
         get { return power; }
+        set { power = value; }
     }
     public void Heal(InputAction.CallbackContext context)
     {
@@ -112,16 +113,16 @@ public class UniState : MonoBehaviour
         
     }
 
-    public void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.tag == "item")
-        {
-            Debug.Log("powerUp");
-            if (power <= 80)
-            {  
-                power++;
-            }
-            Destroy(hit.gameObject);
-        }
-    }
+    //public void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (hit.gameObject.tag == "item")
+    //    {
+    //        Debug.Log("powerUp");
+    //        if (power <= 80)
+    //        {  
+    //            power++;
+    //        }
+    //        Destroy(hit.gameObject);
+    //    }
+    //}
 }

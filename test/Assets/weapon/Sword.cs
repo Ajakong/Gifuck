@@ -162,7 +162,7 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
-        swordAt = power.powerNum;
+        //swordAt = power.powerNum;
 
 
         if(colFlag)
@@ -302,6 +302,7 @@ public class Sword : MonoBehaviour
     public int At
     {
         get { return swordAt; }
+        set { swordAt = value; }
     }
 
     public void HitStop()

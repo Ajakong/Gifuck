@@ -76,6 +76,8 @@ public class Boss1State : MonoBehaviour
     Vector2 tempVec;
 
     [SerializeField] private LayerMask groundLayer;
+
+    Quaternion origin;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +92,7 @@ public class Boss1State : MonoBehaviour
         forcePowerFront = 16f;
         forcePowerUp = 14f;
         LeftArm.GetComponent<BoxCollider>().enabled = false;
+        origin = this.transform.rotation;
     }
 
     // Update is called once per frame
@@ -98,7 +101,7 @@ public class Boss1State : MonoBehaviour
 
         if(AttackFlag==true)
         {
-            if(CollCount>=20)
+            if(CollCount>=10)
             {
                 LeftArm.GetComponent<BoxCollider>().enabled = false;
             }
@@ -142,16 +145,17 @@ public class Boss1State : MonoBehaviour
             dis = Vector3.Distance(thisPos, playerPos);
 
             /*プレイヤーに向かって歩く*/
-            if (dis > 6.0f && dis <= 60.0f && !jumpFlag)
+            if (dis > 6.0f && dis <= 60.0f/* && !jumpFlag*/)
             {
                 animator.SetBool("walkBool", true);
 
-                targetRot = Quaternion.LookRotation(playerPos - transform.position);
+                this.transform.rotation = origin;
+                targetRot = Quaternion.LookRotation(transform.position - playerPos);
                 targetRot.z = 0;//横回転しかしないように固定
                 targetRot.x = 0;//同上
+                
 
-
-                this.transform.rotation = targetRot;//オブジェクトの角度をtargetRotにする
+                this.transform.rotation = this.transform.rotation * targetRot;//オブジェクトの角度をtargetRotにする
 
                 transform.position += transform.forward * 0.008f;
                 //moveFlag = true;
@@ -165,6 +169,12 @@ public class Boss1State : MonoBehaviour
             //近いと近接攻撃をする
             if (dis <= 6.0f)
             {
+                targetRot = Quaternion.LookRotation(transform.position - playerPos);
+                targetRot.z = 0;//横回転しかしないように固定
+                targetRot.x = 0;//同上
+                
+
+                this.transform.rotation = this.transform.rotation*targetRot;//オブジェクトの角度をtargetRotにする
                 animator.SetTrigger("attackTrigger");
                 LeftArm.GetComponent<BoxCollider>().enabled = true;
                 AttackFlag = true;

@@ -54,7 +54,7 @@ public class BossItem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        speed *= 2.0f;
+        speed *= 1.2f;
 
         Vector3 targetPos =Player.transform.position; //プレイヤーの位置を取得、targetPosに代入
         Vector3 startPos = transform.position;//エネミーの位置を取得、startPosに代入
@@ -70,7 +70,7 @@ public class BossItem : MonoBehaviour
             SwordInfo.AddComponent<SwordColor>();
 
             Score.scoreMove += 2000;
-
+           SwordInfo.GetComponent<Sword>().At += 30;
 
             Destroy(this.gameObject);
         }
