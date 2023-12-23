@@ -8,7 +8,7 @@ public class standDirec : MonoBehaviour
     public GameObject Boss;
     public GameObject sun;
     public GameObject demonsSun;
-    public GameObject Demon;
+    public GameObject demon;
     public GameObject gate;
 
     public GameObject Ui;
@@ -22,7 +22,7 @@ public class standDirec : MonoBehaviour
         Boss.SetActive(false);
         demonsSun.SetActive(false);
         sun.SetActive(true);
-        Demon.SetActive(false);
+      demon.SetActive(false);
         Ui.SetActive(false);
         gate.SetActive(false);
     }
@@ -41,7 +41,7 @@ public class standDirec : MonoBehaviour
             
             demonsSun.SetActive(true);
             Boss.SetActive(true);
-            Demon.SetActive(true);
+            
         }
     }
     void FixedUpdate()

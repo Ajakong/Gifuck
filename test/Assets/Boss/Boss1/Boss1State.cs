@@ -154,6 +154,89 @@ public class Boss1State : MonoBehaviour
             thisPos = this.transform.position;
             dis = Vector3.Distance(thisPos, playerPos);
 
+            if(dis<200)
+            {             /*プレイヤーに向かって歩く*/
+                if (dis > 5.0f && dis <= 60.0f && !jumpFlag)
+                {
+                    animator.SetBool("walkBool", true);
+
+                    this.transform.rotation = origin;
+                    targetRot = Quaternion.LookRotation(transform.position - playerPos);
+                    targetRot.z = 0;//横回転しかしないように固定
+                    targetRot.x = 0;//同上
+
+
+                    this.transform.rotation = this.transform.rotation * targetRot;//オブジェクトの角度をtargetRotにする
+
+                    transform.position += transform.forward * 0.028f;
+                    //moveFlag = true;
+                }
+                else
+                {
+                    animator.SetBool("walkBool", false);
+                    //moveFlag = false;
+                }
+
+                //近いと近接攻撃をする
+                if (dis <= 5.0f)
+                {
+
+                    animator.SetTrigger("attackTrigger");
+                    LeftArm.GetComponent<BoxCollider>().enabled = true;
+                    AttackFlag = true;
+                }
+
+                //プレイヤーと自分(ボス)の距離を測ってジャンプ
+                if (dis > 60.0f && !jumpFlag)
+                {
+                    //groundFlag = true;
+                    animator.SetTrigger("jumpTrigger");
+                    jumpIntervalFlag = true;
+
+                    if (jumpCount == 30)
+                    {
+                        this.transform.rotation = origin;
+
+                        targetRot = Quaternion.LookRotation(transform.position - playerPos);
+                        targetRot.z = 0;//横回転しかしないように固定
+                        targetRot.x = 0;//同上
+
+
+                        this.transform.rotation = this.transform.rotation * targetRot;//オブジェクトの角度をtargetRotにする
+
+                        rotateFlag = false;
+                        force = transform.forward + transform.up;
+                        force.Normalize();
+                        myRb.AddForce(force * dis / 7.2f, ForceMode.Impulse);
+                        //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
+                        impactFlag = true;
+                    }
+                    else if (jumpCount >= 30)
+                    {
+
+                        originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+
+                        if (Physics.Raycast(originRay, RayCast, 4, groundLayer) && impactFlag == false)
+                        {
+
+                            impactFlag = true;
+                            impact = Instantiate(jumpImpact);
+                            impact.transform.position = transform.position;
+                            jumpFlag = false;
+                        }
+                    }
+                    //else if (jumpCount > 100)
+                    //{
+                    //    originRay = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+
+                    //    ray = new Ray(originRay, RayCast);
+                    //    Debug.Log(originRay);
+                    //    jumpFlag = false;
+                    //}
+                }
+
+            }
+
             /*プレイヤーに向かって歩く*/
             if (dis > 5.0f && dis <= 60.0f && !jumpFlag)
             {
@@ -206,7 +289,7 @@ public class Boss1State : MonoBehaviour
                     rotateFlag = false;
                     force =transform.forward + transform.up;
                     force.Normalize();
-                    myRb.AddForce(force*dis/2.8f, ForceMode.Impulse);
+                    myRb.AddForce(force*dis/3.6f, ForceMode.Impulse);
                     //transform.transform.position += transform.up * forcePower + transform.forward * forcePower;
                     impactFlag = true;
                 }

@@ -15950,7 +15950,7 @@ MonoBehaviour:
   Boss: {fileID: 2100709684}
   sun: {fileID: 1240956780}
   demonsSun: {fileID: 1174699059}
-  Demon: {fileID: 1623634155}
+  demon: {fileID: 1623634155}
   gate: {fileID: 2137966370}
   Ui: {fileID: 1045291246}
 --- !u!65 &1517887466
@@ -35636,6 +35636,7 @@ MonoBehaviour:
   Player: {fileID: 1277932736}
   Ui: {fileID: 1045291246}
   stand: {fileID: 2076674095}
+  Boss: {fileID: 1623634155}
 --- !u!135 &2100709686
 SphereCollider:
   m_ObjectHideFlags: 0
