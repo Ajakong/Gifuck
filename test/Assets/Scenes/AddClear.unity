@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -832,8 +832,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
   m_Text: "<color=#FF11FF>Title</color>\n<color=white>KawaiiSurvival</color>\n\n<color=#FF11FF>Producer</color>\n<color=white>\u30BF\u30AB\u30B5\u30AD\u30BF\u30A4\u30AC</color>\n\n<color=#FF11FF>\u30D7\u30ED\u30B0\u30E9\u30E0\u9A0E\u58EB\u9577</color>\r
-    \r\n<color=white>\r\u30CA\u30AB\u30C0\u30A4\u30AA\u30EA</color>\n \r\n<color=#FF11FF>\u30D7\u30ED\u30B0\u30E9\u30E0\u885B\u5175</color>\r\n<color=white>\u30BF\u30AB\u30B5\u30AD\u30BF\u30A4\u30AC\r</color>\n\r\n\r<color=#FF11FF>\u30B5\u30A6\u30F3\u30C9\u63D0\u4F9B</color>\n<color=white>\u9B54\u738B\u9B42</color>\n\r\n\n<color=#FF11FF>\u5236\u4F5C\u30B0\u30EB\u30FC\u30D7</color>\n<color=white>
-    \rAjakongers</color>\n\n<color=white>\u798F\u5CA1\u60C5\u5831IT\u30AF\u30EA\u30A8\u30A4\u30BF\u30FC\n\u5C02\u9580\u5B66\u6821</color>"
+    \r\n<color=white>\r\u30CA\u30AB\u30C0\u30A4\u30AA\u30EA</color>\n \r\n<color=#FF11FF>\u30D7\u30ED\u30B0\u30E9\u30E0\u885B\u5175</color>\r\n<color=white>\u30BF\u30AB\u30B5\u30AD\u30BF\u30A4\u30AC\r</color>\n\r\n\r<color=#FF11FF>\u30B5\u30A6\u30F3\u30C9\u63D0\u4F9B</color>\n<color=white>\u9B54\u738B\u9B42</color>\n\r\n\n\n\n<color=#FF11FF>\u5236\u4F5C\u30B0\u30EB\u30FC\u30D7</color>\n<color=white>
+    \rAjakongers</color>\n"
 --- !u!222 &385274482
 CanvasRenderer:
   m_ObjectHideFlags: 0

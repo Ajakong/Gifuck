@@ -54,7 +54,7 @@ public class UniState : MonoBehaviour
         {
             lightTimer++;
             healLight.SetActive(true);
-            if (lightTimer >= 150)
+            if (lightTimer >= 30)
             {
                 healFlag = false;
                 lightTimer = 0;
