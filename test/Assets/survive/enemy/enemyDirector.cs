@@ -9,7 +9,7 @@ public class enemyDirector : MonoBehaviour
     GameObject LightningBullet;
 
     float moveSpeed;//敵がプレイヤーに近づく速度
-    float MaxSpeed = 0.01f;
+    float MaxSpeed = 0.007f;
 
 
     float timeCounter;
